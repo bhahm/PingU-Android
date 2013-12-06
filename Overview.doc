@@ -1,0 +1,75 @@
+PingU Programming Layout – Android 
+
+Home Page (Map)
+
+Map
+	> Google map API
+	> Apple map API
+
+Dots
+	> Fading function
+Wondering if this is a server thing or a per-device thing? Because there are ups and downs for both. Also, did we solidly decide the time intervals? Or do we have a smooth gradient kinda thing going?
+	> response (orbital) function 
+	> Names/messages and their appearance/fit function 
+
+Pinging Interface
+	> Circular design
+	> Sliding function 
+	> Expansion into Friends and Groups 
+		- appearance of text/ appearance when chosen
+	> Requesting Pings
+
+Message bar?/ Message interface
+
+Groups/Colors Bar (top right) 
+	> expansion/ collapse function
+	> prioritizing most used groups
+	> Set colors?
+	> individualized colors
+
+Switching Between Map page and Relations Page 	
+
+
+
+Relations Page 
+
+Font
+	> appearance when toggled
+
+Drag and Drop function 
+	> individual into group/ individual out of group 
+
+Automated Pinging 
+
+Name expansion	
+	> showing of individual information (ex. Groups, message, color, etc) 
+
+
+Group expansion
+	> ability to choose color 
+
+
+
+
+Settings Page 
+
+Deleting Friends
+
+Adding Friends 
+
+Managing groups? (this crosses over with the relations page – to be discussed) 
+
+…
+
+
+
+
+
+
+This should give you guys the general gist. Add to each category and add new ones if you think it is necessary. Pose questions in red so that we know to address them in meetings. If there is a category that excites you, pick a color and begin typing in that color. Then type your name in that color underneath this message like so: 
+
+Bryan Hahm.
+
+Mitchell Vitez
+
+

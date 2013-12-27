@@ -6,8 +6,11 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
-	
+        android:targetSdkVersion="19" />
+	<permission
+        android:name="com.zeng.pingu_android.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+<uses-permission android:name="com.zeng.pingu_android.permission.MAPS_RECEIVE"/>
     <uses-permission android:name="android.permission.INTERNET"/> 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
@@ -36,7 +39,7 @@
            android:value="@integer/google_play_services_version" />
         <meta-data
     	android:name="com.google.android.maps.v2.API_KEY"
-    	android:value="AIzaSyCgM22jeOKoxy_KBekjmlzJ_GFu_YH2RZo"/>
+    	android:value="AIzaSyCgM22jeOKoxy_KBekjmlzJ_GFu_YH2RZo" />
         
     </application>
 	

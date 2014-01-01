@@ -12,6 +12,7 @@
         android:protectionLevel="signature"/>
 <uses-permission android:name="com.zeng.pingu_android.permission.MAPS_RECEIVE"/>
     <uses-permission android:name="android.permission.INTERNET"/> 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -40,7 +41,10 @@
         <meta-data
     	android:name="com.google.android.maps.v2.API_KEY"
     	android:value="AIzaSyCgM22jeOKoxy_KBekjmlzJ_GFu_YH2RZo" />
-        
+        <activity
+    		android:name="me.vitez.pingu_android.PrefsActivity"
+    		android:theme="@android:style/Theme.Black.NoTitleBar" >
+  </activity>
     </application>
 	
     

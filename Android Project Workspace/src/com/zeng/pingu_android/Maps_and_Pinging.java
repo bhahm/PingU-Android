@@ -1,5 +1,7 @@
 package com.zeng.pingu_android;
 
+import me.vitez.pingu_android.PrefsActivity;
+
 import com.zeng.pingu_android.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -11,13 +13,19 @@ import com.google.android.gms.maps.model.*;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.annotation.SuppressLint;
 import android.app.*;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -26,6 +34,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 GooglePlayServicesClient.ConnectionCallbacks,
 GooglePlayServicesClient.OnConnectionFailedListener {
 	
+	TextView textView;
 	 private final static int
      CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 	 private GoogleMap map;
@@ -37,7 +46,33 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 		setContentView(R.layout.activity_maps_and__pinging);
 		mLocationClient = new LocationClient(this, this, this);
 		
-    }
+		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
+		Button btnGetPrefs = (Button) findViewById(R.id.btnGetPreferences);
+		
+		textView = (TextView) findViewById(R.id.txtPrefs);
+		View.OnClickListener listener = new View.OnClickListener() {
+			@Override
+			   public void onClick(View v) {
+			   switch (v.getId()) {
+			   case R.id.btnPrefs:
+			      final Intent intent = new Intent(Maps_and_Pinging.this,
+			      PrefsActivity.class);
+			      startActivity(intent);
+			      break;
+			 
+			   case R.id.btnGetPreferences:
+			      displaySharedPreferences();
+			      break;
+			 
+			   default:
+			     break;
+			   }
+			   }
+			   };
+			 btnPrefs.setOnClickListener(listener);
+			 btnGetPrefs.setOnClickListener(listener);
+
+		}
 	 @Override
 	protected void onResume() {
 	        super.onResume();
@@ -230,6 +265,24 @@ private boolean servicesConnected() {
         	showDialog(connectionResult.getErrorCode());
         }
     }
+    
+    private void displaySharedPreferences() {
+    	   SharedPreferences prefs = PreferenceManager
+    	    .getDefaultSharedPreferences(Maps_and_Pinging.this);
+    	 
+    	   String username = prefs.getString("username", "Default NickName");
+    	   String passw = prefs.getString("password", "Default Password");
+    	   boolean checkBox = prefs.getBoolean("checkBox", false);
+    	   String listPrefs = prefs.getString("listpref", "Default list prefs");
+    	 
+    	   StringBuilder builder = new StringBuilder();
+    	   builder.append("Username: " + username + "\n");
+    	   builder.append("Password: " + passw + "\n");
+    	   builder.append("Keep me logged in: " + String.valueOf(checkBox) + "\n");
+    	   builder.append("List preference: " + listPrefs);
+    	 
+    	   textView.setText(builder.toString());
+    	}
 
 }
    

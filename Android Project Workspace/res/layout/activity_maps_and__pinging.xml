@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -32,3 +33,36 @@
 	</shape>
 
     </FrameLayout>
+=======
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical" >
+ 
+    <fragment 
+          android:id="@+id/map"
+          android:layout_width="match_parent"
+          android:layout_height="120px"
+          android:name="com.google.android.gms.maps.MapFragment"/>
+    
+<Button
+  android:id="@+id/btnPrefs"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Preferences Screen" />
+ 
+<Button
+  android:id="@+id/btnGetPreferences"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Display Shared Preferences" />
+ 
+<TextView
+  android:id="@+id/txtPrefs"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" />
+ 
+</LinearLayout>
+>>>>>>> 1e3b61f8bb2172277e6bfe6043de6af84825172c

@@ -1,5 +1,6 @@
 package com.zeng.pingu_android;
 
+import me.vitez.pingu_android.Friends;
 import me.vitez.pingu_android.PrefsActivity;
 
 import com.zeng.pingu_android.R;
@@ -49,6 +50,8 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
 		Button btnGetPrefs = (Button) findViewById(R.id.btnGetPreferences);
 		
+		Button btnFriends = (Button) findViewById(R.id.btnFriends);
+		
 		textView = (TextView) findViewById(R.id.txtPrefs);
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
@@ -63,6 +66,12 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 			   case R.id.btnGetPreferences:
 			      displaySharedPreferences();
 			      break;
+			      
+			   case R.id.btnFriends:
+				   final Intent intent2 = new Intent(Maps_and_Pinging.this,
+					Friends.class);
+					startActivity(intent2);
+					break;
 			 
 			   default:
 			     break;
@@ -71,6 +80,7 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 			   };
 			 btnPrefs.setOnClickListener(listener);
 			 btnGetPrefs.setOnClickListener(listener);
+			 btnFriends.setOnClickListener(listener);
 
 		}
 	 @Override

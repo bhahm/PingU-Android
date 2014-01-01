@@ -43,7 +43,11 @@
     	android:value="AIzaSyCgM22jeOKoxy_KBekjmlzJ_GFu_YH2RZo" />
         <activity
     		android:name="me.vitez.pingu_android.PrefsActivity"
-    		android:theme="@android:style/Theme.Black.NoTitleBar" >
+    		android:theme="@style/AppTheme" >
+  </activity>
+  <activity
+    		android:name="me.vitez.pingu_android.Friends"
+    		android:theme="@style/AppTheme" >
   </activity>
     </application>
 	

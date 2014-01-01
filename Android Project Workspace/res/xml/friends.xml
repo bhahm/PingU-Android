@@ -10,26 +10,37 @@
         <TableRow android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_margin="2dp">
             
             <TextView android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Friendname Numberone"
-                android:textAppearance="?android:attr/textAppearanceLarge">
+                android:text="Friendname Numberone   ">
+                
+            </TextView>
+            <TextView android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username or something">
                 
             </TextView>
         </TableRow>
         <TableRow android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_margin="2dp">
             
             <TextView android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Myfriend Twopointoh"
-                android:textAppearance="?android:attr/textAppearanceLarge">
+                android:text="Myfriend Twopointoh">
+                
+            </TextView>
+            
+            <TextView android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More information">
                 
             </TextView>
         </TableRow>

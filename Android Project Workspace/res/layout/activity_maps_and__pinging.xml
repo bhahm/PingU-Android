@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapActivity" >
+         
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/doOverlay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/overlay_label"
+            android:textSize="12sp" 
+            
+            />
+        <shape 
+		android:shape="rectangle">
+    	<solid android:color="#eeffffff" />
+    	<corners android:bottomRightRadius="8dip"
+        android:bottomLeftRadius="8dip"  
+        android:topRightRadius="8dip"
+        android:topLeftRadius="8dip"
+        android:background = "@drawable/roundedbutton"
+        />
+	</shape>
+
+    </FrameLayout>
+=======
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -37,3 +72,4 @@
   android:layout_height="wrap_content" />
  
 </LinearLayout>
+>>>>>>> 1e3b61f8bb2172277e6bfe6043de6af84825172c

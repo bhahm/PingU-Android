@@ -4,4 +4,8 @@
     <string name="app_name">PingU-Android</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+<<<<<<< HEAD
+	<string name = "overlay_label">Test</string>
+=======
+>>>>>>> 1e3b61f8bb2172277e6bfe6043de6af84825172c
 </resources>

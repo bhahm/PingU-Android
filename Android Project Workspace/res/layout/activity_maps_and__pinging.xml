@@ -9,20 +9,26 @@
     <fragment 
           android:id="@+id/map"
           android:layout_width="match_parent"
-          android:layout_height="120px"
+          android:layout_height="1200px"
           android:name="com.google.android.gms.maps.MapFragment"/>
     
 <Button
   android:id="@+id/btnPrefs"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:text="Preferences Screen" />
+  android:text="Settings" />
+
+<Button
+  android:id="@+id/btnFriends"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Friends" />
  
 <Button
   android:id="@+id/btnGetPreferences"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:text="Display Shared Preferences" />
+  android:text="Display Settings (for debugging, remove later)" />
  
 <TextView
   android:id="@+id/txtPrefs"

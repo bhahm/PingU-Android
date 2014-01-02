@@ -27,9 +27,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
-        <meta-data android:name="com.google.android.gms.version"
-           android:value="@integer/google_play_services_version" />
         <activity
             android:name="com.zeng.pingu_android.Maps_and_Pinging"
             android:label="@string/app_name" >
@@ -41,9 +38,7 @@
         </activity>
         <meta-data android:name="com.google.android.gms.version"
            android:value="@integer/google_play_services_version" />
-        <meta-data
-    	android:name="com.google.android.maps.v2.API_KEY"
-    	android:value="AIzaSyCgM22jeOKoxy_KBekjmlzJ_GFu_YH2RZo" />
+        
         <activity
     		android:name="me.vitez.pingu_android.PrefsActivity"
     		android:theme="@style/AppTheme" >
@@ -52,6 +47,10 @@
     		android:name="me.vitez.pingu_android.Friends"
     		android:theme="@style/AppTheme" >
   </activity>
+  
+  <meta-data
+    	android:name="com.google.android.maps.v2.API_KEY"
+    	android:value="AIzaSyCgM22jeOKoxy_KBekjmlzJ_GFu_YH2RZo"  />
     </application>
 	
     

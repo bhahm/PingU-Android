@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"	android:layout_width="match_parent"
@@ -42,3 +43,60 @@
 </FrameLayout>
 
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapActivity" >
+         
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            
+        <Button
+            android:id="@+id/doOverlay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/overlay_label"
+            android:textSize="12sp" >
+         </Button>
+    
+<Button
+  android:id="@+id/btnPrefs"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="@string/btnPrefs"
+  android:drawableLeft="@drawable/gear" />
+
+<Button
+  android:id="@+id/btnFriends"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="@string/friends" />
+ 
+<Button
+  android:id="@+id/btnGetPreferences"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="@string/debugSettings" />
+ 
+<TextView
+  android:id="@+id/txtPrefs"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" />
+ </LinearLayout>
+
+</FrameLayout>
+
+
+>>>>>>> 7c912ec59831bdc0757ed28c403be5d5a6d9c61d

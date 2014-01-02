@@ -1,49 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"	android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:tools:context=".MapActivity" >
-         
-
-        <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.MapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    
-<Button
-  android:id="@+id/btnPrefs"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:text="Settings"
-  android:drawableLeft="@drawable/gear" />
-
-<Button
-  android:id="@+id/btnFriends"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:text="Friends" 
-
-  />
- 
-<Button
-  android:id="@+id/btnGetPreferences"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:text="Display Settings (for debugging, remove later)" />
- 
-<TextView
-  android:id="@+id/txtPrefs"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content" />
- 
-
-</FrameLayout>
-
-
-=======
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -99,4 +53,3 @@
 </FrameLayout>
 
 
->>>>>>> 7c912ec59831bdc0757ed28c403be5d5a6d9c61d

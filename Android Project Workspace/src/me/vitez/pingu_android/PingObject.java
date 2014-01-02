@@ -3,6 +3,12 @@ package me.vitez.pingu_android;
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseObject;
 
+/**
+ * A PingObject stores all the essential info on a single ping
+ * @author Mitchell Vitez
+ * PingObjects simplify the pinging process by keeping each ping separate
+ * and easy to manage.
+ */
 public class PingObject {
 	private String pingTime;
 	private String creator;

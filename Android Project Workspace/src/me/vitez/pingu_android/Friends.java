@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.zeng.pingu_android.R;
 
+/**
+ * Used to display friends on the friends page
+ * @author Mitchell Vitez
+ * TODO: Expand group functionality and so on
+ */
 public class Friends extends Activity {
 
 	@Override

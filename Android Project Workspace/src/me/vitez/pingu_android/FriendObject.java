@@ -1,5 +1,10 @@
 package me.vitez.pingu_android;
 
+/**
+ * Used for easier storage of friends by their data
+ * @author Mitchell Vitez
+ *
+ */
 public class FriendObject {
 
 	private String username;

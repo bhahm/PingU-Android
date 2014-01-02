@@ -7,8 +7,11 @@ import java.io.IOException;
 import android.app.Activity;
 import android.content.Context;
 
-
-
+/**
+ * Easier access to a device's storage from other classes
+ * @author Mitchell Vitez
+ *
+ */
 public class InternalStorage extends Activity {
 	
 	private final String FILENAME = "internalData.dat";

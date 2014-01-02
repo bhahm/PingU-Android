@@ -8,7 +8,6 @@ import me.vitez.pingu_android.Useful;
 import com.zeng.pingu_android.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
@@ -24,7 +23,6 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -181,7 +179,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		}
 	}
 
-	private boolean servicesConnected() {
+	/* private boolean servicesConnected() {
 		// Check that Google Play services is available
 		int resultCode = GooglePlayServicesUtil
 				.isGooglePlayServicesAvailable(this);
@@ -212,7 +210,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 			}
 		}
 		return false;
-	}
+	} */
 
 	private void setUpMapIfNeeded() {
 		if (map == null) {
@@ -256,6 +254,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 	/*
 	 * Called by Location Services if the attempt to Location Services fails.
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onConnectionFailed(ConnectionResult connectionResult) {
 		/*

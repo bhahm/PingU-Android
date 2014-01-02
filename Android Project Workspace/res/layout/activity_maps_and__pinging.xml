@@ -24,6 +24,13 @@
             android:text="@string/overlay_label"
             android:textSize="12sp" >
          </Button>
+         
+        <Button
+  android:id="@+id/btnPing"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="@string/ping" />
+        
     
 <Button
   android:id="@+id/btnPrefs"
@@ -39,6 +46,12 @@
   android:text="@string/friends" />
  
 <Button
+  android:id="@+id/btnFriends"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="@string/friends" />
+
+<Button
   android:id="@+id/btnGetPreferences"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
@@ -48,6 +61,8 @@
   android:id="@+id/txtPrefs"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content" />
+
+
  </LinearLayout>
 
 </FrameLayout>

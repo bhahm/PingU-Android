@@ -1,6 +1,7 @@
 package com.zeng.pingu_android;
 
 import me.vitez.pingu_android.Friends;
+import me.vitez.pingu_android.PingActions;
 import me.vitez.pingu_android.PrefsActivity;
 
 import com.zeng.pingu_android.R;
@@ -51,6 +52,7 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 		Button btnGetPrefs = (Button) findViewById(R.id.btnGetPreferences);
 		
 		Button btnFriends = (Button) findViewById(R.id.btnFriends);
+		Button btnPing = (Button) findViewById(R.id.btnPing);
 		
 		textView = (TextView) findViewById(R.id.txtPrefs);
 		View.OnClickListener listener = new View.OnClickListener() {
@@ -67,13 +69,17 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 				final Intent intent2 = new Intent(Maps_and_Pinging.this,
 					Friends.class);
 				startActivity(intent2);
-			} else {
+			} else if (id == R.id.btnPing) {
+				PingActions.pingCurrentLocation(mapStored, latLngStored);
+			}
+			else {
 			}
 			   }
 			   };
 			 btnPrefs.setOnClickListener(listener);
 			 btnGetPrefs.setOnClickListener(listener);
 			 btnFriends.setOnClickListener(listener);
+			 btnPing.setOnClickListener(listener);
 
 		}
 	 @Override
@@ -201,15 +207,11 @@ private boolean servicesConnected() {
 			map = ((MapFragment) getFragmentManager()
 	                .findFragmentById(R.id.map)).getMap();
 	        myLocation = mLocationClient.getLastLocation();
-	        LatLng sydney = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
+	        LatLng myLatLng = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
 
 	        map.setMyLocationEnabled(true);
-	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
+	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLng, 13));
 	        
-	        map.addMarker(new MarkerOptions()
-	                .title("my location")
-	                .snippet("I am currently here")
-	                .position(sydney));
 		}
 		else
 		{
@@ -217,7 +219,8 @@ private boolean servicesConnected() {
 		}
 	    }
 	 
-
+	public GoogleMap mapStored;
+	public LatLng latLngStored;
 
 	 /**
      * This is where we can add markers or lines, add listeners or move the camera. In this case, we
@@ -226,7 +229,9 @@ private boolean servicesConnected() {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        map.addMarker(new MarkerOptions().position(new LatLng(myLocation.getLatitude(), myLocation.getLongitude())).title("Marker"));
+        mapStored = map;
+        latLngStored = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
+        
     }
     /*
      * Called by Location Services when the request to connect the

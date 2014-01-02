@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"	android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity" >
+    android:tools:context=".MapActivity" >
          
 
         <fragment
@@ -12,31 +11,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/doOverlay"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/overlay_label"
-            android:textSize="12sp" >
-            
-            
-       <!-- <shape
-		android:shape="rectangle">
-    	<solid android:color="#eeffffff" />
-    	<corners android:bottomRightRadius="8dip"
-        android:bottomLeftRadius="8dip"  
-        android:topRightRadius="8dip"
-        android:topLeftRadius="8dip"
-        android:background = "@drawable/gear">
-        </corners>
-	</shape> -->
-	</Button>
- 
-   <!--  <fragment 
-          android:id="@+id/map"
-          android:layout_width="match_parent"
-          android:layout_height="1000px"
-          android:name="com.google.android.gms.maps.MapFragment"></fragment>-->
     
 <Button
   android:id="@+id/btnPrefs"
@@ -49,7 +23,9 @@
   android:id="@+id/btnFriends"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:text="Friends" />
+  android:text="Friends" 
+
+  />
  
 <Button
   android:id="@+id/btnGetPreferences"

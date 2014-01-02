@@ -6,6 +6,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.ParseObject;
 
 public class PingActions {
 	private static boolean isCurrentLocPingSet = false;
@@ -18,6 +19,9 @@ public class PingActions {
 				.position(latLngStored)
 				.title("Current Location "));
 			isCurrentLocPingSet = true;
+			ParseObject curLocPing = new ParseObject("CurLocPing");
+			curLocPing.put("latitude", latLngStored.latitude);
+			curLocPing.saveInBackground();
 		}
 	}
 	

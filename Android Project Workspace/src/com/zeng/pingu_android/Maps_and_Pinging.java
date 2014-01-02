@@ -12,6 +12,9 @@ import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
 
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,6 +49,9 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		setContentView(R.layout.activity_maps_and__pinging);
 		mLocationClient = new LocationClient(this, this, this);
 
+		Parse.initialize(this, "91HmkBQniLXG81hN5ww3ARr15sNofBNbvG9ZgOqJ", "1j5IFHb6N6basAB6pnA03QaQuqDGZluMZjvamWN2"); 
+		ParseAnalytics.trackAppOpened(getIntent());
+		
 		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
 		//Button btnGetPrefs = (Button) findViewById(R.id.btnGetPreferences);
 

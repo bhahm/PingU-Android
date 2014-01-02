@@ -56,26 +56,19 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
 			   public void onClick(View v) {
-			   switch (v.getId()) {
-			   case R.id.btnPrefs:
-			      final Intent intent = new Intent(Maps_and_Pinging.this,
+			   int id = v.getId();
+			if (id == R.id.btnPrefs) {
+				final Intent intent = new Intent(Maps_and_Pinging.this,
 			      PrefsActivity.class);
-			      startActivity(intent);
-			      break;
-			 
-			   case R.id.btnGetPreferences:
-			      displaySharedPreferences();
-			      break;
-			      
-			   case R.id.btnFriends:
-				   final Intent intent2 = new Intent(Maps_and_Pinging.this,
+				startActivity(intent);
+			} else if (id == R.id.btnGetPreferences) {
+				displaySharedPreferences();
+			} else if (id == R.id.btnFriends) {
+				final Intent intent2 = new Intent(Maps_and_Pinging.this,
 					Friends.class);
-					startActivity(intent2);
-					break;
-			 
-			   default:
-			     break;
-			   }
+				startActivity(intent2);
+			} else {
+			}
 			   }
 			   };
 			 btnPrefs.setOnClickListener(listener);

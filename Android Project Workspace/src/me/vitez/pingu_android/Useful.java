@@ -6,9 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
 
 
 /**
@@ -22,6 +22,7 @@ import android.preference.PreferenceManager;
 public class Useful extends Activity {
 	private static String username;
 	
+	@SuppressLint("SimpleDateFormat")
 	public static String getCurrentTimeAsString() {
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		Date today = (Date) Calendar.getInstance().getTime();        

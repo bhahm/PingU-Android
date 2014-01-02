@@ -7,7 +7,6 @@ public class PingObject {
 	private String pingTime;
 	private String creator;
 	// TODO: implement group
-	private LatLng latlng;
 	private double lat;
 	private double lng;
 	private ParseObject pingInParse;
@@ -15,7 +14,6 @@ public class PingObject {
 	public PingObject(String pingTime, String creator, LatLng latlng) {
 		this.pingTime = pingTime;
 		this.creator = creator;
-		this.latlng = latlng;
 		this.lat = latlng.latitude;
 		this.lng = latlng.longitude;
 	}

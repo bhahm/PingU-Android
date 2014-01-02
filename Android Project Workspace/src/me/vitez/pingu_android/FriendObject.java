@@ -7,5 +7,9 @@ public class FriendObject {
 	public FriendObject(String username) {
 		this.username = username;
 	}
+	
+	public String getUsername() {
+		return username;
+	}
 
 }

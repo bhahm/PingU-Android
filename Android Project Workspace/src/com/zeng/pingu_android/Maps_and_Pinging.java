@@ -17,18 +17,14 @@ import com.parse.Parse;
 import com.parse.ParseAnalytics;
 
 import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.annotation.SuppressLint;
 import android.app.*;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -289,7 +285,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		}
 	}
 
-	public void displaySharedPreferences() {
+	/* public void displaySharedPreferences() {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(Maps_and_Pinging.this);
 		String username = prefs.getString("username", "Default NickName");
@@ -297,6 +293,6 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		String passw = prefs.getString("password", "Default Password");
 		boolean checkBox = prefs.getBoolean("checkBox", false);
 		String listPrefs = prefs.getString("listpref", "Default list prefs");
-	}
+	} */
 
 }

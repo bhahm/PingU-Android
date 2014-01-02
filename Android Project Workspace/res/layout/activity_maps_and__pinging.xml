@@ -23,44 +23,26 @@
             android:layout_height="wrap_content"
             android:text="@string/overlay_label"
             android:textSize="12sp" >
-            
-            
-       <!-- <shape
-		android:shape="rectangle">
-    	<solid android:color="#eeffffff" />
-    	<corners android:bottomRightRadius="8dip"
-        android:bottomLeftRadius="8dip"  
-        android:topRightRadius="8dip"
-        android:topLeftRadius="8dip"
-        android:background = "@drawable/gear">
-        </corners>
-	</shape> -->
-	</Button>
- 
-   <!--  <fragment 
-          android:id="@+id/map"
-          android:layout_width="match_parent"
-          android:layout_height="1000px"
-          android:name="com.google.android.gms.maps.MapFragment"></fragment>-->
+         </Button>
     
 <Button
   android:id="@+id/btnPrefs"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:text="Settings"
+  android:text="@string/btnPrefs"
   android:drawableLeft="@drawable/gear" />
 
 <Button
   android:id="@+id/btnFriends"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:text="Friends" />
+  android:text="@string/friends" />
  
 <Button
   android:id="@+id/btnGetPreferences"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:text="Display Settings (for debugging, remove later)" />
+  android:text="@string/debugSettings" />
  
 <TextView
   android:id="@+id/txtPrefs"

@@ -12,5 +12,3 @@ public class Friends extends Activity{
 	   setContentView(R.xml.friends);
 	}
 }
-
-

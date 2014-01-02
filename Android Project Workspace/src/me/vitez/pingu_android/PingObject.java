@@ -7,8 +7,9 @@ public class PingObject {
 	private String group;
 	private double lat;
 	private double lng;
-	
-	public PingObject(String name, String pingTime, String creator, String group, double lat, double lng) {
+
+	public PingObject(String name, String pingTime, String creator,
+			String group, double lat, double lng) {
 		this.name = name;
 		this.pingTime = pingTime;
 		this.creator = creator;

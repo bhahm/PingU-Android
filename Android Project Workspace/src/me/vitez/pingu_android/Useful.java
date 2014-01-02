@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.zeng.pingu_android.Maps_and_Pinging;
 
 /**
  * Library of useful static methods that may be called anywhere else

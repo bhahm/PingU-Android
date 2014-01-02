@@ -12,6 +12,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            
         <Button
             android:id="@+id/doOverlay"
             android:layout_width="fill_parent"
@@ -61,7 +65,7 @@
   android:id="@+id/txtPrefs"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content" />
- 
+ </LinearLayout>
 
 </FrameLayout>
 

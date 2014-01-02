@@ -28,5 +28,11 @@
             android:summary="List preference example"
             android:title="List preference" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:id="@+id/textViewSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restartForSettings" >
+    </PreferenceCategory>
 
 </PreferenceScreen>

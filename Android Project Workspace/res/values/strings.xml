@@ -10,5 +10,6 @@
     <string name="ping">Ping Current Location</string>
     <string name="unping">UNPing cur loc !!!</string>
     <string name="debugSettings">Display Settings (for debugging, remove later)</string>
+    <string name="restartForSettings">You may have to restart the app for changes to take effect.</string>
 
 </resources>

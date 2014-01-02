@@ -1,20 +1,35 @@
 package me.vitez.pingu_android;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.parse.ParseObject;
+
 public class PingObject {
-	private String name;
 	private String pingTime;
 	private String creator;
-	private String group;
+	// TODO: implement group
+	private LatLng latlng;
 	private double lat;
 	private double lng;
+	private ParseObject pingInParse;
 
-	public PingObject(String name, String pingTime, String creator,
-			String group, double lat, double lng) {
-		this.name = name;
+	public PingObject(String pingTime, String creator, LatLng latlng) {
 		this.pingTime = pingTime;
 		this.creator = creator;
-		this.group = group;
-		this.lat = lat;
-		this.lng = lng;
+		this.latlng = latlng;
+		this.lat = latlng.latitude;
+		this.lng = latlng.longitude;
+	}
+	
+	public void sendPingObjToParse() {
+		pingInParse = new ParseObject("CurLocPing");
+		pingInParse.put("pingTime", pingTime);
+		pingInParse.put("creator", creator);
+		pingInParse.put("latitude", lat);
+		pingInParse.put("longitude", lng);
+		pingInParse.saveInBackground();
+	}
+	
+	public void removePingObjFromParse() {
+		pingInParse.deleteEventually();
 	}
 }

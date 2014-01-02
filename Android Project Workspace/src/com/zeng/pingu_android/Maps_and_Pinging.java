@@ -3,6 +3,7 @@ package com.zeng.pingu_android;
 import me.vitez.pingu_android.Friends;
 import me.vitez.pingu_android.PingActions;
 import me.vitez.pingu_android.PrefsActivity;
+import me.vitez.pingu_android.Useful;
 
 import com.zeng.pingu_android.R;
 import com.google.android.gms.common.ConnectionResult;
@@ -58,6 +59,11 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		Button btnFriends = (Button) findViewById(R.id.btnFriends);
 		Button btnPing = (Button) findViewById(R.id.btnPing);
 		Button btnUnPing = (Button) findViewById(R.id.btnUnPing);
+		
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(Maps_and_Pinging.this);
+		String username = prefs.getString("username", "Default NickName");
+		Useful.setUsername(username);
 
 		//textView = (TextView) findViewById(R.id.txtPrefs);
 		View.OnClickListener listener = new View.OnClickListener() {
@@ -76,6 +82,10 @@ public class Maps_and_Pinging extends FragmentActivity implements
 					startActivity(intent2);
 				} else if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
+					SharedPreferences prefs = PreferenceManager
+							.getDefaultSharedPreferences(Maps_and_Pinging.this);
+					String username = prefs.getString("username", "Default NickName");
+					Useful.setUsername(username);
 					PingActions.pingCurrentLocation(mapStored, latLngStored);
 				} else if (id == R.id.btnUnPing) {
 					setUpMapIfNeeded();
@@ -279,22 +289,14 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		}
 	}
 
-	private void displaySharedPreferences() {
+	public void displaySharedPreferences() {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(Maps_and_Pinging.this);
-
 		String username = prefs.getString("username", "Default NickName");
+		Useful.setUsername(username);
 		String passw = prefs.getString("password", "Default Password");
 		boolean checkBox = prefs.getBoolean("checkBox", false);
 		String listPrefs = prefs.getString("listpref", "Default list prefs");
-
-		StringBuilder builder = new StringBuilder();
-		builder.append("Username: " + username + "\n");
-		builder.append("Password: " + passw + "\n");
-		builder.append("Keep me logged in: " + String.valueOf(checkBox) + "\n");
-		builder.append("List preference: " + listPrefs);
-
-		textView.setText(builder.toString());
 	}
 
 }

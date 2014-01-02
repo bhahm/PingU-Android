@@ -53,6 +53,7 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 		
 		Button btnFriends = (Button) findViewById(R.id.btnFriends);
 		Button btnPing = (Button) findViewById(R.id.btnPing);
+		Button btnUnPing = (Button) findViewById(R.id.btnUnPing);
 		
 		textView = (TextView) findViewById(R.id.txtPrefs);
 		View.OnClickListener listener = new View.OnClickListener() {
@@ -70,7 +71,11 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 					Friends.class);
 				startActivity(intent2);
 			} else if (id == R.id.btnPing) {
+				setUpMapIfNeeded();
 				PingActions.pingCurrentLocation(mapStored, latLngStored);
+			} else if (id == R.id.btnUnPing) {
+				setUpMapIfNeeded();
+				PingActions.unpingCurrentLocation(mapStored, latLngStored);
 			}
 			else {
 			}
@@ -80,7 +85,7 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 			 btnGetPrefs.setOnClickListener(listener);
 			 btnFriends.setOnClickListener(listener);
 			 btnPing.setOnClickListener(listener);
-
+			 btnUnPing.setOnClickListener(listener);
 		}
 	 @Override
 	protected void onResume() {

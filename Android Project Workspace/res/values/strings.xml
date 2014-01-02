@@ -9,5 +9,6 @@
 	<string name="btnPrefs">Settings</string>
 	<string name="friends">Friends</string>
 	<string name="ping">Ping Current Location</string>
+	<string name="unping">UNPing cur loc !!!</string>
 	<string name="debugSettings">Display Settings (for debugging, remove later)</string>
 </resources>

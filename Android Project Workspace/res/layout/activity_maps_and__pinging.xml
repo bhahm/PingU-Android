@@ -25,11 +25,7 @@
             android:textSize="12sp" >
          </Button>
          
-        <Button
-  android:id="@+id/btnPing"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:text="@string/ping" />
+      
         
     
 <Button
@@ -39,12 +35,6 @@
   android:text="@string/btnPrefs"
   android:drawableLeft="@drawable/gear" />
 
-<Button
-  android:id="@+id/btnFriends"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:text="@string/friends" />
- 
 <Button
   android:id="@+id/btnFriends"
   android:layout_width="wrap_content"
@@ -62,6 +52,17 @@
   android:layout_width="wrap_content"
   android:layout_height="wrap_content" />
 
+  <Button
+  android:id="@+id/btnPing"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="@string/ping" />
+  
+  <Button
+  android:id="@+id/btnUnPing"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="@string/unping" />
 
  </LinearLayout>
 

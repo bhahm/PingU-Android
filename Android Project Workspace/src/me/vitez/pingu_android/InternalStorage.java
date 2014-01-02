@@ -10,6 +10,7 @@ import android.content.Context;
 
 
 public class InternalStorage extends Activity {
+	
 	private final String FILENAME = "internalData.dat";
 	
 	public void write(String s) throws IOException {

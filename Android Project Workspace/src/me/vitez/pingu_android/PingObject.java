@@ -6,7 +6,7 @@ import com.parse.ParseObject;
 public class PingObject {
 	private String pingTime;
 	private String creator;
-	// TODO: implement group
+	// TODO: groups or categories of pings
 	private double lat;
 	private double lng;
 	private ParseObject pingInParse;

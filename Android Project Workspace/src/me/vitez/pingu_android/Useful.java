@@ -15,7 +15,7 @@ import android.app.Activity;
  * Library of useful static methods that may be called anywhere else
  * @author Mitchell Vitez
  * Make sure these are all STATIC.
- * Also, descriptive names are essential.
+ * Also, descriptive function names are essential.
  * Don't outsource procedures here, outsource small, repeatable tasks
  */
 

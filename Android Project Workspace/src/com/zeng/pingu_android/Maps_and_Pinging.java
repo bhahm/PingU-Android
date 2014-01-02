@@ -47,13 +47,13 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		mLocationClient = new LocationClient(this, this, this);
 
 		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
-		Button btnGetPrefs = (Button) findViewById(R.id.btnGetPreferences);
+		//Button btnGetPrefs = (Button) findViewById(R.id.btnGetPreferences);
 
 		Button btnFriends = (Button) findViewById(R.id.btnFriends);
 		Button btnPing = (Button) findViewById(R.id.btnPing);
 		Button btnUnPing = (Button) findViewById(R.id.btnUnPing);
 
-		textView = (TextView) findViewById(R.id.txtPrefs);
+		//textView = (TextView) findViewById(R.id.txtPrefs);
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -62,9 +62,9 @@ public class Maps_and_Pinging extends FragmentActivity implements
 					final Intent intent = new Intent(Maps_and_Pinging.this,
 							PrefsActivity.class);
 					startActivity(intent);
-				} else if (id == R.id.btnGetPreferences) {
+				} /*else if (id == R.id.btnGetPreferences) {
 					displaySharedPreferences();
-				} else if (id == R.id.btnFriends) {
+				}*/ else if (id == R.id.btnFriends) {
 					final Intent intent2 = new Intent(Maps_and_Pinging.this,
 							Friends.class);
 					startActivity(intent2);
@@ -79,7 +79,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 			}
 		};
 		btnPrefs.setOnClickListener(listener);
-		btnGetPrefs.setOnClickListener(listener);
+		//btnGetPrefs.setOnClickListener(listener);
 		btnFriends.setOnClickListener(listener);
 		btnPing.setOnClickListener(listener);
 		btnUnPing.setOnClickListener(listener);

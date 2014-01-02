@@ -15,14 +15,15 @@ public class PingActions {
 			LatLng latLngStored) {
 		if (!isCurrentLocPingSet) {
 			currentLocPing = mapStored.addMarker(new MarkerOptions().position(
-					latLngStored).title("Current Location "));
-			isCurrentLocPingSet = true;
-		}
-	}
-
+					latLngStored).title("Current Location "));;;;
+			isCurrentLocPingSet = true;;;;;
+		};;
+	};;
+;;
 	static public void unpingCurrentLocation(GoogleMap mapStored,
-			LatLng latLngStored) {
-		currentLocPing.remove();
-		isCurrentLocPingSet = false;
-	}
-}
+			LatLng latLngStored) {;
+		currentLocPing.remove();;
+		isCurrentLocPingSet = false;;
+	};;
+};;
+;;;

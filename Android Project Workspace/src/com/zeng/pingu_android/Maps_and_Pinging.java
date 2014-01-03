@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.*;
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
 
 import android.location.Location;
 import android.os.Bundle;
@@ -85,7 +86,11 @@ public class Maps_and_Pinging extends FragmentActivity implements
 					PingActions.unpingCurrentLocation(mapStored, latLngStored);
 				} else if (id == R.id.btnRefresh) {
 					setUpMapIfNeeded();
-					PingActions.refreshPings(mapStored);
+					try {
+						PingActions.refreshPings(mapStored);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
 				} else {
 					
 				}
@@ -206,7 +211,6 @@ public static class ErrorDialogFragment extends DialogFragment {
 		mapStored = map;
 		latLngStored = new LatLng(myLocation.getLatitude(),
 				myLocation.getLongitude());
-
 	}
 
 	/*

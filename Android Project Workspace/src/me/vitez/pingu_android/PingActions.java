@@ -1,9 +1,14 @@
 package me.vitez.pingu_android;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -18,24 +23,31 @@ public class PingActions extends Activity {
 	private static boolean isCurrentLocPingSet = false;
 	private static PingObject currentLocPingObj;
 	static Marker currentLocPingMarker;
+	static ArrayList<Marker> pingMarkers;
+	public static GoogleMap mapStored;
+	public static LatLng latlngStored;
 
-	static public void pingCurrentLocation(GoogleMap mapStored,
-			LatLng latLngStored) {
+	static public void pingCurrentLocation(GoogleMap mapStoredIn,
+			LatLng latLngStoredIn) {
+		mapStored = mapStoredIn;
+		latlngStored = latLngStoredIn;
 		if (!isCurrentLocPingSet) {
 			currentLocPingMarker = mapStored.addMarker(new MarkerOptions().position(
-					latLngStored).title("Current Location "));
+					latlngStored).title("Current Location "));
 			isCurrentLocPingSet = true;
 			String datetime = Useful.getCurrentTimeAsString();
 			String user = Useful.getUsername();
 			if (user == null) user = "DEFAULT_USER";
 			currentLocPingObj = new PingObject(datetime, user,
-					latLngStored);
+					latlngStored);
 			currentLocPingObj.sendPingObjToParse();
 		}
 	}
 
-	static public void unpingCurrentLocation(GoogleMap mapStored,
-			LatLng latLngStored) {
+	static public void unpingCurrentLocation(GoogleMap mapStoredIn,
+			LatLng latLngStoredIn) {
+		mapStored = mapStoredIn;
+		latlngStored = latLngStoredIn;
 		if (isCurrentLocPingSet) {
 			currentLocPingMarker.remove();
 			currentLocPingObj.removePingObjFromParse();
@@ -43,8 +55,34 @@ public class PingActions extends Activity {
 		}
 	}
 	
-	static public void refreshPings(GoogleMap mapStored) {
-		
+	static public void refreshPings(GoogleMap mapStoredIn) throws ParseException {
+		mapStored = mapStoredIn;
+		//TODO: change query so it's localized, etc.
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("");
+		query.findInBackground(new FindCallback<ParseObject>() {
+		    public void done(List<ParseObject> results, ParseException e) {
+		      if (e != null) {
+		        // There was an error
+		      } else {
+		    	  for (ParseObject parseObj : results) {
+		    		  String pingTime = (String) parseObj.get("pingTime");
+		    		  String creator = (String) parseObj.get("creator");
+		    		  double lat = (Double) parseObj.get("latitude");
+		    		  double lng = (Double) parseObj.get("longitude");
+		    		  LatLng latlng = new LatLng(lat, lng);
+		    		  PingObject pingObj = new PingObject(pingTime, creator, latlng);
+		    		  showOnMap(pingObj);
+		    	  }
+		      }
+		    }
+		});
+				
+	}
+	
+	static public void showOnMap(PingObject p) {
+		Marker m = mapStored.addMarker(new MarkerOptions().position(
+				p.getLatlng()).title(p.getName()));
+		pingMarkers.add(m);
 	}
 	
 	

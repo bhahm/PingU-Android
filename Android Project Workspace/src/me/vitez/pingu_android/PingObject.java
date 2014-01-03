@@ -33,7 +33,15 @@ public class PingObject {
 		pingInParse.saveInBackground();
 	}
 	
+	public LatLng getLatlng() {
+		return new LatLng(lat,lng);
+	}
+	
 	public void removePingObjFromParse() {
 		pingInParse.deleteEventually();
+	}
+
+	public String getName() {
+		return creator;
 	}
 }

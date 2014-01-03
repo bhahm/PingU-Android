@@ -59,6 +59,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/unping" />
+        
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refresh" />
     </LinearLayout>
 
 </FrameLayout>

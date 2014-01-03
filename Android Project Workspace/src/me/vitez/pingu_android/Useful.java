@@ -16,7 +16,6 @@ import android.app.Activity;
  * library. Don't outsource procedures here, outsource small, repeatable
  * tasks.
  */
-
 public class Useful extends Activity {
 	private static String username;
 

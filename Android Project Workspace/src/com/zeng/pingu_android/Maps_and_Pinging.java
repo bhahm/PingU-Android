@@ -48,16 +48,17 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		Parse.initialize(this, "91HmkBQniLXG81hN5ww3ARr15sNofBNbvG9ZgOqJ",
 				"1j5IFHb6N6basAB6pnA03QaQuqDGZluMZjvamWN2");
 		ParseAnalytics.trackAppOpened(getIntent());
-
-		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
-		Button btnFriends = (Button) findViewById(R.id.btnFriends);
-		Button btnPing = (Button) findViewById(R.id.btnPing);
-		Button btnUnPing = (Button) findViewById(R.id.btnUnPing);
-
+		
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(Maps_and_Pinging.this);
 		String username = prefs.getString("username", "Default NickName");
 		Useful.setUsername(username);
+		
+		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
+		Button btnFriends = (Button) findViewById(R.id.btnFriends);
+		Button btnPing = (Button) findViewById(R.id.btnPing);
+		Button btnUnPing = (Button) findViewById(R.id.btnUnPing);
+		Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
 
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
@@ -82,7 +83,11 @@ public class Maps_and_Pinging extends FragmentActivity implements
 				} else if (id == R.id.btnUnPing) {
 					setUpMapIfNeeded();
 					PingActions.unpingCurrentLocation(mapStored, latLngStored);
+				} else if (id == R.id.btnRefresh) {
+					setUpMapIfNeeded();
+					PingActions.refreshPings(mapStored);
 				} else {
+					
 				}
 			}
 		};
@@ -90,7 +95,10 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		btnFriends.setOnClickListener(listener);
 		btnPing.setOnClickListener(listener);
 		btnUnPing.setOnClickListener(listener);
+		btnRefresh.setOnClickListener(listener);
 	}
+	
+	
 
 	@Override
 	protected void onResume() {
@@ -130,7 +138,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 
 	// Define a DialogFragment that displays the error dialog
 
-	public static class ErrorDialogFragment extends DialogFragment {
+public static class ErrorDialogFragment extends DialogFragment {
 		// Global field to contain the error dialog
 		private Dialog mDialog;
 

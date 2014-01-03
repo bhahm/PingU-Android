@@ -6,6 +6,7 @@ import me.vitez.pingu_android.PrefsActivity;
 import me.vitez.pingu_android.Useful;
 
 import com.zeng.pingu_android.R;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.location.LocationClient;
@@ -44,22 +45,20 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		setContentView(R.layout.activity_maps_and__pinging);
 		mLocationClient = new LocationClient(this, this, this);
 
-		Parse.initialize(this, "91HmkBQniLXG81hN5ww3ARr15sNofBNbvG9ZgOqJ", "1j5IFHb6N6basAB6pnA03QaQuqDGZluMZjvamWN2"); 
+		Parse.initialize(this, "91HmkBQniLXG81hN5ww3ARr15sNofBNbvG9ZgOqJ",
+				"1j5IFHb6N6basAB6pnA03QaQuqDGZluMZjvamWN2");
 		ParseAnalytics.trackAppOpened(getIntent());
-		
-		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
-		//Button btnGetPrefs = (Button) findViewById(R.id.btnGetPreferences);
 
+		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
 		Button btnFriends = (Button) findViewById(R.id.btnFriends);
 		Button btnPing = (Button) findViewById(R.id.btnPing);
 		Button btnUnPing = (Button) findViewById(R.id.btnUnPing);
-		
+
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(Maps_and_Pinging.this);
 		String username = prefs.getString("username", "Default NickName");
 		Useful.setUsername(username);
 
-		//textView = (TextView) findViewById(R.id.txtPrefs);
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -68,9 +67,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 					final Intent intent = new Intent(Maps_and_Pinging.this,
 							PrefsActivity.class);
 					startActivity(intent);
-				} /*else if (id == R.id.btnGetPreferences) {
-					displaySharedPreferences();
-				}*/ else if (id == R.id.btnFriends) {
+				} else if (id == R.id.btnFriends) {
 					final Intent intent2 = new Intent(Maps_and_Pinging.this,
 							Friends.class);
 					startActivity(intent2);
@@ -78,7 +75,8 @@ public class Maps_and_Pinging extends FragmentActivity implements
 					setUpMapIfNeeded();
 					SharedPreferences prefs = PreferenceManager
 							.getDefaultSharedPreferences(Maps_and_Pinging.this);
-					String username = prefs.getString("username", "Default NickName");
+					String username = prefs.getString("username",
+							"Default NickName");
 					Useful.setUsername(username);
 					PingActions.pingCurrentLocation(mapStored, latLngStored);
 				} else if (id == R.id.btnUnPing) {
@@ -89,7 +87,6 @@ public class Maps_and_Pinging extends FragmentActivity implements
 			}
 		};
 		btnPrefs.setOnClickListener(listener);
-		//btnGetPrefs.setOnClickListener(listener);
 		btnFriends.setOnClickListener(listener);
 		btnPing.setOnClickListener(listener);
 		btnUnPing.setOnClickListener(listener);
@@ -173,44 +170,10 @@ public class Maps_and_Pinging extends FragmentActivity implements
 				/*
 				 * Try the request again
 				 */
-
 				break;
 			}
 		}
 	}
-
-	/* private boolean servicesConnected() {
-		// Check that Google Play services is available
-		int resultCode = GooglePlayServicesUtil
-				.isGooglePlayServicesAvailable(this);
-		// If Google Play services is available
-		if (ConnectionResult.SUCCESS == resultCode) {
-			// In debug mode, log the status
-			Log.d("Location Updates", "Google Play services is available.");
-			// Continue
-			return true;
-			// Google Play services was not available for some reason
-		} else {
-			ConnectionResult connectionResult = new ConnectionResult(
-					resultCode, null);
-			// Get the error code
-			int errorCode = connectionResult.getErrorCode();
-			// Get the error dialog from Google Play services
-			Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(
-					errorCode, this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
-
-			// If Google Play services can provide an error dialog
-			if (errorDialog != null) {
-				// Create a new DialogFragment for the error dialog
-				ErrorDialogFragment errorFragment = new ErrorDialogFragment();
-				// Set the dialog in the DialogFragment
-				errorFragment.setDialog(errorDialog);
-				// Show the error dialog in the DialogFragment
-				errorFragment.show(getFragmentManager(), "Location Updates");
-			}
-		}
-		return false;
-	} */
 
 	private void setUpMapIfNeeded() {
 		if (map == null) {
@@ -231,13 +194,6 @@ public class Maps_and_Pinging extends FragmentActivity implements
 	public GoogleMap mapStored;
 	public LatLng latLngStored;
 
-	/**
-	 * This is where we can add markers or lines, add listeners or move the
-	 * camera. In this case, we just add a marker near Africa.
-	 * <p>
-	 * This should only be called once and when we are sure that {@link #mMap}
-	 * is not null.
-	 */
 	private void setUpMap() {
 		mapStored = map;
 		latLngStored = new LatLng(myLocation.getLatitude(),
@@ -283,15 +239,5 @@ public class Maps_and_Pinging extends FragmentActivity implements
 			showDialog(connectionResult.getErrorCode());
 		}
 	}
-
-	/* public void displaySharedPreferences() {
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(Maps_and_Pinging.this);
-		String username = prefs.getString("username", "Default NickName");
-		Useful.setUsername(username);
-		String passw = prefs.getString("password", "Default Password");
-		boolean checkBox = prefs.getBoolean("checkBox", false);
-		String listPrefs = prefs.getString("listpref", "Default list prefs");
-	} */
 
 }

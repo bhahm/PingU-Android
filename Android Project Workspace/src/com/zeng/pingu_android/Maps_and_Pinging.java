@@ -1,23 +1,18 @@
 package com.zeng.pingu_android;
 
-
-
-
-
-import java.util.ArrayList;
-
 import me.vitez.pingu_android.Friends;
-import me.vitez.pingu_android.HomeFragment;
 import me.vitez.pingu_android.PingActions;
-import me.vitez.pingu_android.PrefsFragment;
+import me.vitez.pingu_android.PrefsActivity;
 import me.vitez.pingu_android.Useful;
 
 import com.zeng.pingu_android.R;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
+
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -29,18 +24,9 @@ import android.app.*;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.TypedArray;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,24 +39,13 @@ public class Maps_and_Pinging extends FragmentActivity implements
 	private GoogleMap map;
 	private LocationClient mLocationClient;
 	private Location myLocation;
-	private String[] navMenuTitles;
-	private TypedArray navMenuIcons;
-	private ArrayList<NavDrawerItem> navDrawerItems;
-	private NavDrawerListAdapter adapter;
-	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
-	private ActionBarDrawerToggle mDrawerToggle;
 
-	// nav drawer title
-	private CharSequence mDrawerTitle;
-
-	// used to store app title
-	private CharSequence mTitle;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-	
+		setContentView(R.layout.activity_maps_and__pinging);
+		mLocationClient = new LocationClient(this, this, this);
+
 		Parse.initialize(this, "91HmkBQniLXG81hN5ww3ARr15sNofBNbvG9ZgOqJ",
 				"1j5IFHb6N6basAB6pnA03QaQuqDGZluMZjvamWN2");
 		ParseAnalytics.trackAppOpened(getIntent());
@@ -80,348 +55,201 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		String username = prefs.getString("username", "Default NickName");
 		Useful.setUsername(username);
 		
-		mLocationClient = new LocationClient(this, this,this);
-/*
+		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
+		Button btnFriends = (Button) findViewById(R.id.btnFriends);
 		Button btnPing = (Button) findViewById(R.id.btnPing);
+		Button btnUnPing = (Button) findViewById(R.id.btnUnPing);
 		Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    int id = v.getId();
-                    if (id == R.id.btnPing) {
-                    	setUpMapIfNeeded();
-                        PingActions.pingCurrentLocation(mapStored, latLngStored);
-                    }
-                    else if (id == R.id.btnRefresh) {
-                        setUpMapIfNeeded();
-                        try {
-                                PingActions.refreshPings(mapStored);
-                        } catch (ParseException e) {
-                                e.printStackTrace();
-                        }
-                    }
-            }
-        };
-        btnPing.setOnClickListener(listener);
-        btnRefresh.setOnClickListener(listener);
-		
-            */
-        
-		
-        mTitle = mDrawerTitle = getTitle();
-		
-        // load slide menu items
-		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
-		// nav drawer icons from resources
-		navMenuIcons = getResources()
-				.obtainTypedArray(R.array.nav_drawer_icons);
-
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-
-		navDrawerItems = new ArrayList<NavDrawerItem>();
-
-		// adding nav drawer items to array
-		// Home
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-		// Find People
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-		// Photos
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-
-		// Recycle the typed array
-		navMenuIcons.recycle();
-
-		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
-		// setting the nav drawer list adapter
-		adapter = new NavDrawerListAdapter(getApplicationContext(),
-				navDrawerItems);
-		mDrawerList.setAdapter(adapter);
-
-	
-
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_launcher, //nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for accessibility
-				R.string.app_name // nav drawer close - description for accessibility
-		) {
-			public void onDrawerClosed(View view) {
-				getActionBar().setTitle(mTitle);
-				// calling onPrepareOptionsMenu() to show action bar icons
-				invalidateOptionsMenu();
-			}
-
-			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle(mDrawerTitle);
-				// calling onPrepareOptionsMenu() to hide action bar icons
-				invalidateOptionsMenu();
+		View.OnClickListener listener = new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int id = v.getId();
+				if (id == R.id.btnPrefs) {
+					final Intent intent = new Intent(Maps_and_Pinging.this,
+							PrefsActivity.class);
+					startActivity(intent);
+				} else if (id == R.id.btnFriends) {
+					final Intent intent2 = new Intent(Maps_and_Pinging.this,
+							Friends.class);
+					startActivity(intent2);
+				} else if (id == R.id.btnPing) {
+					setUpMapIfNeeded();
+					SharedPreferences prefs = PreferenceManager
+							.getDefaultSharedPreferences(Maps_and_Pinging.this);
+					String username = prefs.getString("username",
+							"Default NickName");
+					Useful.setUsername(username);
+					PingActions.pingCurrentLocation(mapStored, latLngStored);
+				} else if (id == R.id.btnUnPing) {
+					setUpMapIfNeeded();
+					PingActions.unpingCurrentLocation(mapStored, latLngStored);
+				} else if (id == R.id.btnRefresh) {
+					setUpMapIfNeeded();
+					try {
+						PingActions.refreshPings(mapStored);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+				} else {
+					
+				}
 			}
 		};
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-		if (savedInstanceState == null) {
-			// on first time display view for first nav item
-			displayView(0);
-		}
+		btnPrefs.setOnClickListener(listener);
+		btnFriends.setOnClickListener(listener);
+		btnPing.setOnClickListener(listener);
+		btnUnPing.setOnClickListener(listener);
+		btnRefresh.setOnClickListener(listener);
 	}
 	
-	/**
-	 * Slide menu item click listener
-	 * */
-	private class SlideMenuClickListener implements
-			ListView.OnItemClickListener {
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			// display view for selected nav drawer item
-			displayView(position);
-		}
+	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.maps_and__pinging, menu);
-		return true;
+	protected void onStart() {
+		super.onStart();
+		// Connect the client.
+		mLocationClient.connect();
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// toggle nav drawer on selecting action bar app icon/title
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		// Handle action bar actions click
-		switch (item.getItemId()) {
-		case R.id.action_settings:
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
+	public void onConnected(Bundle dataBundle) {
+		// Display the connection status
+		Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
+		setUpMapIfNeeded();
 	}
 
-	/* *
-	 * Called when invalidateOptionsMenu() is triggered
+	@Override
+	public void onDisconnected() {
+		// Display the connection status
+		Toast.makeText(this, "Disconnected. Please re-connect.",
+				Toast.LENGTH_SHORT).show();
+	}
+
+	/*
+	 * Called when the Activity is no longer visible.
 	 */
 	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		// if nav drawer is opened, hide the action items
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
-		return super.onPrepareOptionsMenu(menu);
+	protected void onStop() {
+		// Disconnecting the client invalidates it.
+		mLocationClient.disconnect();
+		super.onStop();
 	}
 
-	/**
-	 * Diplaying fragment view for selected nav drawer list item
-	 * */
-	private void displayView(int position) {
-		// update the main content by replacing fragments
-		Fragment fragment = null;
-		switch (position) {
-		case 0:
-			fragment = new HomeFragment();
-			break;
-		case 1:
-			fragment = new Friends();
-			break;
-		case 2:
-			fragment = new PrefsFragment();
-			break;
+	// Define a DialogFragment that displays the error dialog
 
-		default:
-			break;
+public static class ErrorDialogFragment extends DialogFragment {
+		// Global field to contain the error dialog
+		private Dialog mDialog;
+
+		// Default constructor. Sets the dialog field to null
+		public ErrorDialogFragment() {
+			super();
+			mDialog = null;
 		}
 
-		if (fragment != null) {
-			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction()
-					.replace(R.id.frame_container, fragment).commit();
-
-			// update selected item and title, then close the drawer
-			mDrawerList.setItemChecked(position, true);
-			mDrawerList.setSelection(position);
-			mDrawerLayout.closeDrawer(mDrawerList);
-		} else {
-			// error in creating fragment
-			Log.e("MainActivity", "Error in creating fragment");
+		// Set the dialog to display
+		public void setDialog(Dialog dialog) {
+			mDialog = dialog;
 		}
+
+		// Return a Dialog to the DialogFragment.
+		@Override
+		public Dialog onCreateDialog(Bundle savedInstanceState) {
+			return mDialog;
+		}
+
 	}
 
-
-	/**
-	 * When using the ActionBarDrawerToggle, you must call it during
-	 * onPostCreate() and onConfigurationChanged()...
+	/*
+	 * Handle results returned to the FragmentActivity by Google Play services
 	 */
-
 	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
-		mDrawerToggle.syncState();
-	}
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// Decide what to do based on the original request code
+		switch (requestCode) {
 
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		// Pass any configuration change to the drawer toggls
-		mDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-	  	@Override
-	    protected void onResume() {
-			super.onResume();
-		}
-
-		@Override
-		protected void onStart() {
-			super.onStart();
-			// Connect the client.
-			mLocationClient.connect();
-		}
-
-		@Override
-		public void onConnected(Bundle dataBundle) {
-			// Display the connection status
-			Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
-			setUpMapIfNeeded();
-		}
-
-		@Override
-		public void onDisconnected() {
-			// Display the connection status
-			Toast.makeText(this, "Disconnected. Please re-connect.",
-					Toast.LENGTH_SHORT).show();
-		}
-
-		/*
-		 * Called when the Activity is no longer visible.
-		 */
-		@Override
-		protected void onStop() {
-			// Disconnecting the client invalidates it.
-			mLocationClient.disconnect();
-			super.onStop();
-		}
-
-		// Define a DialogFragment that displays the error dialog
-
-	public static class ErrorDialogFragment extends DialogFragment {
-			// Global field to contain the error dialog
-			private Dialog mDialog;
-
-			// Default constructor. Sets the dialog field to null
-			public ErrorDialogFragment() {
-				super();
-				mDialog = null;
-			}
-
-			// Set the dialog to display
-			public void setDialog(Dialog dialog) {
-				mDialog = dialog;
-			}
-
-			// Return a Dialog to the DialogFragment.
-			@Override
-			public Dialog onCreateDialog(Bundle savedInstanceState) {
-				return mDialog;
-			}
-
-		}
-
-		/*
-		 * Handle results returned to the FragmentActivity by Google Play services
-		 */
-		@Override
-		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-			// Decide what to do based on the original request code
-			switch (requestCode) {
-
-			case CONNECTION_FAILURE_RESOLUTION_REQUEST:
-				/*
-				 * If the result code is Activity.RESULT_OK, try to connect again
-				 */
-				switch (resultCode) {
-				case Activity.RESULT_OK:
-					/*
-					 * Try the request again
-					 */
-					break;
-				}
-			}
-		}
-
-		private void setUpMapIfNeeded() {
-			if (map == null) {
-				map = ((MapFragment) getFragmentManager()
-						.findFragmentById(R.id.map)).getMap();
-				myLocation = mLocationClient.getLastLocation();
-				LatLng myLatLng = new LatLng(myLocation.getLatitude(),
-						myLocation.getLongitude());
-
-				map.setMyLocationEnabled(true);
-				map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLng, 13));
-
-			} else {
-				setUpMap();
-			}
-		}
-
-		public GoogleMap mapStored;
-		public LatLng latLngStored;
-
-		private void setUpMap() {
-			mapStored = map;
-			latLngStored = new LatLng(myLocation.getLatitude(),
-					myLocation.getLongitude());
-		}
-
-		/*
-		 * Called by Location Services when the request to connect the client
-		 * finishes successfully. At this point, you can request the current
-		 * location or start periodic updates
-		 */
-
-		/*
-		 * Called by Location Services if the attempt to Location Services fails.
-		 */
-		@SuppressWarnings("deprecation")
-		@Override
-		public void onConnectionFailed(ConnectionResult connectionResult) {
+		case CONNECTION_FAILURE_RESOLUTION_REQUEST:
 			/*
-			 * Google Play services can resolve some errors it detects. If the error
-			 * has a resolution, try sending an Intent to start a Google Play
-			 * services activity that can resolve error.
+			 * If the result code is Activity.RESULT_OK, try to connect again
 			 */
-			if (connectionResult.hasResolution()) {
-				try {
-					// Start an Activity that tries to resolve the error
-					connectionResult.startResolutionForResult(this,
-							CONNECTION_FAILURE_RESOLUTION_REQUEST);
-					/*
-					 * Thrown if Google Play services canceled the original
-					 * PendingIntent
-					 */
-				} catch (IntentSender.SendIntentException e) {
-					// Log the error
-					e.printStackTrace();
-				}
-			} else {
+			switch (resultCode) {
+			case Activity.RESULT_OK:
 				/*
-				 * If no resolution is available, display a dialog to the user with
-				 * the error.
+				 * Try the request again
 				 */
-				showDialog(connectionResult.getErrorCode());
+				break;
 			}
 		}
 	}
 
+	private void setUpMapIfNeeded() {
+		if (map == null) {
+			map = ((MapFragment) getFragmentManager()
+					.findFragmentById(R.id.map)).getMap();
+			myLocation = mLocationClient.getLastLocation();
+			LatLng myLatLng = new LatLng(myLocation.getLatitude(),
+					myLocation.getLongitude());
 
+			map.setMyLocationEnabled(true);
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLng, 13));
 
-	
-	
-	
-	
-	
+		} else {
+			setUpMap();
+		}
+	}
 
+	public GoogleMap mapStored;
+	public LatLng latLngStored;
 
+	private void setUpMap() {
+		mapStored = map;
+		latLngStored = new LatLng(myLocation.getLatitude(),
+				myLocation.getLongitude());
+	}
+
+	/*
+	 * Called by Location Services when the request to connect the client
+	 * finishes successfully. At this point, you can request the current
+	 * location or start periodic updates
+	 */
+
+	/*
+	 * Called by Location Services if the attempt to Location Services fails.
+	 */
+	@SuppressWarnings("deprecation")
+	@Override
+	public void onConnectionFailed(ConnectionResult connectionResult) {
+		/*
+		 * Google Play services can resolve some errors it detects. If the error
+		 * has a resolution, try sending an Intent to start a Google Play
+		 * services activity that can resolve error.
+		 */
+		if (connectionResult.hasResolution()) {
+			try {
+				// Start an Activity that tries to resolve the error
+				connectionResult.startResolutionForResult(this,
+						CONNECTION_FAILURE_RESOLUTION_REQUEST);
+				/*
+				 * Thrown if Google Play services canceled the original
+				 * PendingIntent
+				 */
+			} catch (IntentSender.SendIntentException e) {
+				// Log the error
+				e.printStackTrace();
+			}
+		} else {
+			/*
+			 * If no resolution is available, display a dialog to the user with
+			 * the error.
+			 */
+			showDialog(connectionResult.getErrorCode());
+		}
+	}
+
+}

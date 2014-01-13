@@ -1,16 +1,10 @@
-package com.zeng.pingu_android;
+package com.pingu.main;
 
 
 
 
 
 import java.util.ArrayList;
-
-import me.vitez.pingu_android.Friends;
-import me.vitez.pingu_android.HomeFragment;
-import me.vitez.pingu_android.PingActions;
-import me.vitez.pingu_android.PrefsFragment;
-import me.vitez.pingu_android.Useful;
 
 import com.zeng.pingu_android.R;
 import com.google.android.gms.common.ConnectionResult;
@@ -21,6 +15,11 @@ import com.google.android.gms.maps.model.*;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
+import com.pingu.fragments.Friends;
+import com.pingu.fragments.HomeFragment;
+import com.pingu.fragments.PingActions;
+import com.pingu.fragments.PrefsFragment;
+import com.pingu.fragments.Useful;
 
 import android.location.Location;
 import android.os.Bundle;
@@ -45,7 +44,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+//@author Steven Zeng, Mitchell Vitez
+//Main activity of the entire app that instantiates the navigation bar and displays fragments accordingly.
 public class MainActivity extends FragmentActivity  {
 
 	TextView textView;

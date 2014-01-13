@@ -1,4 +1,4 @@
-package com.zeng.pingu_android;
+package com.pingu.main;
 
 public class NavDrawerItem {
 	

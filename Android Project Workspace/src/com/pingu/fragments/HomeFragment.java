@@ -1,5 +1,6 @@
-package me.vitez.pingu_android;
-
+package com.pingu.fragments;
+//@author Steven Zeng
+//fragment that displays the map and allows pinging. First screen when app starts.
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.location.LocationClient;
@@ -8,7 +9,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseException;
-import com.zeng.pingu_android.MainActivity;
+import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
 
 import android.app.Activity;

@@ -1,4 +1,4 @@
-package me.vitez.pingu_android;
+package com.pingu.fragments;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -20,11 +20,11 @@ public class PrefsFragment extends PreferenceFragment {
 public PrefsFragment(){}
 	
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
  
-        View rootView = inflater.inflate(R.xml.prefs, container, false);
-         
-        return rootView;
+		super.onCreate(savedInstanceState);
+		// Load the preferences from an XML resource
+        addPreferencesFromResource(R.xml.prefs);
+
     }
 }

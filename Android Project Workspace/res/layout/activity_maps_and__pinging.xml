@@ -81,7 +81,7 @@
         android:layout_gravity="start"
         android:background="#EEE"
         android:choiceMode="singleChoice"
-        android:divider="#2faced"
+        android:divider="#2fa"
         android:dividerHeight="0dp"
         android:entries="@array/list" />
 

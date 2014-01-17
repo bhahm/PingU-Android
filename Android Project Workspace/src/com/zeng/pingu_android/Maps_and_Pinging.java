@@ -1,7 +1,11 @@
 package com.zeng.pingu_android;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.vitez.pingu_android.Friends;
 import me.vitez.pingu_android.PingActions;
+import me.vitez.pingu_android.PingObject;
 import me.vitez.pingu_android.PrefsActivity;
 import me.vitez.pingu_android.Useful;
 
@@ -13,9 +17,12 @@ import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
 
+import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import android.location.Location;
 import android.os.Bundle;
@@ -26,7 +33,10 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +49,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 	private GoogleMap map;
 	private LocationClient mLocationClient;
 	private Location myLocation;
+	ArrayList<PingObject> record;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +66,26 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		String username = prefs.getString("username", "Default NickName");
 		Useful.setUsername(username);
 		
+		/* setUpMapIfNeeded();
+		try {
+			PingActions.refreshPings(mapStored);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} */
+		
 		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
 		Button btnFriends = (Button) findViewById(R.id.btnFriends);
 		Button btnPing = (Button) findViewById(R.id.btnPing);
 		Button btnUnPing = (Button) findViewById(R.id.btnUnPing);
 		Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
+		
+		ListView list = (ListView) findViewById(R.id.left_drawer_1);
+		
 
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
+			
 			public void onClick(View v) {
 				int id = v.getId();
 				if (id == R.id.btnPrefs) {
@@ -89,6 +112,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 					try {
 						PingActions.refreshPings(mapStored);
 					} catch (ParseException e) {
+						// TODO Auto-generated catch block
 						e.printStackTrace();
 						// TODO:Test stack trace error from here
 						System.out.println("@@@@@ error here");
@@ -98,14 +122,21 @@ public class Maps_and_Pinging extends FragmentActivity implements
 				}
 			}
 		};
+		
+		
 		btnPrefs.setOnClickListener(listener);
 		btnFriends.setOnClickListener(listener);
 		btnPing.setOnClickListener(listener);
 		btnUnPing.setOnClickListener(listener);
 		btnRefresh.setOnClickListener(listener);
+		
 	}
 	
 	
+
+	
+
+
 
 	@Override
 	protected void onResume() {

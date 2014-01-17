@@ -25,7 +25,6 @@ public class PingActions extends Activity {
 	private static boolean isCurrentLocPingSet = false;
 	private static PingObject currentLocPingObj;
 	static Marker currentLocPingMarker;
-	static ArrayList<Marker> pingMarkers;
 	public static GoogleMap mapStored;
 	public static LatLng latlngStored;
 
@@ -61,7 +60,7 @@ public class PingActions extends Activity {
 			throws ParseException {
 		mapStored = mapStoredIn;
 		// TODO: change query so it's localized, etc.
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing");
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> results, ParseException e) {
 				if (e != null) {
@@ -84,9 +83,8 @@ public class PingActions extends Activity {
 	}
 
 	static public void showOnMap(PingObject p) {
-		Marker m = mapStored.addMarker(new MarkerOptions().position(
-				p.getLatlng()).title(p.getName()));
-		pingMarkers.add(m);
+		mapStored.addMarker(new MarkerOptions().position(
+				p.getLatlng()).title(p.getName() + " - " + p.getTime()));
 	}
 
 }

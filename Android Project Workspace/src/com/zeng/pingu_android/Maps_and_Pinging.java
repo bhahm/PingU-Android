@@ -90,6 +90,8 @@ public class Maps_and_Pinging extends FragmentActivity implements
 						PingActions.refreshPings(mapStored);
 					} catch (ParseException e) {
 						e.printStackTrace();
+						// TODO:Test stack trace error from here
+						System.out.println("@@@@@ error here");
 					}
 				} else {
 					

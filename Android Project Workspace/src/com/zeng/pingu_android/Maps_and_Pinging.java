@@ -66,6 +66,14 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		String username = prefs.getString("username", "Default NickName");
 		Useful.setUsername(username);
 		
+		/* setUpMapIfNeeded();
+		try {
+			PingActions.refreshPings(mapStored);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} */
+		
 		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
 		Button btnFriends = (Button) findViewById(R.id.btnFriends);
 		Button btnPing = (Button) findViewById(R.id.btnPing);
@@ -101,7 +109,12 @@ public class Maps_and_Pinging extends FragmentActivity implements
 					PingActions.unpingCurrentLocation(mapStored, latLngStored);
 				} else if (id == R.id.btnRefresh) {
 					setUpMapIfNeeded();
-					refreshMap();
+					try {
+						PingActions.refreshPings(mapStored);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} else {
 					
 				}
@@ -119,31 +132,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 	
 	
 
-	public void refreshMap() {
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing");
-		query.findInBackground(new FindCallback<ParseObject>() {
-			public void done(List<ParseObject> results, ParseException e) {
-				if (e != null) {
-					// There was an error
-				} else {
-					for (ParseObject parseObj : results) {
-						String pingTime = (String) parseObj.get("pingTime");
-						String creator = (String) parseObj.get("creator");
-						double lat = (Double) parseObj.get("latitude");
-						double lng = (Double) parseObj.get("longitude");
-						LatLng latlng = new LatLng(lat, lng);
-						
-						mapStored.addMarker(new MarkerOptions().position(
-								latlng).title(creator +" "+ pingTime));
-						// pingObj = new PingObject(pingTime, creator,
-						//		latlng);
-						// record.add(pingObj);
-					}
-				}
-			}
-		});
-		
-	}
+	
 
 
 

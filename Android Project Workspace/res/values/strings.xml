@@ -12,5 +12,24 @@
     <string name="refresh">Refresh received Pings</string>
     <string name="debugSettings">Display Settings (for debugging, remove later)</string>
     <string name="restartForSettings">You may have to restart the app for changes to take effect.</string>
-
-</resources>
+  	<string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+     <string name="desc_list_item_icon">Item Icon</string>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Home</item>
+        <item >Friends</item>
+        <item >Settings</item>
+       
+    </string-array>
+    
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+     
+    </array>
+    
+ </resources>

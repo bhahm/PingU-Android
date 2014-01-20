@@ -60,18 +60,8 @@ public class PingActions extends Activity {
 	static public void refreshPings(GoogleMap mapStoredIn)
 			throws ParseException {
 		mapStored = mapStoredIn;
-
-
 		// TODO: change query so it's localized, etc.
-
-
-
-	
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing");
-
-
-		// TODO: change query so it's localized, etc.
-
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("");
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> results, ParseException e) {
 				if (e != null) {

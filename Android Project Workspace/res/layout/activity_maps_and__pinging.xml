@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,60 +12,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <LinearLayout
-        android:layout_width="200dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+         >
 
-        <Button
-            android:id="@+id/doOverlay"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/overlay_label"
-            android:textSize="12sp" >
-        </Button>
 
-        <Button
-            android:id="@+id/btnPrefs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/gear"
-            android:text="@string/btnPrefs" />
-
-        <Button
-            android:id="@+id/btnFriends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/friends" />
-
-        <!--  <Button
-            android:id="@+id/btnGetPreferences"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/debugSettings" />
-
-        <TextView
-            android:id="@+id/txtPrefs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" /> -->
-
+   
         <Button
             android:id="@+id/btnPing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ping" />
-
+          android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/roundbutton"
+        android:padding="10dp"
+         android:text="@string/ping" />
         <Button
-            android:id="@+id/btnUnPing"
+         android:id="@+id/btnRefresh"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/unping" />
-        
-        <Button
-            android:id="@+id/btnRefresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/refresh" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginLeft="200dp"
+        android:background="@drawable/roundbutton"
+        android:padding="10dp"
+         android:text="@string/refresh" />
+      
 
+</RelativeLayout>
+
+   
 </FrameLayout>
+

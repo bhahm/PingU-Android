@@ -189,8 +189,7 @@ public static class ErrorDialogFragment extends DialogFragment {
 	        FragmentManager fM = getFragmentManager();
 	        fM.beginTransaction().remove(mapFragment).commit();
 	    }
-
-	}
+}
 @Override
 public void onDetach()
 {

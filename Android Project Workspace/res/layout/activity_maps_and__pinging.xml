@@ -1,49 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/menyu_drawer"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    tools:context=".MapActivity" >
 
-    <FrameLayout
-        android:id="@+id/mainframe"
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.MapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="200dp"
+        <Button
+            android:id="@+id/doOverlay"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:text="@string/overlay_label"
+            android:textSize="12sp" >
+        </Button>
 
-            <Button
-                android:id="@+id/btnPing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ping" />
+        <Button
+            android:id="@+id/btnPrefs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/gear"
+            android:text="@string/btnPrefs" />
 
-            <Button
-                android:id="@+id/btnUnPing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unping" />
+        <Button
+            android:id="@+id/btnFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/friends" />
 
-        </LinearLayout>
-    </FrameLayout>
+        <!--  <Button
+            android:id="@+id/btnGetPreferences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/debugSettings" />
 
-    <ListView
-        android:id="@+id/left_drawer"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#EEE"
-        android:choiceMode="singleChoice"
-        android:divider="#2fa"
-        android:dividerHeight="0dp"
-        android:entries="@array/list" />
+        <TextView
+            android:id="@+id/txtPrefs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" /> -->
 
-</android.support.v4.widget.DrawerLayout>
+        <Button
+            android:id="@+id/btnPing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ping" />
+
+        <Button
+            android:id="@+id/btnUnPing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unping" />
+        
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refresh" />
+    </LinearLayout>
+
+</FrameLayout>

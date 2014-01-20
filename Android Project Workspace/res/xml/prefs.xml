@@ -21,6 +21,12 @@
             android:summary="On/Off"
             android:title="Keep me logged in" />
 
+        <ListPreference
+            android:entries="@array/listOptions"
+            android:entryValues="@array/listValues"
+            android:key="listpref"
+            android:summary="List preference example"
+            android:title="List preference" />
     </PreferenceCategory>
     <PreferenceCategory
         android:id="@+id/textViewSettings"

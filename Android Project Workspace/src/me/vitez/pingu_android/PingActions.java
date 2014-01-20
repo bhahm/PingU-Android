@@ -1,5 +1,6 @@
 package me.vitez.pingu_android;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -24,6 +25,7 @@ public class PingActions extends Activity {
 	private static boolean isCurrentLocPingSet = false;
 	private static PingObject currentLocPingObj;
 	static Marker currentLocPingMarker;
+	static ArrayList<Marker> pingMarkers;
 	public static GoogleMap mapStored;
 	public static LatLng latlngStored;
 
@@ -58,7 +60,8 @@ public class PingActions extends Activity {
 	static public void refreshPings(GoogleMap mapStoredIn)
 			throws ParseException {
 		mapStored = mapStoredIn;
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing");
+		// TODO: change query so it's localized, etc.
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("");
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> results, ParseException e) {
 				if (e != null) {
@@ -81,8 +84,9 @@ public class PingActions extends Activity {
 	}
 
 	static public void showOnMap(PingObject p) {
-		mapStored.addMarker(new MarkerOptions().position(
-				p.getLatlng()).title(p.getName() + " - " + p.getTime()));
+		Marker m = mapStored.addMarker(new MarkerOptions().position(
+				p.getLatlng()).title(p.getName()));
+		pingMarkers.add(m);
 	}
 
 }

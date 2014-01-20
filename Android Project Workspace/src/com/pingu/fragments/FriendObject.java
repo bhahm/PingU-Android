@@ -1,4 +1,4 @@
-package me.vitez.pingu_android;
+package com.pingu.fragments;
 
 /**
  * Used for easier storage of friends by their data

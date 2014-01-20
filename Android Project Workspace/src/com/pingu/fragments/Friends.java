@@ -1,4 +1,4 @@
-package me.vitez.pingu_android;
+package com.pingu.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package me.vitez.pingu_android;
+package com.pingu.fragments;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

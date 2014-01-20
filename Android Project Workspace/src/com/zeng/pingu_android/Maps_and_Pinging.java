@@ -107,6 +107,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		Useful.setUsername(username);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/*
 		 * setUpMapIfNeeded(); try { PingActions.refreshPings(mapStored); }
@@ -114,6 +115,8 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		 * e1.printStackTrace(); }
 		 */
 =======
+=======
+>>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING
 =======
 >>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING
 		
@@ -144,6 +147,9 @@ public class Maps_and_Pinging extends FragmentActivity implements
 					setUpMapIfNeeded();
 					refreshMap();
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING
+=======
 >>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING
 =======
 >>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING

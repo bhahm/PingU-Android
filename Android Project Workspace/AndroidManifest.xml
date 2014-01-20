@@ -8,9 +8,9 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
-    <permission
+   <!--  <permission
         android:name="com.zeng.pingu_android.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature" />
+        android:protectionLevel="signature" /> -->
 
     <uses-permission android:name="com.zeng.pingu_android.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />

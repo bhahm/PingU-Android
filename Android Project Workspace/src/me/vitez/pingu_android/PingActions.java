@@ -1,6 +1,5 @@
 package me.vitez.pingu_android;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -59,7 +58,6 @@ public class PingActions extends Activity {
 	static public void refreshPings(GoogleMap mapStoredIn)
 			throws ParseException {
 		mapStored = mapStoredIn;
-		// TODO: change query so it's localized, etc.
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing");
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> results, ParseException e) {

@@ -60,7 +60,12 @@ public class PingActions extends Activity {
 			throws ParseException {
 		mapStored = mapStoredIn;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing");
+=======
+		// TODO: change query so it's localized, etc.
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("");
+>>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING
 =======
 		// TODO: change query so it's localized, etc.
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("");

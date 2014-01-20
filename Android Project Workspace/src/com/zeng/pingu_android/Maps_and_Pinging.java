@@ -106,6 +106,7 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		String username = prefs.getString("username", "Default NickName");
 		Useful.setUsername(username);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/*
 		 * setUpMapIfNeeded(); try { PingActions.refreshPings(mapStored); }
@@ -113,6 +114,8 @@ public class Maps_and_Pinging extends FragmentActivity implements
 		 * e1.printStackTrace(); }
 		 */
 =======
+=======
+>>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING
 		
 		Button btnPrefs = (Button) findViewById(R.id.btnPrefs);
 		Button btnFriends = (Button) findViewById(R.id.btnFriends);
@@ -140,6 +143,9 @@ public class Maps_and_Pinging extends FragmentActivity implements
 				} else if (id == R.id.btnRefresh) {
 					setUpMapIfNeeded();
 					refreshMap();
+<<<<<<< HEAD
+>>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING
+=======
 >>>>>>> parent of 0efd129... GOT REFRESH TOTALLY WORKING
 				} else {
 

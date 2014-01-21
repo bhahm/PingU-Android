@@ -37,7 +37,7 @@ public class PingActions extends Activity {
 		latlngStored = latLngStoredIn;
 		if (!isCurrentLocPingSet) {
 			currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
-					.position(latlngStored).title("Current Location "));
+					.position(latlngStored).title("Current Ping"));
 			isCurrentLocPingSet = true;
 			String datetime = Useful.getCurrentTimeAsString();
 			String user = Useful.getUsername();

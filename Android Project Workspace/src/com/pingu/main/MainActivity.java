@@ -186,6 +186,12 @@ public class MainActivity extends FragmentActivity  {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
+			 Fragment currentFrag = getFragmentManager().findFragmentById(R.id.map);
+			   
+			if (currentFrag != null)
+			{
+				 getFragmentManager().beginTransaction().remove(currentFrag).commit();
+			}
 			fragment = new HomeFragment();
 			break;
 		case 1:

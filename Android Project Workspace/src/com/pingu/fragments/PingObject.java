@@ -44,4 +44,8 @@ public class PingObject {
 	public String getName() {
 		return creator;
 	}
+	
+	public String getTime() {
+		return pingTime;
+	}
 }

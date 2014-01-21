@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment implements
 	private LocationClient mLocationClient;
 	private Location myLocation;
 	private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mLocationClient = new LocationClient(MainActivity.c, this, this);
@@ -48,11 +47,12 @@ public class HomeFragment extends Fragment implements
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
+		
 		View rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
 				container, false);
+		
 		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
-		Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
+		//Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -60,22 +60,21 @@ public class HomeFragment extends Fragment implements
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
 					PingActions.pingCurrentLocation(mapStored, latLngStored);
-				} else if (id == R.id.btnRefresh) {
+				} /*else if (id == R.id.btnRefresh) {
 					setUpMapIfNeeded();
 					try {
 						PingActions.refreshPings(mapStored);
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
-				}
+				}*/
 			}
 		};
 		btnPing.setOnClickListener(listener);
-		btnRefresh.setOnClickListener(listener);
+		//btnRefresh.setOnClickListener(listener);
 		
 		return rootView;
-		
-		
+
 	}
 
 	@Override
@@ -114,8 +113,10 @@ public class HomeFragment extends Fragment implements
 	public void onStop() {
 		// Disconnecting the client invalidates it.
 		mLocationClient.disconnect();
+		
 		super.onStop();
 	}
+	
 
 	// Define a DialogFragment that displays the error dialog
 
@@ -193,22 +194,9 @@ public class HomeFragment extends Fragment implements
 			
 	}
 
-	private void killOldMap() {
-		MapFragment mapFragment = (MapFragment) this.getActivity()
-				.getFragmentManager().findFragmentById(R.id.map);
+	
 
-		if (mapFragment != null) {
-			FragmentManager fM = getFragmentManager();
-			fM.beginTransaction().remove(mapFragment).commit();
-		}
-	}
-
-	@Override
-	public void onDetach() {
-		killOldMap();
-		super.onDetach();
-	}
-
+	
 	/*
 	 * Called by Location Services when the request to connect the client
 	 * finishes successfully. At this point, you can request the current

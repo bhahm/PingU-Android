@@ -58,35 +58,33 @@ public class PingActions extends Activity {
 	}
 
 	static public void refreshPings(GoogleMap mapStoredIn)
-			throws ParseException {
-		mapStored = mapStoredIn;
-		// TODO: change query so it's localized, etc.
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("");
-		query.findInBackground(new FindCallback<ParseObject>() {
-			public void done(List<ParseObject> results, ParseException e) {
-				if (e != null) {
-					// There was an error
-				} else {
-					for (ParseObject parseObj : results) {
-						String pingTime = (String) parseObj.get("pingTime");
-						String creator = (String) parseObj.get("creator");
-						double lat = (Double) parseObj.get("latitude");
-						double lng = (Double) parseObj.get("longitude");
-						LatLng latlng = new LatLng(lat, lng);
-						PingObject pingObj = new PingObject(pingTime, creator,
-								latlng);
-						showOnMap(pingObj);
-					}
-				}
-			}
-		});
+            throws ParseException {
+    mapStored = mapStoredIn;
+    ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing");
+    query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> results, ParseException e) {
+                    if (e != null) {
+                            // There was an error
+                    } else {
+                            for (ParseObject parseObj : results) {
+                                    String pingTime = (String) parseObj.get("pingTime");
+                                    String creator = (String) parseObj.get("creator");
+                                    double lat = (Double) parseObj.get("latitude");
+                                    double lng = (Double) parseObj.get("longitude");
+                                    LatLng latlng = new LatLng(lat, lng);
+                                    PingObject pingObj = new PingObject(pingTime, creator,
+                                                    latlng);
+                                    showOnMap(pingObj);
+                            }
+                    }
+            }
+    });
 
-	}
+}
 
-	static public void showOnMap(PingObject p) {
-		Marker m = mapStored.addMarker(new MarkerOptions().position(
-				p.getLatlng()).title(p.getName()));
-		pingMarkers.add(m);
-	}
+static public void showOnMap(PingObject p) {
+    mapStored.addMarker(new MarkerOptions().position(
+                    p.getLatlng()).title("Sent by" + p.getName() + " at " + p.getTime()));
+}
 
 }

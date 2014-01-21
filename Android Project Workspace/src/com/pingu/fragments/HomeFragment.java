@@ -194,22 +194,9 @@ public class HomeFragment extends Fragment implements
 			
 	}
 
-	private void killOldMap() {
-		MapFragment mapFragment = (MapFragment) this.getActivity()
-				.getFragmentManager().findFragmentById(R.id.map);
+	
 
-		if (mapFragment != null) {
-			FragmentManager fM = getFragmentManager();
-			fM.beginTransaction().remove(mapFragment).commit();
-		}
-	}
-
-	@Override
-	public void onDetach() {
-		killOldMap();
-		super.onDetach();
-	}
-
+	
 	/*
 	 * Called by Location Services when the request to connect the client
 	 * finishes successfully. At this point, you can request the current

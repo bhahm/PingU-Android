@@ -3,11 +3,7 @@ package com.pingu.fragments;
 import com.zeng.pingu_android.R;
 
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * Any code that runs on the settings page goes here

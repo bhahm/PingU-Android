@@ -7,11 +7,6 @@ package com.pingu.main;
 import java.util.ArrayList;
 
 import com.zeng.pingu_android.R;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.location.LocationClient;
-import com.google.android.gms.maps.*;
-import com.google.android.gms.maps.model.*;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -21,13 +16,10 @@ import com.pingu.fragments.PingActions;
 import com.pingu.fragments.PrefsFragment;
 import com.pingu.fragments.Useful;
 
-import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.*;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -40,10 +32,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 //@author Steven Zeng, Mitchell Vitez
 //Main activity of the entire app that instantiates the navigation bar and displays fragments accordingly.
 public class MainActivity extends FragmentActivity  {

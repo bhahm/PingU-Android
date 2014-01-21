@@ -72,12 +72,16 @@ public class HomeFragment extends Fragment implements
 		};
 		btnPing.setOnClickListener(listener);
 		btnRefresh.setOnClickListener(listener);
+		
 		return rootView;
+		
+		
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
+		
 	}
 
 	@Override
@@ -93,6 +97,7 @@ public class HomeFragment extends Fragment implements
 		Toast.makeText(this.getActivity(), "Connected", Toast.LENGTH_SHORT)
 				.show();
 		setUpMapIfNeeded();
+		
 	}
 
 	@Override
@@ -169,6 +174,8 @@ public class HomeFragment extends Fragment implements
 
 			map.setMyLocationEnabled(true);
 			map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLng, 13));
+			mapStored = map;
+			doRefreshPings();
 
 		} else {
 			setUpMap();
@@ -182,7 +189,7 @@ public class HomeFragment extends Fragment implements
 		mapStored = map;
 		latLngStored = new LatLng(myLocation.getLatitude(),
 				myLocation.getLongitude());
-		
+		doRefreshPings();
 			
 	}
 
@@ -248,6 +255,8 @@ public class HomeFragment extends Fragment implements
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 	static public GoogleMap getMap() {
 		return mapStored;

@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment implements
 				container, false);
 		
 		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
-		Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
+		//Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -60,18 +60,18 @@ public class HomeFragment extends Fragment implements
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
 					PingActions.pingCurrentLocation(mapStored, latLngStored);
-				} else if (id == R.id.btnRefresh) {
+				} /*else if (id == R.id.btnRefresh) {
 					setUpMapIfNeeded();
 					try {
 						PingActions.refreshPings(mapStored);
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
-				}
+				}*/
 			}
 		};
 		btnPing.setOnClickListener(listener);
-		btnRefresh.setOnClickListener(listener);
+		//btnRefresh.setOnClickListener(listener);
 		
 		return rootView;
 

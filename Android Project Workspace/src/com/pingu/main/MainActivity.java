@@ -160,7 +160,8 @@ public class MainActivity extends FragmentActivity  {
 		}
 		// Handle action bar actions click
 		switch (item.getItemId()) {
-		case R.id.action_settings:
+		case R.id.refresh_pings:
+			doRefreshPings();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -174,7 +175,7 @@ public class MainActivity extends FragmentActivity  {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// if nav drawer is opened, hide the action items
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		menu.findItem(R.id.refresh_pings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 

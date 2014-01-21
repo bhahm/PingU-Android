@@ -1,6 +1,8 @@
 package com.pingu.fragments;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -67,17 +69,25 @@ public class PingActions extends Activity {
                             // There was an error
                     } else {
                             for (ParseObject parseObj : results) {
-                                    String pingTime = (String) parseObj.get("pingTime");
-                                    String creator = (String) parseObj.get("creator");
-                                    double lat = (Double) parseObj.get("latitude");
-                                    double lng = (Double) parseObj.get("longitude");
-                                    LatLng latlng = new LatLng(lat, lng);
-                                    PingObject pingObj = new PingObject(pingTime, creator,
-                                                    latlng);
-                                    showOnMap(pingObj);
+                                    Date createdAt = parseObj.getCreatedAt();
+                                    Date now = new Date();
+                                    if (now.getTime() - createdAt.getTime() >= 30*60*1000) {
+                                    	parseObj.deleteInBackground();
+                                    }
+                                    else {
+	                                    String pingTime = (String) parseObj.get("pingTime");
+	                                    String creator = (String) parseObj.get("creator");
+	                                    double lat = (Double) parseObj.get("latitude");
+	                                    double lng = (Double) parseObj.get("longitude");
+	                                    LatLng latlng = new LatLng(lat, lng);
+	                                    PingObject pingObj = new PingObject(pingTime, creator,
+	                                                    latlng);
+	                                    showOnMap(pingObj);
+                                    }
                             }
                     }
             }
+
     });
 
 }

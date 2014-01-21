@@ -1,4 +1,5 @@
 package com.pingu.fragments;
+
 //@author Steven Zeng
 //fragment that displays the map and allows pinging. First screen when app starts.
 import com.google.android.gms.common.ConnectionResult;
@@ -31,50 +32,53 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class HomeFragment extends Fragment implements
-GooglePlayServicesClient.ConnectionCallbacks,
-GooglePlayServicesClient.OnConnectionFailedListener {
-	
-	public HomeFragment(){}
+		GooglePlayServicesClient.ConnectionCallbacks,
+		GooglePlayServicesClient.OnConnectionFailedListener {
+
+	public HomeFragment() {
+	}
+
 	private GoogleMap map;
 	private LocationClient mLocationClient;
 	private Location myLocation;
 	private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
-public void onCreate(Bundle savedInstanceState){
-	super.onCreate(savedInstanceState);
-	mLocationClient = new LocationClient(MainActivity.c, this, this); 
-	
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mLocationClient = new LocationClient(MainActivity.c, this, this);
+
 	}
-	
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-    	
-        View rootView = inflater.inflate(R.layout.activity_maps_and__pinging, container, false);
-        Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
-    	Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    int id = v.getId();
-                    if (id == R.id.btnPing) {
-                    	setUpMapIfNeeded();
-                        PingActions.pingCurrentLocation(mapStored, latLngStored);
-                    }
-                    else if (id == R.id.btnRefresh) {
-                        setUpMapIfNeeded();
-                        try {
-                                PingActions.refreshPings(mapStored);
-                        } catch (ParseException e) {
-                                e.printStackTrace();
-                        }
-                    }
-            }
-        };
-        btnPing.setOnClickListener(listener);
-        btnRefresh.setOnClickListener(listener);
-        return rootView;
-    }
-    @Override
+
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		View rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
+				container, false);
+		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
+		Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
+		View.OnClickListener listener = new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int id = v.getId();
+				if (id == R.id.btnPing) {
+					setUpMapIfNeeded();
+					PingActions.pingCurrentLocation(mapStored, latLngStored);
+				} else if (id == R.id.btnRefresh) {
+					setUpMapIfNeeded();
+					try {
+						PingActions.refreshPings(mapStored);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		btnPing.setOnClickListener(listener);
+		btnRefresh.setOnClickListener(listener);
+		return rootView;
+	}
+
+	@Override
 	public void onResume() {
 		super.onResume();
 	}
@@ -89,7 +93,8 @@ public void onCreate(Bundle savedInstanceState){
 	@Override
 	public void onConnected(Bundle dataBundle) {
 		// Display the connection status
-		Toast.makeText(this.getActivity(), "Connected", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this.getActivity(), "Connected", Toast.LENGTH_SHORT)
+				.show();
 		setUpMapIfNeeded();
 	}
 
@@ -112,7 +117,7 @@ public void onCreate(Bundle savedInstanceState){
 
 	// Define a DialogFragment that displays the error dialog
 
-public static class ErrorDialogFragment extends DialogFragment {
+	public static class ErrorDialogFragment extends DialogFragment {
 		// Global field to contain the error dialog
 		private Dialog mDialog;
 
@@ -173,29 +178,33 @@ public static class ErrorDialogFragment extends DialogFragment {
 		}
 	}
 
-	public GoogleMap mapStored;
+	public static GoogleMap mapStored;
 	public LatLng latLngStored;
 
 	private void setUpMap() {
 		mapStored = map;
 		latLngStored = new LatLng(myLocation.getLatitude(),
 				myLocation.getLongitude());
+		
+			
 	}
-	private void killOldMap() {
-	    MapFragment mapFragment = (MapFragment) this.getActivity()
-	            .getFragmentManager().findFragmentById(R.id.map);
 
-	    if(mapFragment != null) {
-	        FragmentManager fM = getFragmentManager();
-	        fM.beginTransaction().remove(mapFragment).commit();
-	    }
-}
-@Override
-public void onDetach()
-{
-	killOldMap();
-	super.onDetach();
-}
+	private void killOldMap() {
+		MapFragment mapFragment = (MapFragment) this.getActivity()
+				.getFragmentManager().findFragmentById(R.id.map);
+
+		if (mapFragment != null) {
+			FragmentManager fM = getFragmentManager();
+			fM.beginTransaction().remove(mapFragment).commit();
+		}
+	}
+
+	@Override
+	public void onDetach() {
+		killOldMap();
+		super.onDetach();
+	}
+
 	/*
 	 * Called by Location Services when the request to connect the client
 	 * finishes successfully. At this point, you can request the current
@@ -234,5 +243,16 @@ public void onDetach()
 			getActivity().showDialog(connectionResult.getErrorCode());
 		}
 	}
+
+	public void doRefreshPings() {
+		try {
+			PingActions.refreshPings(mapStored);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	static public GoogleMap getMap() {
+		return mapStored;
+	}
 }
-  

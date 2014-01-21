@@ -234,6 +234,8 @@ public class MainActivity extends FragmentActivity  {
 		super.onPostCreate(savedInstanceState);
 		// Sync the toggle state after onRestoreInstanceState has occurred.
 		mDrawerToggle.syncState();
+		//
+		
 	}
 
 	@Override
@@ -241,6 +243,14 @@ public class MainActivity extends FragmentActivity  {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+	
+	public void doRefreshPings() {
+		try {
+			PingActions.refreshPings(HomeFragment.getMap());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	  

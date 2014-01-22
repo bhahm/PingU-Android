@@ -10,6 +10,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseException;
+import com.pingu.actionsAndObjects.PingActions;
 import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
 
@@ -247,5 +248,14 @@ public class HomeFragment extends Fragment implements
 	
 	static public GoogleMap getMap() {
 		return mapStored;
+	}
+
+	public static void refreshMyPings() {
+		try {
+			PingActions.refreshPings(mapStored);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

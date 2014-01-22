@@ -9,12 +9,10 @@ import java.util.ArrayList;
 import com.zeng.pingu_android.R;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
-import com.parse.ParseException;
-import com.pingu.fragments.Friends;
+import com.pingu.actionsAndObjects.Friends;
+import com.pingu.actionsAndObjects.Useful;
 import com.pingu.fragments.HomeFragment;
-import com.pingu.fragments.PingActions;
 import com.pingu.fragments.PrefsFragment;
-import com.pingu.fragments.Useful;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -88,11 +86,11 @@ public class MainActivity extends FragmentActivity  {
 
 		// adding nav drawer items to array
 		// Home
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0]));
 		// Find People
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1]));
 		// Photos
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2]));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -173,9 +171,7 @@ public class MainActivity extends FragmentActivity  {
 	 */
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		// if nav drawer is opened, hide the action items
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		menu.findItem(R.id.refresh_pings).setVisible(!drawerOpen);
+		//menu.findItem(R.id.refresh_pings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -244,11 +240,8 @@ public class MainActivity extends FragmentActivity  {
 	}
 	
 	public void doRefreshPings() {
-		try {
-			PingActions.refreshPings(HomeFragment.getMap());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		HomeFragment.refreshMyPings();
+		System.out.println("REFRESHED PINGS");
 	}
 
 	  

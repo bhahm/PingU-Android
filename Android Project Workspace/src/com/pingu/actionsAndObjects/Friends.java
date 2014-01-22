@@ -1,4 +1,4 @@
-package com.pingu.fragments;
+package com.pingu.actionsAndObjects;
 
 import android.app.Fragment;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.pingu.fragments;
+package com.pingu.actionsAndObjects;
 
 /**
  * Used for easier storage of friends by their data

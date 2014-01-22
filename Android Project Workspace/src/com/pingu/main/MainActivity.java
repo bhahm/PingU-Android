@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import com.zeng.pingu_android.R;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
-import com.parse.ParseException;
 import com.pingu.actionsAndObjects.Friends;
-import com.pingu.actionsAndObjects.PingActions;
 import com.pingu.actionsAndObjects.Useful;
 import com.pingu.fragments.HomeFragment;
 import com.pingu.fragments.PrefsFragment;
@@ -242,11 +240,8 @@ public class MainActivity extends FragmentActivity  {
 	}
 	
 	public void doRefreshPings() {
-		try {
-			PingActions.refreshPings(HomeFragment.getMap());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		HomeFragment.refreshMyPings();
+		System.out.println("REFRESHED PINGS");
 	}
 
 	  

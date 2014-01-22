@@ -249,4 +249,13 @@ public class HomeFragment extends Fragment implements
 	static public GoogleMap getMap() {
 		return mapStored;
 	}
+
+	public static void refreshMyPings() {
+		try {
+			PingActions.refreshPings(mapStored);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

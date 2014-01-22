@@ -43,7 +43,9 @@ public class PingActions extends Activity {
 			String user = Useful.getUsername();
 			if (user == null)
 				user = "DEFAULT_USER";
-			currentLocPingObj = new PingObject(datetime, user, latlngStored);
+			//TODO Add ability to add message when pinging
+			String message = "default message for now";
+			currentLocPingObj = new PingObject(datetime, user, latlngStored, message);
 			currentLocPingObj.sendPingObjToParse();
 		}
 	}
@@ -80,8 +82,9 @@ public class PingActions extends Activity {
 	                                    double lat = (Double) parseObj.get("latitude");
 	                                    double lng = (Double) parseObj.get("longitude");
 	                                    LatLng latlng = new LatLng(lat, lng);
+	                                    String message = (String) parseObj.get("message");
 	                                    PingObject pingObj = new PingObject(pingTime, creator,
-	                                                    latlng);
+	                                                    latlng, message);
 	                                    showOnMap(pingObj);
                                     }
                             }

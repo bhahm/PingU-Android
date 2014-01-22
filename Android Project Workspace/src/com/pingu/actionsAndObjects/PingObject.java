@@ -12,18 +12,18 @@ import com.parse.ParseObject;
 public class PingObject {
 	private String pingTime;
 	private String creator;
-	// TODO: groups or categories of pings
+	// TODO: categories of pings
 	private double lat;
 	private double lng;
 	private ParseObject pingInParse;
 	private String message;
 
-	public PingObject(String pingTime, String creator, LatLng latlng) {
+	/* public PingObject(String pingTime, String creator, LatLng latlng) {
 		this.pingTime = pingTime;
 		this.creator = creator;
 		this.lat = latlng.latitude;
 		this.lng = latlng.longitude;
-	}
+	} */
 	
 	public PingObject(String pingTime, String creator, LatLng latlng, String message) {
 		this.pingTime = pingTime;
@@ -39,6 +39,7 @@ public class PingObject {
 		pingInParse.put("creator", creator);
 		pingInParse.put("latitude", lat);
 		pingInParse.put("longitude", lng);
+		pingInParse.put("message", message);
 		pingInParse.saveInBackground();
 	}
 	

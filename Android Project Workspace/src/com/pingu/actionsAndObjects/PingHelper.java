@@ -140,7 +140,7 @@ public class PingHelper extends SQLiteOpenHelper {
 					Double.parseDouble(cursor.getString(3)),
 					Double.parseDouble(cursor.getString(4)));
 			return new PingObject(cursor.getString(1), cursor.getString(2),
-					location);
+					location, cursor.getString(0));
 		} else {
 			throw new PingDoesNotExistException();
 		}

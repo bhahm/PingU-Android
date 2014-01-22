@@ -93,8 +93,10 @@ public class PingActions extends Activity {
 }
 
 static public void showOnMap(PingObject p) {
-    mapStored.addMarker(new MarkerOptions().position(
-                    p.getLatlng()).title("Sent by " + p.getName() + " at " + p.getTime()));
+    Marker m = mapStored.addMarker(new MarkerOptions()
+    	.position(p.getLatlng())
+        .title("Sent by " + p.getName() + " at " + p.getTime()));
+    m.showInfoWindow();
 }
 
 }

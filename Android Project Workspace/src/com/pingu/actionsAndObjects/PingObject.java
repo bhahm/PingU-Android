@@ -16,12 +16,21 @@ public class PingObject {
 	private double lat;
 	private double lng;
 	private ParseObject pingInParse;
+	private String message;
 
 	public PingObject(String pingTime, String creator, LatLng latlng) {
 		this.pingTime = pingTime;
 		this.creator = creator;
 		this.lat = latlng.latitude;
 		this.lng = latlng.longitude;
+	}
+	
+	public PingObject(String pingTime, String creator, LatLng latlng, String message) {
+		this.pingTime = pingTime;
+		this.creator = creator;
+		this.lat = latlng.latitude;
+		this.lng = latlng.longitude;
+		this.message = message;
 	}
 	
 	public void sendPingObjToParse() {
@@ -47,5 +56,9 @@ public class PingObject {
 	
 	public String getTime() {
 		return pingTime;
+	}
+	
+	public String getMessage() {
+		return message;
 	}
 }

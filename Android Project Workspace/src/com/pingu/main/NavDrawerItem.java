@@ -3,7 +3,6 @@ package com.pingu.main;
 public class NavDrawerItem {
 	
 	private String title;
-	private int icon;
 	private String count = "0";
 	// boolean to set visibility of the counter
 	private boolean isCounterVisible = false;

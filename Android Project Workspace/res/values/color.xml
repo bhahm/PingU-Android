@@ -6,4 +6,9 @@
     <color name="list_divider">#272727</color>
     <color name="counter_text_bg">#626262</color>
     <color name="counter_text_color">#c5c4c4</color>
+     <color name="black">#000</color>
+     <color name="selected">#2faced</color>
+     <color name="red">#f00</color>
+     <color name="buttonback">#DDD</color>
+     <color name="green">#0f0</color>
 </resources>

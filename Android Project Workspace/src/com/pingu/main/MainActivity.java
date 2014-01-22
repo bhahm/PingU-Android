@@ -1,9 +1,5 @@
 package com.pingu.main;
 
-
-
-
-
 import java.util.ArrayList;
 
 import com.zeng.pingu_android.R;

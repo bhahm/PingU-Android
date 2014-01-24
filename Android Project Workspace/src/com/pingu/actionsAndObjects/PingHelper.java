@@ -1,6 +1,8 @@
 package com.pingu.actionsAndObjects;
 
 
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -127,6 +129,22 @@ public class PingHelper extends SQLiteOpenHelper {
 			throw new FriendDoesNotExistException();
 		}
 		return new FriendObject(cursor.getString(0));
+	}
+	
+	public ArrayList<FriendObject> getAllFriends()
+			throws FriendDoesNotExistException {
+		SQLiteDatabase db = this.getReadableDatabase();
+		String selectQuery = "SELECT * FROM " + TABLE_USER;
+		Cursor cursor = db.rawQuery(selectQuery, null);
+		ArrayList<FriendObject> friends = new ArrayList<FriendObject>();
+		if (cursor.moveToFirst()){
+			do{
+				FriendObject friend = new FriendObject(cursor.getString(0));
+				friends.add(friend);
+			}
+			while(cursor.moveToNext());
+		}
+		return friends;
 	}
 
 	public PingObject getPingBySender(String sender)

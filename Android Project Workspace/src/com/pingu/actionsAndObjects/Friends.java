@@ -1,17 +1,15 @@
 package com.pingu.actionsAndObjects;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
+import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
 
 /**
@@ -28,7 +26,9 @@ public class Friends extends Fragment {
 	public void onCreateView(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-		ListView listOfFriends = (ListView) getView().findViewById(
+        
+        
+		ListView listviewFriends = (ListView) getView().findViewById(
 				R.id.friendslist);
 
 		PingHelper PH = new PingHelper(null);
@@ -51,16 +51,22 @@ public class Friends extends Fragment {
 ////////////////////////
 		
 		
-		String[] values = null;
+		String[] values = {"test", "test2", "test3"};
 		for (int i = 0; i < friends.size(); i++) {
 			values[i] = friends.get(i).getUsername();
 		}
 		
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				null, R.layout.friendrow, values);
+				getApplicationContext(), android.R.layout.simple_list_item_1, values);
 
 		// Assign adapter to ListView
-		listOfFriends.setAdapter(adapter);
+		listviewFriends.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
+	}
+
+	private Context getApplicationContext() {
+		MainActivity.getAppContext();
+		return null;
 	}
 }

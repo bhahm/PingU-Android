@@ -66,7 +66,7 @@ public class Friends extends Fragment {
 	}
 
 	private Context getApplicationContext() {
-		MainActivity.getAppContext();
-		return null;
+		return MainActivity.c;
+		
 	}
 }

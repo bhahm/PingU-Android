@@ -11,8 +11,10 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.zeng.pingu_android.R;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -37,7 +39,8 @@ public class PingActions extends Activity {
 		latlngStored = latLngStoredIn;
 		if (!isCurrentLocPingSet) {
 			currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
-					.position(latlngStored).title("Current Ping"));
+					.position(latlngStored).title("Current Ping")
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.pingicon)));
 			isCurrentLocPingSet = true;
 			String datetime = Useful.getCurrentTimeAsString();
 			String user = Useful.getUsername();
@@ -98,6 +101,7 @@ public class PingActions extends Activity {
 static public void showOnMap(PingObject p) {
     Marker m = mapStored.addMarker(new MarkerOptions()
     	.position(p.getLatlng())
+    	.icon(BitmapDescriptorFactory.fromResource(R.drawable.pingicon))
         .title("Sent by " + p.getName() + " at " + p.getTime()));
     m.showInfoWindow();
 }

@@ -41,6 +41,7 @@ public class PingActions extends Activity {
 			currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
 					.position(latlngStored).title("Current Ping")
 					.icon(BitmapDescriptorFactory.fromResource(R.drawable.pingicon)));
+			currentLocPingMarker.setAnchor((float) .5, (float) .5);
 			isCurrentLocPingSet = true;
 			String datetime = Useful.getCurrentTimeAsString();
 			String user = Useful.getUsername();
@@ -101,8 +102,10 @@ public class PingActions extends Activity {
 static public void showOnMap(PingObject p) {
     Marker m = mapStored.addMarker(new MarkerOptions()
     	.position(p.getLatlng())
+    	
     	.icon(BitmapDescriptorFactory.fromResource(R.drawable.pingicon))
         .title("Sent by " + p.getName() + " at " + p.getTime()));
+    m.setAnchor((float) .5, (float) .5);
     m.showInfoWindow();
 }
 

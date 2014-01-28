@@ -41,14 +41,15 @@ public class Friends extends Fragment {
 		}
 		
 		
-		 ////////////////////////
+		
+////////////////////////////////////////////////////////////////////////////////////////////////
 		FriendObject f = new FriendObject("Mitchell Vitez");
 		friends.add(f);
 		FriendObject g = new FriendObject("TestFriendWithARelativelyLongUsername");
 		friends.add(g);
 		FriendObject h = new FriendObject("Dude");
 		friends.add(h);
-////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
 		String[] values = {"test", "test2", "test3"};
@@ -66,7 +67,6 @@ public class Friends extends Fragment {
 	}
 
 	private Context getApplicationContext() {
-		MainActivity.getAppContext();
-		return null;
+		return MainActivity.getAppContext();
 	}
 }

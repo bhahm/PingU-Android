@@ -239,6 +239,10 @@ public class MainActivity extends FragmentActivity  {
 		HomeFragment.refreshMyPings();
 		System.out.println("REFRESHED PINGS");
 	}
+	
+	static public Context getAppContext() {
+		return c;
+	}
 
 	  
 	}

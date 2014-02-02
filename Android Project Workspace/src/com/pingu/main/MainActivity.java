@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import com.zeng.pingu_android.R;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
-import com.pingu.actionsAndObjects.Friends;
 import com.pingu.actionsAndObjects.Useful;
+import com.pingu.activities.AddFriend;
+import com.pingu.activities.Friends;
 import com.pingu.fragments.HomeFragment;
 import com.pingu.fragments.PrefsFragment;
 
@@ -88,6 +89,7 @@ public class MainActivity extends FragmentActivity  {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1]));
 		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2]));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3])); //TODO
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -157,6 +159,10 @@ public class MainActivity extends FragmentActivity  {
 		switch (item.getItemId()) {
 		case R.id.refresh_pings:
 			doRefreshPings();
+			Intent intent = getIntent();
+			finish();
+			startActivity(intent);
+			doRefreshPings();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -194,6 +200,10 @@ public class MainActivity extends FragmentActivity  {
 			break;
 		case 2:
 			fragment = new PrefsFragment();
+			break;
+		case 3:
+			Intent intent2 = new Intent(this, AddFriend.class);
+	        this.startActivity(intent2);
 			break;
 
 		default:

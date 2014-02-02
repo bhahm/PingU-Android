@@ -1,4 +1,4 @@
-package com.pingu.actionsAndObjects;
+package com.pingu.activities;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.pingu.actionsAndObjects.FriendObject;
+import com.pingu.actionsAndObjects.PingHelper;
 import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
 import com.zeng.pingu_android.R;
 
@@ -23,15 +25,6 @@ public class Friends extends Activity {
         setContentView(R.layout.friends);
         
         PingHelper ph = new PingHelper(getApplicationContext());
-        
-        ///Testing block////
-        FriendObject pingu = new FriendObject("PingU");
-        FriendObject friend2 = new FriendObject("Mitchell Vitez");
-        FriendObject friend3 = new FriendObject("Another Test Friend");
-        ph.addUser(pingu);
-        ph.addUser(friend2);
-        ph.addUser(friend3);
-        ////////////////////
 
         ListView lv = (ListView) findViewById(R.id.friendslist);
         ArrayList<String> listOfFriends = new ArrayList<String>();

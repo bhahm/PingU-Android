@@ -2,7 +2,6 @@ package com.pingu.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +35,8 @@ public class AddFriend extends Activity {
 			    FriendObject fr = new FriendObject(username);
 			    ph.addUser(fr);
 		}
-		Toast.makeText(getApplicationContext(), "Friend added", 3);
+		Toast.makeText(this, "Friend added", Toast.LENGTH_LONG)
+		.show();
 	}
 	
 }

@@ -139,7 +139,7 @@ public class PingHelper extends SQLiteOpenHelper {
 		ArrayList<FriendObject> friends = new ArrayList<FriendObject>();
 		if (cursor.moveToFirst()){
 			do{
-				FriendObject friend = new FriendObject(cursor.getString(0));
+				FriendObject friend = new FriendObject(cursor.getString(1));
 				friends.add(friend);
 			}
 			while(cursor.moveToNext());

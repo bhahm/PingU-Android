@@ -1,17 +1,13 @@
 package com.pingu.actionsAndObjects;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
-import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
 
 /**
@@ -25,18 +21,34 @@ public class Friends extends Activity {
 	public void onCreate(Bundle saveInstanceState) {
 		super.onCreate(saveInstanceState);
         setContentView(R.layout.friends);
+        
+        PingHelper ph = new PingHelper(getApplicationContext());
+        
+        ///Testing block////
+        FriendObject pingu = new FriendObject("PingU");
+        FriendObject friend2 = new FriendObject("Mitchell Vitez");
+        FriendObject friend3 = new FriendObject("Another Test Friend");
+        ph.addUser(pingu);
+        ph.addUser(friend2);
+        ph.addUser(friend3);
+        ////////////////////
 
         ListView lv = (ListView) findViewById(R.id.friendslist);
-
-        // Instanciating an array list (you don't need to do this, 
-        // you already have yours).
         ArrayList<String> listOfFriends = new ArrayList<String>();
-        listOfFriends.add("foo");
-        listOfFriends.add("bar");
 
-        // This is the array adapter, it takes the context of the activity as a 
-        // first parameter, the type of list view as a second parameter and your 
-        // array as a third parameter.
+        ArrayList<FriendObject> allFriends = new ArrayList<FriendObject>();
+		try {
+			allFriends = ph.getAllFriends();
+		} catch (FriendDoesNotExistException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+        for (FriendObject f: allFriends) {
+        	listOfFriends.add(f.getUsername());
+        }
+       		
+        
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this, 
                 android.R.layout.simple_list_item_1,

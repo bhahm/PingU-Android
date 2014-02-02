@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.*;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -188,7 +189,8 @@ public class MainActivity extends FragmentActivity  {
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			fragment = new Friends();
+			Intent intent = new Intent(this, Friends.class);
+	        this.startActivity(intent);
 			break;
 		case 2:
 			fragment = new PrefsFragment();

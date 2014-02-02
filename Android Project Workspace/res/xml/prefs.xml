@@ -8,12 +8,12 @@
             android:key="username"
             android:summary="Please enter your login username"
             android:title="Username" />
-        <EditTextPreference
+      <!--  <EditTextPreference
             android:key="password"
             android:summary="Enter your password"
-            android:title="Password" />
+            android:title="Password" /> -->
     </PreferenceCategory>
-    <PreferenceCategory
+    <!--  <PreferenceCategory
         android:summary="Username and password information"
         android:title="Settings" >
         <CheckBoxPreference
@@ -33,6 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/restartForSettings" >
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
 </PreferenceScreen>

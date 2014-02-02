@@ -1,7 +1,9 @@
 package com.pingu.actionsAndObjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -18,55 +20,28 @@ import com.zeng.pingu_android.R;
  * @author Mitchell Vitez, Steven Zeng TODO: Expand group functionality and so
  *         on
  */
-public class Friends extends Fragment {
+public class Friends extends Activity {
 
-	public Friends() {
-	}
+	public void onCreate(Bundle saveInstanceState) {
+		super.onCreate(saveInstanceState);
+        setContentView(R.layout.friends);
 
-	public void onCreateView(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        
-        
-		ListView listviewFriends = (ListView) getView().findViewById(
-				R.id.friendslist);
+        ListView lv = (ListView) findViewById(R.id.friendslist);
 
-		PingHelper PH = new PingHelper(null);
-		List<FriendObject> friends = null;
-		try {
-			friends = PH.getAllFriends();
-		} catch (FriendDoesNotExistException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-////////////////////////////////////////////////////////////////////////////////////////////////
-		FriendObject f = new FriendObject("Mitchell Vitez");
-		friends.add(f);
-		FriendObject g = new FriendObject("TestFriendWithARelativelyLongUsername");
-		friends.add(g);
-		FriendObject h = new FriendObject("Dude");
-		friends.add(h);
-////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		
-		String[] values = {"test", "test2", "test3"};
-		for (int i = 0; i < friends.size(); i++) {
-			values[i] = friends.get(i).getUsername();
-		}
-		
+        // Instanciating an array list (you don't need to do this, 
+        // you already have yours).
+        ArrayList<String> listOfFriends = new ArrayList<String>();
+        listOfFriends.add("foo");
+        listOfFriends.add("bar");
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				getApplicationContext(), android.R.layout.simple_list_item_1, values);
+        // This is the array adapter, it takes the context of the activity as a 
+        // first parameter, the type of list view as a second parameter and your 
+        // array as a third parameter.
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this, 
+                android.R.layout.simple_list_item_1,
+                listOfFriends );
 
-		// Assign adapter to ListView
-		listviewFriends.setAdapter(adapter);
-		adapter.notifyDataSetChanged();
-	}
-
-	private Context getApplicationContext() {
-		return MainActivity.getAppContext();
-	}
+        lv.setAdapter(arrayAdapter); 
+   }
 }

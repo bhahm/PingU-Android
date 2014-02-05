@@ -210,13 +210,10 @@ public class MainActivity extends FragmentActivity {
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			//Intent intent = new Intent(this, Friends.class);
-			//this.startActivity(intent);
 			fragment = new FriendsFragment();
 			break;
 		case 2:
-			Intent intent2 = new Intent(this, AddFriend.class);
-			this.startActivity(intent2);
+			fragment = new AddFriend();
 			break;
 		case 3:
 			fragment = new PrefsFragment();

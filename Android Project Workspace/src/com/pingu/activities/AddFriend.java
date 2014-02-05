@@ -5,9 +5,12 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,17 +30,23 @@ import com.zeng.pingu_android.R;
  *
  */
 @SuppressLint("ShowToast")
-public class AddFriend extends Activity {
+public class AddFriend extends Fragment {
 	private ParseObject pingInParse;
 	public int isFriend;
+	
+	View v;
+	
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+		v = inflater.inflate(R.layout.addfriend, container, false);
+		setUpFriendAdder();
+		return v;
+	}
 
-	public void onCreate(Bundle saveInstanceState) {
-		super.onCreate(saveInstanceState);
-        setContentView(R.layout.addfriend);
+	public void setUpFriendAdder(){;
         
-        final EditText et = (EditText) findViewById(R.id.friendUsernameText);
+        final EditText et = (EditText) v.findViewById(R.id.friendUsernameText);
         
-        Button addFriendB = (Button) findViewById(R.id.addFriendButton);
+        Button addFriendB = (Button) v.findViewById(R.id.addFriendButton);
         addFriendB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	String txt = et.getText().toString();
@@ -68,10 +77,10 @@ public class AddFriend extends Activity {
 			pingInParse.put("to", username);
 			pingInParse.put("status", 0);
 			pingInParse.saveInBackground();
-			Toast.makeText(this, "Friend request sent", Toast.LENGTH_LONG).show();
+			Toast.makeText(this.getActivity(), "Friend request sent", Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Null string", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this.getActivity(), "Null string", Toast.LENGTH_SHORT).show();
 		}
 		
 	}
@@ -101,7 +110,7 @@ public class AddFriend extends Activity {
 	}
 	
 	public boolean alreadyAFriend(String username) throws FriendDoesNotExistException {
-		PingHelper ph = new PingHelper(getApplicationContext());
+		PingHelper ph = new PingHelper(v.getContext());
 	    FriendObject fr = new FriendObject(username);
 	    for (FriendObject f : ph.getAllFriends()) {
 	    	if (f.equals(fr))
@@ -111,7 +120,7 @@ public class AddFriend extends Activity {
 	}
 	
 	public void addToFriendDatabase(String username) throws FriendDoesNotExistException {
-		PingHelper ph = new PingHelper(getApplicationContext());
+		PingHelper ph = new PingHelper(v.getContext());
 	    FriendObject fr = new FriendObject(username);
 	    ph.addUser(fr);
 	}
@@ -136,7 +145,7 @@ public class AddFriend extends Activity {
 		    }
 		};
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
 		builder.setMessage("You received a friend request. Add \"" + from +"\" as friend?").setPositiveButton("Yes", dialogClickListener)
 		    .setNegativeButton("No", dialogClickListener).show();
 	}

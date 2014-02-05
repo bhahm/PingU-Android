@@ -14,15 +14,17 @@
     <string name="restartForSettings">You may have to restart the app for changes to take effect.</string>
   	<string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
-    <string name="addFriend">Add user as friend</string>
+    <string name="addFriend">Send user friend request</string>
     <string name="friendUsernameHint">friend\'s username</string>
      <string name="desc_list_item_icon">Item Icon</string>
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Home</item>
-        <item >Friend List</item>
-        <item >Add Friend</item>
-        <item >Settings</item>
+        <item>Home</item>
+        <item>Friend List</item>
+        <item>Add Friend</item>
+        <item>Settings</item>
+        <item>About</item>
+        <item>DEBUG</item>
         
        
     </string-array>

@@ -8,6 +8,8 @@ import com.parse.ParseAnalytics;
 import com.pingu.actionsAndObjects.Useful;
 import com.pingu.activities.AddFriend;
 import com.pingu.activities.Friends;
+import com.pingu.fragments.AboutFragment;
+import com.pingu.fragments.DebugFragment;
 import com.pingu.fragments.HomeFragment;
 import com.pingu.fragments.PrefsFragment;
 
@@ -50,6 +52,7 @@ public class MainActivity extends FragmentActivity {
 
 	// used to store app title
 	private CharSequence mTitle;
+	private Fragment fragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,8 @@ public class MainActivity extends FragmentActivity {
 		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2]));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3]));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4]));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5]));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -183,7 +188,6 @@ public class MainActivity extends FragmentActivity {
 	 * */
 	private void displayView(int position) {
 		// update the main content by replacing fragments
-		Fragment fragment = null;
 		switch (position) {
 		case 0:
 			Fragment currentFrag = getFragmentManager().findFragmentById(
@@ -205,6 +209,12 @@ public class MainActivity extends FragmentActivity {
 			break;
 		case 3:
 			fragment = new PrefsFragment();
+			break;
+		case 4:
+			fragment = new AboutFragment();
+			break;
+		case 5:
+			fragment = new DebugFragment();
 			break;
 
 		default:

@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pingu.activities.Friends"
+            android:name="com.pingu.fragments.FriendsFragment"
             >
         </activity>
          <activity

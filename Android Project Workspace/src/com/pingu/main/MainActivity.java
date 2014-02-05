@@ -7,9 +7,9 @@ import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.pingu.actionsAndObjects.Useful;
 import com.pingu.activities.AddFriend;
-import com.pingu.activities.Friends;
 import com.pingu.fragments.AboutFragment;
 import com.pingu.fragments.DebugFragment;
+import com.pingu.fragments.FriendsFragment;
 import com.pingu.fragments.HomeFragment;
 import com.pingu.fragments.PrefsFragment;
 
@@ -210,8 +210,9 @@ public class MainActivity extends FragmentActivity {
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			Intent intent = new Intent(this, Friends.class);
-			this.startActivity(intent);
+			//Intent intent = new Intent(this, Friends.class);
+			//this.startActivity(intent);
+			fragment = new FriendsFragment();
 			break;
 		case 2:
 			Intent intent2 = new Intent(this, AddFriend.class);

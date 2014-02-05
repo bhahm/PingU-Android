@@ -39,6 +39,7 @@ public class PingActions extends Activity {
 			LatLng latLngStoredIn) {
 		mapStored = mapStoredIn;
 		latlngStored = latLngStoredIn;
+		unpingCurrentLocation(mapStored, latlngStored);
 		if (!isCurrentLocPingSet) {
 			currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
 					.position(latlngStored)

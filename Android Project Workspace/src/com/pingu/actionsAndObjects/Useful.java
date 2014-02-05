@@ -7,7 +7,6 @@ import java.util.Date;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 
 /**
  * Library of useful static methods that may be called anywhere else

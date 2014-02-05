@@ -80,13 +80,19 @@ public class PingHelper extends SQLiteOpenHelper {
 		return id;
 	}
 
-	public long addUser(FriendObject friend) {
+	public long addUser(FriendObject friend) throws FriendDoesNotExistException {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
 
 		String username = friend.getUsername();
+		ArrayList<FriendObject> allFriends = this.getAllFriends();
+		for (FriendObject fo : allFriends) {
+			if (fo.getUsername().equals(username)) {
+				return 0;
+			}
+		}
 		values.put(KEY_USERNAME, username);
-
+	
 		long id = db.insert(TABLE_USER, null, values);
 
 		return id;

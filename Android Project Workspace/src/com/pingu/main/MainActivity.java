@@ -200,11 +200,11 @@ public class MainActivity extends FragmentActivity {
 			this.startActivity(intent);
 			break;
 		case 2:
-			fragment = new PrefsFragment();
-			break;
-		case 3:
 			Intent intent2 = new Intent(this, AddFriend.class);
 			this.startActivity(intent2);
+			break;
+		case 3:
+			fragment = new PrefsFragment();
 			break;
 
 		default:

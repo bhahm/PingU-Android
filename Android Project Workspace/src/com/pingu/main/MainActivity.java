@@ -6,8 +6,8 @@ import com.zeng.pingu_android.R;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.pingu.actionsAndObjects.Useful;
-import com.pingu.activities.AddFriend;
 import com.pingu.fragments.AboutFragment;
+import com.pingu.fragments.AddFriendFragment;
 import com.pingu.fragments.DebugFragment;
 import com.pingu.fragments.FriendsFragment;
 import com.pingu.fragments.HomeFragment;
@@ -213,7 +213,7 @@ public class MainActivity extends FragmentActivity {
 			fragment = new FriendsFragment();
 			break;
 		case 2:
-			fragment = new AddFriend();
+			fragment = new AddFriendFragment();
 			break;
 		case 3:
 			fragment = new PrefsFragment();

@@ -46,7 +46,7 @@
             >
         </activity>
          <activity
-            android:name="com.pingu.activities.AddFriend"
+            android:name="com.pingu.fragments.AddFriendFragment"
          >
         </activity>
         

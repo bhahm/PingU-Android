@@ -1,9 +1,8 @@
-package com.pingu.activities;
+package com.pingu.fragments;
 
 import java.util.List;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -30,7 +29,7 @@ import com.zeng.pingu_android.R;
  *
  */
 @SuppressLint("ShowToast")
-public class AddFriend extends Fragment {
+public class AddFriendFragment extends Fragment {
 	private ParseObject pingInParse;
 	public int isFriend;
 	

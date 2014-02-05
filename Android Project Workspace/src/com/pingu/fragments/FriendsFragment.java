@@ -2,9 +2,7 @@ package com.pingu.fragments;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +14,6 @@ import android.widget.ListView;
 import com.pingu.actionsAndObjects.FriendObject;
 import com.pingu.actionsAndObjects.PingHelper;
 import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
-import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
 
 /**

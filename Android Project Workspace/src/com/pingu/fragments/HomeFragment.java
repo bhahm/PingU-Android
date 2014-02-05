@@ -93,8 +93,7 @@ public class HomeFragment extends Fragment implements
 	@Override
 	public void onConnected(Bundle dataBundle) {
 		// Display the connection status
-		Toast.makeText(this.getActivity(), "Connected", Toast.LENGTH_SHORT)
-				.show();
+		//Toast.makeText(this.getActivity(), "Connected", Toast.LENGTH_SHORT).show();
 		setUpMapIfNeeded();
 		
 	}

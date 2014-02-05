@@ -63,7 +63,6 @@ public class PrefsFragment extends PreferenceFragment implements
 			if (usernameAlreadyUsed(newValue) || isUsed) {
 				Toast.makeText(this.getActivity().getApplicationContext(),
 						"Unable to use this name", Toast.LENGTH_LONG).show();
-				Log.i("key", "bad user");
 				return false;
 			} else {
 				deleteOldFromParse(oldUsername);
@@ -72,7 +71,6 @@ public class PrefsFragment extends PreferenceFragment implements
 				Toast.makeText(this.getActivity().getApplicationContext(),
 						"Username set to: " + newValue, Toast.LENGTH_LONG)
 						.show();
-				Log.i("key", "new user");
 				return true;
 			}
 		}
@@ -84,12 +82,6 @@ public class PrefsFragment extends PreferenceFragment implements
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
 		List<ParseObject> results = query.find();
 		boolean del = false;
-		Log.i("oldU", oldUsername);
-		Log.i("oldU", oldUsername);
-		Log.i("oldU", oldUsername);
-		Log.i("oldU", oldUsername);
-		Log.i("oldU", oldUsername);
-		Log.i("oldU", oldUsername);
 		for (ParseObject parseObj : results) {
 			if (parseObj.get("username").equals(oldUsername)) {
 				po = parseObj;

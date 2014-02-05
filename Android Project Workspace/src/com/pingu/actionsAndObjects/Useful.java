@@ -7,6 +7,7 @@ import java.util.Date;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 
 /**
  * Library of useful static methods that may be called anywhere else
@@ -33,4 +34,5 @@ public class Useful extends Activity {
 	public static void setUsername(String u) {
 		username = u;
 	}
+
 }

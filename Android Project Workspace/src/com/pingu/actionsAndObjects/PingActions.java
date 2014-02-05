@@ -11,6 +11,8 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
+import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -75,18 +77,41 @@ public class PingActions extends Activity {
                             // There was an error
                     } else {
                             for (ParseObject parseObj : results) {
-                                    Date createdAt = parseObj.getCreatedAt();
+									Date createdAt = parseObj.getCreatedAt();
                                     Date now = new Date();
                                     if (now.getTime() - createdAt.getTime() >= 30*60*1000) {
                                     	parseObj.deleteInBackground();
+                                    	break;
+                                    }
+                                    boolean inList = false;
+                                    String creator = (String) parseObj.get("creator");
+                                    if (creator.equals(Useful.getUsername())) {
+                                    	inList = true;
                                     }
                                     else {
+	                                    FriendObject creatObj = new FriendObject(creator);
+	                                    PingHelper ph = new PingHelper(MainActivity.getAppContext());
+	                                    ArrayList<FriendObject> list = new ArrayList<FriendObject>();
+										try {
+											list = ph.getAllFriends();
+										} catch (FriendDoesNotExistException e1) {
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+	                                   
+	                                    for (FriendObject f : list) {
+	                                    	if (f.equals(creatObj)) {
+	                                    		inList = true;
+	                                    	}
+	                                    }
+                                    }
+                                    if (inList) {
                                     	int longTime = 0;
                                     	if (now.getTime() - createdAt.getTime() >= 15*60*1000) {
                                         	longTime = 1;
                                         }
 	                                    String pingTime = (String) parseObj.get("pingTime");
-	                                    String creator = (String) parseObj.get("creator");
+	                                    //String creator = (String) parseObj.get("creator");
 	                                    double lat = (Double) parseObj.get("latitude");
 	                                    double lng = (Double) parseObj.get("longitude");
 	                                    LatLng latlng = new LatLng(lat, lng);

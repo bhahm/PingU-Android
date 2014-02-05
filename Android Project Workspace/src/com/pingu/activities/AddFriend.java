@@ -12,6 +12,11 @@ import com.pingu.actionsAndObjects.FriendObject;
 import com.pingu.actionsAndObjects.PingHelper;
 import com.zeng.pingu_android.R;
 
+/**
+ * Add new friends by username
+ * @author Mitchell Vitez
+ *
+ */
 @SuppressLint("ShowToast")
 public class AddFriend extends Activity {
 	public void onCreate(Bundle saveInstanceState) {

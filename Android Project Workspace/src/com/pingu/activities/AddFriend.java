@@ -35,8 +35,7 @@ public class AddFriend extends Activity {
 			    FriendObject fr = new FriendObject(username);
 			    ph.addUser(fr);
 		}
-		Toast.makeText(this, "Friend added", Toast.LENGTH_LONG)
-		.show();
+		Toast.makeText(this, "Friend added", Toast.LENGTH_LONG).show();
 	}
 	
 }

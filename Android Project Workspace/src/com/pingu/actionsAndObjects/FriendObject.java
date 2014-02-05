@@ -2,8 +2,9 @@ package com.pingu.actionsAndObjects;
 
 /**
  * Used for easier storage of friends by their data
+ * 
  * @author Mitchell Vitez
- *
+ * 
  */
 public class FriendObject {
 
@@ -12,7 +13,7 @@ public class FriendObject {
 	public FriendObject(String username) {
 		this.username = username;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}

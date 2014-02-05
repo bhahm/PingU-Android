@@ -81,6 +81,10 @@ public class PingActions extends Activity {
                                     	parseObj.deleteInBackground();
                                     }
                                     else {
+                                    	int longTime = 0;
+                                    	if (now.getTime() - createdAt.getTime() >= 15*60*1000) {
+                                        	longTime = 1;
+                                        }
 	                                    String pingTime = (String) parseObj.get("pingTime");
 	                                    String creator = (String) parseObj.get("creator");
 	                                    double lat = (Double) parseObj.get("latitude");
@@ -89,7 +93,7 @@ public class PingActions extends Activity {
 	                                    String message = (String) parseObj.get("message");
 	                                    PingObject pingObj = new PingObject(pingTime, creator,
 	                                                    latlng, message);
-	                                    showOnMap(pingObj);
+	                                    showOnMap(pingObj, longTime);
                                     }
                             }
                     }
@@ -99,14 +103,23 @@ public class PingActions extends Activity {
 
 }
 
-static public void showOnMap(PingObject p) {
-    Marker m = mapStored.addMarker(new MarkerOptions()
+static public void showOnMap(PingObject p, int duration) {
+	if (duration == 1) {
+		Marker m = mapStored.addMarker(new MarkerOptions()
     	.position(p.getLatlng())
-    	
+    	.icon(BitmapDescriptorFactory.fromResource(R.drawable.pingiconfaded))
+        .title("Sent by " + p.getName() + " at " + p.getTime())); 
+		m.setAnchor((float) .5, (float) .5);
+    	m.showInfoWindow();    
+	}
+	else {
+		Marker m = mapStored.addMarker(new MarkerOptions()
+    	.position(p.getLatlng())
     	.icon(BitmapDescriptorFactory.fromResource(R.drawable.pingicon))
         .title("Sent by " + p.getName() + " at " + p.getTime()));
-    m.setAnchor((float) .5, (float) .5);
-    m.showInfoWindow();
+		m.setAnchor((float) .5, (float) .5);
+		m.showInfoWindow();	
+	}
 }
 
 }

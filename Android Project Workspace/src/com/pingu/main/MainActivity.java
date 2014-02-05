@@ -33,7 +33,7 @@ import android.widget.TextView;
 
 //@author Steven Zeng, Mitchell Vitez
 //Main activity of the entire app that instantiates the navigation bar and displays fragments accordingly.
-public class MainActivity extends FragmentActivity  {
+public class MainActivity extends FragmentActivity {
 
 	TextView textView;
 	public static Context c;
@@ -50,27 +50,26 @@ public class MainActivity extends FragmentActivity  {
 
 	// used to store app title
 	private CharSequence mTitle;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 		c = this;
 		setContentView(R.layout.activity_main);
-	
+
 		Parse.initialize(this, "91HmkBQniLXG81hN5ww3ARr15sNofBNbvG9ZgOqJ",
 				"1j5IFHb6N6basAB6pnA03QaQuqDGZluMZjvamWN2");
 		ParseAnalytics.trackAppOpened(getIntent());
-		
+
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(MainActivity.this);
 		String username = prefs.getString("username", "Default NickName");
 		Useful.setUsername(username);
-            
-        
-		
-        mTitle = mDrawerTitle = getTitle();
-		
-        // load slide menu items
+
+		mTitle = mDrawerTitle = getTitle();
+
+		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
 		// nav drawer icons from resources
@@ -89,7 +88,7 @@ public class MainActivity extends FragmentActivity  {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1]));
 		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2]));
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3])); //TODO
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3]));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -101,14 +100,15 @@ public class MainActivity extends FragmentActivity  {
 				navDrawerItems);
 		mDrawerList.setAdapter(adapter);
 
-	
 		// enabling action bar app icon and behaving it as toggle button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, //nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for accessibility
-				R.string.app_name // nav drawer close - description for accessibility
+				R.drawable.ic_drawer, // nav menu toggle icon
+				R.string.app_name, // nav drawer open - description for
+									// accessibility
+				R.string.app_name // nav drawer close - description for
+									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
@@ -129,7 +129,7 @@ public class MainActivity extends FragmentActivity  {
 			displayView(0);
 		}
 	}
-	
+
 	/**
 	 * Slide menu item click listener
 	 * */
@@ -174,7 +174,7 @@ public class MainActivity extends FragmentActivity  {
 	 */
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		//menu.findItem(R.id.refresh_pings).setVisible(!drawerOpen);
+		// menu.findItem(R.id.refresh_pings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -186,24 +186,25 @@ public class MainActivity extends FragmentActivity  {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			 Fragment currentFrag = getFragmentManager().findFragmentById(R.id.map);
-			   
-			if (currentFrag != null)
-			{
-				 getFragmentManager().beginTransaction().remove(currentFrag).commit();
+			Fragment currentFrag = getFragmentManager().findFragmentById(
+					R.id.map);
+
+			if (currentFrag != null) {
+				getFragmentManager().beginTransaction().remove(currentFrag)
+						.commit();
 			}
 			fragment = new HomeFragment();
 			break;
 		case 1:
 			Intent intent = new Intent(this, Friends.class);
-	        this.startActivity(intent);
+			this.startActivity(intent);
 			break;
 		case 2:
 			fragment = new PrefsFragment();
 			break;
 		case 3:
 			Intent intent2 = new Intent(this, AddFriend.class);
-	        this.startActivity(intent2);
+			this.startActivity(intent2);
 			break;
 
 		default:
@@ -225,7 +226,6 @@ public class MainActivity extends FragmentActivity  {
 		}
 	}
 
-
 	/**
 	 * When using the ActionBarDrawerToggle, you must call it during
 	 * onPostCreate() and onConfigurationChanged()...
@@ -237,7 +237,7 @@ public class MainActivity extends FragmentActivity  {
 		// Sync the toggle state after onRestoreInstanceState has occurred.
 		mDrawerToggle.syncState();
 		//
-		
+
 	}
 
 	@Override
@@ -246,15 +246,14 @@ public class MainActivity extends FragmentActivity  {
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-	
+
 	public void doRefreshPings() {
 		HomeFragment.refreshMyPings();
 		System.out.println("REFRESHED PINGS");
 	}
-	
+
 	static public Context getAppContext() {
 		return c;
 	}
 
-	  
-	}
+}

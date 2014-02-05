@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.*;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -67,8 +68,10 @@ public class MainActivity extends FragmentActivity {
 
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(MainActivity.this);
-		String username = prefs.getString("username", "Default NickName");
+		String username = prefs.getString("username", "DEFAULT_USERNAME");
 		Useful.setUsername(username);
+		
+		
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -132,6 +135,13 @@ public class MainActivity extends FragmentActivity {
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
 			displayView(0);
+		}
+	}
+	
+	public void onResume() {
+		super.onResume();
+		if (! PrefsFragment.isUsernameSet()) {
+			showSetUserDialog();
 		}
 	}
 
@@ -264,6 +274,24 @@ public class MainActivity extends FragmentActivity {
 
 	static public Context getAppContext() {
 		return c;
+	}
+	
+	public void showSetUserDialog() {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		alert.setTitle("Set Username");
+		alert.setMessage("You should set a username before using the application");
+
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				displayView(3);
+				
+			}
+		
+		});
+
+		alert.show();
 	}
 
 }

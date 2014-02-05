@@ -55,11 +55,20 @@ public class PrefsFragment extends PreferenceFragment implements
 		getPreferenceScreen().getSharedPreferences()
 				.unregisterOnSharedPreferenceChangeListener(this);
 	}
+	
+	public static boolean isUsernameSet() {
+		if (Useful.getUsername().equals("DEFAULT_USERNAME") ||
+				Useful.getUsername().equals("") ||
+				Useful.getUsername().equals(null)) {
+			return false;
+		}
+		return true;
+	}
 
 	public boolean onPreferenceChange(String prefBeingChangedKey, String oldUsername,
 			String newValue) throws ParseException {
 		if (prefBeingChangedKey.equals("username")) {
-			if (usernameAlreadyUsed(newValue) || isUsed) {
+			if (usernameAlreadyUsed(newValue) || isUsed  || newValue.equals("") || newValue.equals(null) || newValue.equals("DEFAULT_USERNAME")) {
 				Toast.makeText(this.getActivity().getApplicationContext(),
 						"Unable to use this name", Toast.LENGTH_LONG).show();
 				return false;

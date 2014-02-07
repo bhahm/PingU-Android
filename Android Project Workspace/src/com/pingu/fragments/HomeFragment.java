@@ -59,6 +59,7 @@ public class HomeFragment extends Fragment implements
 				int id = v.getId();
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
+					
 					PingActions.pingCurrentLocation(mapStored, latLngStored);
 				} /*else if (id == R.id.btnRefresh) {
 					setUpMapIfNeeded();

@@ -7,7 +7,7 @@
     <string name="overlay_label">Overlay</string>
     <string name="btnPrefs">Settings</string>
     <string name="friends">Friends</string>
-    <string name="ping">Ping Current Location</string>
+    <string name="ping">Ping!</string>
     <string name="unping">Unping Current Location</string>
     <string name="refresh">Refresh received Pings</string>
     <string name="debugSettings">Display Settings (for debugging, remove later)</string>

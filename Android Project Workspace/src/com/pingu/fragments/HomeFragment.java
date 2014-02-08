@@ -18,9 +18,13 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +43,7 @@ public class HomeFragment extends Fragment implements
 	private LocationClient mLocationClient;
 	private Location myLocation;
 	private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mLocationClient = new LocationClient(MainActivity.c, this, this);
@@ -47,33 +52,30 @@ public class HomeFragment extends Fragment implements
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
+
 		View rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
 				container, false);
-		
+
 		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
-		//Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
+		// Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				int id = v.getId();
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
-					
+
 					PingActions.pingCurrentLocation(mapStored, latLngStored);
-				} /*else if (id == R.id.btnRefresh) {
-					setUpMapIfNeeded();
-					try {
-						PingActions.refreshPings(mapStored);
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
-				}*/
+				} /*
+				 * else if (id == R.id.btnRefresh) { setUpMapIfNeeded(); try {
+				 * PingActions.refreshPings(mapStored); } catch (ParseException
+				 * e) { e.printStackTrace(); } }
+				 */
 			}
 		};
 		btnPing.setOnClickListener(listener);
-		//btnRefresh.setOnClickListener(listener);
-		
+		// btnRefresh.setOnClickListener(listener);
+
 		return rootView;
 
 	}
@@ -81,7 +83,7 @@ public class HomeFragment extends Fragment implements
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 	}
 
 	@Override
@@ -94,9 +96,10 @@ public class HomeFragment extends Fragment implements
 	@Override
 	public void onConnected(Bundle dataBundle) {
 		// Display the connection status
-		//Toast.makeText(this.getActivity(), "Connected", Toast.LENGTH_SHORT).show();
+		// Toast.makeText(this.getActivity(), "Connected",
+		// Toast.LENGTH_SHORT).show();
 		setUpMapIfNeeded();
-		
+
 	}
 
 	@Override
@@ -113,10 +116,9 @@ public class HomeFragment extends Fragment implements
 	public void onStop() {
 		// Disconnecting the client invalidates it.
 		mLocationClient.disconnect();
-		
+
 		super.onStop();
 	}
-	
 
 	// Define a DialogFragment that displays the error dialog
 
@@ -177,7 +179,6 @@ public class HomeFragment extends Fragment implements
 			map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLng, 13));
 			mapStored = map;
 			doRefreshPings();
-
 		} else {
 			setUpMap();
 		}
@@ -191,12 +192,9 @@ public class HomeFragment extends Fragment implements
 		latLngStored = new LatLng(myLocation.getLatitude(),
 				myLocation.getLongitude());
 		doRefreshPings();
-			
+
 	}
 
-	
-
-	
 	/*
 	 * Called by Location Services when the request to connect the client
 	 * finishes successfully. At this point, you can request the current
@@ -243,9 +241,7 @@ public class HomeFragment extends Fragment implements
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+
 	static public GoogleMap getMap() {
 		return mapStored;
 	}
@@ -256,6 +252,7 @@ public class HomeFragment extends Fragment implements
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
+
 }

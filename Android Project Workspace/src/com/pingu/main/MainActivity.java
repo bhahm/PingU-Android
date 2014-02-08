@@ -11,8 +11,12 @@ import com.pingu.fragments.AddFriendFragment;
 import com.pingu.fragments.DebugFragment;
 import com.pingu.fragments.FriendsFragment;
 import com.pingu.fragments.HomeFragment;
+import com.pingu.fragments.NoNetworkFragment;
 import com.pingu.fragments.PrefsFragment;
 
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.*;
@@ -47,7 +51,7 @@ public class MainActivity extends FragmentActivity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
-
+	private String TAG = "MainActivity";
 	// nav drawer title
 	private CharSequence mDrawerTitle;
 
@@ -57,6 +61,7 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 		c = this;
@@ -70,8 +75,6 @@ public class MainActivity extends FragmentActivity {
 				.getDefaultSharedPreferences(MainActivity.this);
 		String username = prefs.getString("username", "DEFAULT_USERNAME");
 		Useful.setUsername(username);
-		
-		
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -131,16 +134,22 @@ public class MainActivity extends FragmentActivity {
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
 			displayView(0);
 		}
+		if (!isNetworkOnline()) {
+			Log.v(TAG, "no network");
+			fragment = new NoNetworkFragment();
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, fragment).commit();
+		}
 	}
-	
+
 	public void onResume() {
 		super.onResume();
-		if (! PrefsFragment.isUsernameSet()) {
+		if (!PrefsFragment.isUsernameSet()) {
 			showSetUserDialog();
 		}
 	}
@@ -198,37 +207,41 @@ public class MainActivity extends FragmentActivity {
 	 * */
 	private void displayView(int position) {
 		// update the main content by replacing fragments
-		switch (position) {
-		case 0:
-			Fragment currentFrag = getFragmentManager().findFragmentById(
-					R.id.map);
+		if (!isNetworkOnline()) {
+			Log.v(TAG, "no network");
+			fragment = new NoNetworkFragment();
+		} else {
+			switch (position) {
+			case 0:
+				Fragment currentFrag = getFragmentManager().findFragmentById(
+						R.id.map);
 
-			if (currentFrag != null) {
-				getFragmentManager().beginTransaction().remove(currentFrag)
-						.commit();
+				if (currentFrag != null) {
+					getFragmentManager().beginTransaction().remove(currentFrag)
+							.commit();
+				}
+				fragment = new HomeFragment();
+				break;
+			case 1:
+				fragment = new FriendsFragment();
+				break;
+			case 2:
+				fragment = new AddFriendFragment();
+				break;
+			case 3:
+				fragment = new PrefsFragment();
+				break;
+			case 4:
+				fragment = new AboutFragment();
+				break;
+			case 5:
+				fragment = new DebugFragment();
+				break;
+
+			default:
+				break;
 			}
-			fragment = new HomeFragment();
-			break;
-		case 1:
-			fragment = new FriendsFragment();
-			break;
-		case 2:
-			fragment = new AddFriendFragment();
-			break;
-		case 3:
-			fragment = new PrefsFragment();
-			break;
-		case 4:
-			fragment = new AboutFragment();
-			break;
-		case 5:
-			fragment = new DebugFragment();
-			break;
-
-		default:
-			break;
 		}
-
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
@@ -273,7 +286,7 @@ public class MainActivity extends FragmentActivity {
 	static public Context getAppContext() {
 		return c;
 	}
-	
+
 	public void showSetUserDialog() {
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
@@ -284,12 +297,49 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				displayView(3);
-				
+
 			}
-		
+
 		});
 
 		alert.show();
+	}
+
+	private boolean isNetworkOnline() {
+		boolean status = false;
+		boolean gps_enabled = false;
+		try {
+			ConnectivityManager cm = (ConnectivityManager) this
+					.getSystemService(Context.CONNECTIVITY_SERVICE);
+			NetworkInfo netInfo = cm.getNetworkInfo(0);
+			if (netInfo != null
+					&& netInfo.getState() == NetworkInfo.State.CONNECTED) {
+				status = true;
+			} else {
+				netInfo = cm.getNetworkInfo(1);
+				if (netInfo != null
+						&& netInfo.getState() == NetworkInfo.State.CONNECTED)
+					status = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		if (status == true) {
+			LocationManager lm = null;
+			if (lm == null) {
+				lm = (LocationManager) c
+						.getSystemService(Context.LOCATION_SERVICE);
+			}
+			try {
+				gps_enabled = lm
+						.isProviderEnabled(LocationManager.GPS_PROVIDER);
+			} catch (Exception ex) {
+				Log.e(TAG, "error checking for gps, e");
+			}
+
+		}
+		return status && gps_enabled;
 	}
 
 }

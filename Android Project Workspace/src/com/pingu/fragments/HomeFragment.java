@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment implements
 				int id = v.getId();
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
-					toggleTextBox();
+					toggleTextBoxAndPing();
 				} /*
 				 * else if (id == R.id.btnRefresh) { setUpMapIfNeeded(); try {
 				 * PingActions.refreshPings(mapStored); } catch (ParseException
@@ -89,14 +89,13 @@ public class HomeFragment extends Fragment implements
 		return rootView;
 
 	}
-private void toggleTextBox()
+private void toggleTextBoxAndPing()
 {
 	EditText textbox = (EditText) getActivity().findViewById(R.id.messageBox);
 	if (textbox.getVisibility() != View.VISIBLE)
 		textbox.setVisibility(View.VISIBLE);
 	else
 	{
-		
 		message = textbox.getText().toString();
 		PingActions.pingCurrentLocation(mapStored, latLngStored);
 		textbox.setVisibility(View.INVISIBLE);

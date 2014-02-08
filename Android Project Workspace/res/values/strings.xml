@@ -7,7 +7,7 @@
     <string name="overlay_label">Overlay</string>
     <string name="btnPrefs">Settings</string>
     <string name="friends">Friends</string>
-    <string name="ping">Ping Current Location</string>
+    <string name="ping">Ping!</string>
     <string name="unping">Unping Current Location</string>
     <string name="refresh">Refresh received Pings</string>
     <string name="debugSettings">Display Settings (for debugging, remove later)</string>
@@ -16,6 +16,8 @@
     <string name="drawer_close">Slider Menu Closed</string>
     <string name="addFriend">Send user friend request</string>
     <string name="friendUsernameHint">friend\'s username</string>
+    <string name = "enterMessageHint">Enter a message(max 40 chars)</string>
+    <string name ="message"></string>
      <string name="desc_list_item_icon">Item Icon</string>
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">

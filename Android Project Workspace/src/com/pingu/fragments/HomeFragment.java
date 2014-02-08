@@ -26,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class HomeFragment extends Fragment implements
@@ -34,7 +35,7 @@ public class HomeFragment extends Fragment implements
 
 	public HomeFragment() {
 	}
-
+	public static String message = "";
 	private GoogleMap map;
 	private LocationClient mLocationClient;
 	private Location myLocation;
@@ -59,7 +60,8 @@ public class HomeFragment extends Fragment implements
 				int id = v.getId();
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
-					PingActions.pingCurrentLocation(mapStored, latLngStored);
+					toggleTextBox();
+					
 				} /*else if (id == R.id.btnRefresh) {
 					setUpMapIfNeeded();
 					try {
@@ -76,6 +78,19 @@ public class HomeFragment extends Fragment implements
 		return rootView;
 
 	}
+private void toggleTextBox()
+{
+	EditText textbox = (EditText) getActivity().findViewById(R.id.messageBox);
+	if (textbox.getVisibility() != View.VISIBLE)
+		textbox.setVisibility(View.VISIBLE);
+	else
+	{
+		
+		message = textbox.getText().toString();
+		PingActions.pingCurrentLocation(mapStored, latLngStored);
+		textbox.setVisibility(View.INVISIBLE);
+	}
+}
 
 	@Override
 	public void onResume() {

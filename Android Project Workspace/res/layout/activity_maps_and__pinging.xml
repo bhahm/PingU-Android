@@ -29,10 +29,21 @@
         android:padding="10dp"
          android:text="@string/ping"
 			/>
-      
+      <EditText
+        android:id="@+id/messageBox"
+        android:hint="@string/enterMessageHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btnPing"
+        android:visibility="invisible"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
 
+    
    
 </FrameLayout>
 

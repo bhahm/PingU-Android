@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.Activity;
 import android.util.Log;
 
+import com.pingu.fragments.HomeFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -52,10 +53,8 @@ public class PingActions extends Activity {
 			String user = Useful.getUsername();
 			if (user == null)
 				user = "DEFAULT_USER";
-			// TODO Add ability to add message when pinging
-			String message = "default message for now";
 			currentLocPingObj = new PingObject(datetime, user, latlngStored,
-					message);
+					HomeFragment.message);
 			currentLocPingObj.sendPingObjToParse();
 		}
 	}

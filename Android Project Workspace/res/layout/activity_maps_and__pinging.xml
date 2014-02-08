@@ -15,23 +15,26 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="40dp"
-        android:layout_marginRight="100dp"
-        android:animateLayoutChanges="true">
+         >
 
-			<Button
-			    android:id="@+id/btnPing"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			   	android:background="@layout/selector"
-			    android:padding="10dp"
-			    android:text="@string/ping" />
+
+   
+        <Button
+            android:id="@+id/btnPing"
+          android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="20dp"
+        android:background="@layout/selector"
+        android:padding="10dp"
+         android:text="@string/ping"
+			/>
+      
 
 </RelativeLayout>
 
-  
    
 </FrameLayout>
 

@@ -333,7 +333,9 @@ public class MainActivity extends FragmentActivity {
 			}
 			try {
 				gps_enabled = lm
-						.isProviderEnabled(LocationManager.GPS_PROVIDER);
+						.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+						|| lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+				Log.v(TAG, "gps status: " + gps_enabled);
 			} catch (Exception ex) {
 				Log.e(TAG, "error checking for gps, e");
 			}

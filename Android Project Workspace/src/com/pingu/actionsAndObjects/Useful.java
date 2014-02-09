@@ -21,7 +21,7 @@ public class Useful extends Activity {
 
 	@SuppressLint("SimpleDateFormat")
 	public static String getCurrentTimeAsString() {
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		DateFormat df = new SimpleDateFormat("hh:mm");
 		Date today = (Date) Calendar.getInstance().getTime();
 		return df.format(today);
 	}

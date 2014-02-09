@@ -6,12 +6,14 @@ import java.util.List;
 
 import android.app.Activity;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
+import com.pingu.fragments.HomeFragment;
 import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
 
@@ -36,7 +38,7 @@ public class PingActions extends Activity {
 	public static LatLng latlngStored;
 
 	static public void pingCurrentLocation(GoogleMap mapStoredIn,
-			LatLng latLngStoredIn) {
+			LatLng latLngStoredIn, String message) {
 		mapStored = mapStoredIn;
 		latlngStored = latLngStoredIn;
 		unpingCurrentLocation(mapStored, latlngStored);
@@ -53,7 +55,7 @@ public class PingActions extends Activity {
 			if (user == null)
 				user = "DEFAULT_USER";
 			// TODO Add ability to add message when pinging
-			String message = "default message for now";
+			
 			currentLocPingObj = new PingObject(datetime, user, latlngStored,
 					message);
 			currentLocPingObj.sendPingObjToParse();
@@ -138,7 +140,8 @@ public class PingActions extends Activity {
 					.position(p.getLatlng())
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingiconfaded))
-					.title("Sent by " + p.getName() + " at " + p.getTime()));
+					.snippet(p.getMessage())
+					.title(p.getName()+" | "+ p.getTime()));
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		} else {
@@ -146,7 +149,8 @@ public class PingActions extends Activity {
 					.position(p.getLatlng())
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingicon))
-					.title("Sent by " + p.getName() + " at " + p.getTime()));
+							.snippet(p.getMessage())
+					.title(p.getName()+" | "+ p.getTime()));
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		}

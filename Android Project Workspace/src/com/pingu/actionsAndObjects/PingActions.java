@@ -44,7 +44,7 @@ public class PingActions extends Activity {
 		if (!isCurrentLocPingSet) {
 			currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
 					.position(latlngStored)
-					.title("Current Ping")
+					.title(HomeFragment.message)
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingicon)));
 			currentLocPingMarker.setAnchor((float) .5, (float) .5);

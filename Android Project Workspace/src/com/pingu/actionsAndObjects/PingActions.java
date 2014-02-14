@@ -42,12 +42,6 @@ public class PingActions extends Activity {
 		latlngStored = latLngStoredIn;
 		unpingCurrentLocation(mapStored, latlngStored);
 		if (!isCurrentLocPingSet) {
-			currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
-					.position(latlngStored)
-					.title(HomeFragment.message)
-					.icon(BitmapDescriptorFactory
-							.fromResource(R.drawable.pingicon)));
-			currentLocPingMarker.setAnchor((float) .5, (float) .5);
 			isCurrentLocPingSet = true;
 			String datetime = Useful.getCurrentTimeAsString();
 			String user = Useful.getUsername();
@@ -64,7 +58,6 @@ public class PingActions extends Activity {
 		mapStored = mapStoredIn;
 		latlngStored = latLngStoredIn;
 		if (isCurrentLocPingSet) {
-			currentLocPingMarker.remove();
 			currentLocPingObj.removePingObjFromParse();
 			isCurrentLocPingSet = false;
 		}
@@ -137,7 +130,8 @@ public class PingActions extends Activity {
 					.position(p.getLatlng())
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingiconfaded))
-					.title("Sent by " + p.getName() + " at " + p.getTime()));
+					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.snippet(p.getMessage()));
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		} else {
@@ -145,7 +139,8 @@ public class PingActions extends Activity {
 					.position(p.getLatlng())
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingicon))
-					.title("Sent by " + p.getName() + " at " + p.getTime()));
+					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.snippet(p.getMessage()));
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		}

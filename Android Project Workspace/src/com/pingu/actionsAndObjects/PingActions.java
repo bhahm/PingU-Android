@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.util.Log;
-import android.widget.EditText;
 
 import com.pingu.fragments.HomeFragment;
 import com.parse.FindCallback;
@@ -14,7 +13,6 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
-import com.pingu.fragments.HomeFragment;
 import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
 
@@ -92,7 +90,6 @@ public class PingActions extends Activity {
 							try {
 								list = ph.getAllFriends();
 							} catch (FriendDoesNotExistException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 							for (FriendObject f : list) {

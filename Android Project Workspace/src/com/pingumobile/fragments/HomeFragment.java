@@ -22,7 +22,6 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Location;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,17 +88,7 @@ public class HomeFragment extends Fragment implements
 	}
 
 	private void toggleTextBoxAndPing() {
-		Display display = getActivity().getWindowManager().getDefaultDisplay(); 
-		int width = display.getWidth();
 		EditText textbox = (EditText) getActivity().findViewById(R.id.messageBox);
-		if(width > 200)
-		{
-		    textbox.setWidth(200);
-		}
-		else
-		{	
-			textbox.setWidth(width);
-		}
 		if (textbox.getVisibility() != View.VISIBLE)
 			textbox.setVisibility(View.VISIBLE);
 		else {

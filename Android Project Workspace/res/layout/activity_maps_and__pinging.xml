@@ -34,7 +34,7 @@
       <EditText
         android:id="@+id/messageBox"
         android:hint="@string/enterMessageHint"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
 		android:layout_alignBaseline="@id/btnPing"
         android:layout_height="wrap_content"
         android:gravity="center"

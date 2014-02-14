@@ -18,9 +18,13 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +37,7 @@ import android.widget.Toast;
 public class HomeFragment extends Fragment implements
 		GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener {
+<<<<<<< HEAD
 	
 	public View rootView;
 	public String message;
@@ -42,6 +47,9 @@ public class HomeFragment extends Fragment implements
 
 	}
 
+=======
+	public static String message = "";
+>>>>>>> origin/master
 	private GoogleMap map;
 	private LocationClient mLocationClient;
 	private Location myLocation;
@@ -55,10 +63,17 @@ public class HomeFragment extends Fragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+<<<<<<< HEAD
 		rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
 				container, false);
 		
 		final EditText et = (EditText) rootView.findViewById(R.id.messageEdit);
+=======
+		View rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
+				container, false);
+
+		final EditText et = (EditText) rootView.findViewById(R.id.messageBox);
+>>>>>>> origin/master
 		message = et.getText().toString();
 
 		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
@@ -69,8 +84,30 @@ public class HomeFragment extends Fragment implements
 				int id = v.getId();
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
+<<<<<<< HEAD
 					message = et.getText().toString();
 					PingActions.pingCurrentLocation(mapStored, latLngStored, message );
+=======
+					toggleTextBoxAndPing(); /*
+											 * else if (id == R.id.btnRefresh) {
+											 * setUpMapIfNeeded(); try {
+											 * PingActions
+											 * .refreshPings(mapStored); } catch
+											 * (ParseException e) {
+											 * e.printStackTrace(); } }
+											 */
+
+					/*
+					 * else if (id == R.id.btnRefresh) { setUpMapIfNeeded(); try
+					 * { PingActions.refreshPings(mapStored); } catch
+					 * (ParseException e) { e.printStackTrace(); } }
+					 */
+
+					// btnRefresh.setOnClickListener(listener);
+					message = et.getText().toString();
+					PingActions.pingCurrentLocation(mapStored, latLngStored,
+							message);
+>>>>>>> origin/master
 				}
 			}
 		};
@@ -78,6 +115,18 @@ public class HomeFragment extends Fragment implements
 
 		return rootView;
 
+	}
+
+	private void toggleTextBoxAndPing() {
+		EditText textbox = (EditText) getActivity().findViewById(
+				R.id.messageBox);
+		if (textbox.getVisibility() != View.VISIBLE)
+			textbox.setVisibility(View.VISIBLE);
+		else {
+			message = textbox.getText().toString();
+			PingActions.pingCurrentLocation(mapStored, latLngStored, message);
+			textbox.setVisibility(View.INVISIBLE);
+		}
 	}
 
 	@Override
@@ -183,7 +232,6 @@ public class HomeFragment extends Fragment implements
 			map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLng, 13));
 			mapStored = map;
 			doRefreshPings();
-
 		} else {
 			setUpMap();
 		}
@@ -259,4 +307,5 @@ public class HomeFragment extends Fragment implements
 		}
 
 	}
+
 }

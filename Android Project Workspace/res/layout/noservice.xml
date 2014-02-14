@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <TextView 
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/about"
+        android:text="No Service :("
         ></TextView>
+    
+
 </LinearLayout>

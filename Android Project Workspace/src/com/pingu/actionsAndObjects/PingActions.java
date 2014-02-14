@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.pingu.fragments.HomeFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -43,21 +44,18 @@ public class PingActions extends Activity {
 		latlngStored = latLngStoredIn;
 		unpingCurrentLocation(mapStored, latlngStored);
 		if (!isCurrentLocPingSet) {
-			currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
-					.position(latlngStored)
-					.title("Current Ping")
-					.icon(BitmapDescriptorFactory
-							.fromResource(R.drawable.pingicon)));
-			currentLocPingMarker.setAnchor((float) .5, (float) .5);
 			isCurrentLocPingSet = true;
 			String datetime = Useful.getCurrentTimeAsString();
 			String user = Useful.getUsername();
 			if (user == null)
 				user = "DEFAULT_USER";
+<<<<<<< HEAD
 			// TODO Add ability to add message when pinging
 			
+=======
+>>>>>>> origin/master
 			currentLocPingObj = new PingObject(datetime, user, latlngStored,
-					message);
+					HomeFragment.message);
 			currentLocPingObj.sendPingObjToParse();
 		}
 	}
@@ -67,7 +65,6 @@ public class PingActions extends Activity {
 		mapStored = mapStoredIn;
 		latlngStored = latLngStoredIn;
 		if (isCurrentLocPingSet) {
-			currentLocPingMarker.remove();
 			currentLocPingObj.removePingObjFromParse();
 			isCurrentLocPingSet = false;
 		}
@@ -140,8 +137,13 @@ public class PingActions extends Activity {
 					.position(p.getLatlng())
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingiconfaded))
+<<<<<<< HEAD
 					.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
+=======
+					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.snippet(p.getMessage()));
+>>>>>>> origin/master
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		} else {
@@ -149,8 +151,13 @@ public class PingActions extends Activity {
 					.position(p.getLatlng())
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingicon))
+<<<<<<< HEAD
 							.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
+=======
+					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.snippet(p.getMessage()));
+>>>>>>> origin/master
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		}

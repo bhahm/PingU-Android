@@ -43,9 +43,6 @@
         android:padding="10dp"
          android:text="@string/ping"
 			/>
-<<<<<<< HEAD
-=======
-
       <EditText
         android:id="@+id/messageBox"
         android:hint="@string/enterMessageHint"
@@ -53,15 +50,15 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btnPing"
         android:visibility="invisible"
-        android:background="@color/pingUtheme"
         android:ems="10" >
 
         <requestFocus />
     </EditText>
->>>>>>> origin/master
+=======
         
         </LinearLayout>
       
+>>>>>>> origin/mitchellvitez
 
 </RelativeLayout>
 

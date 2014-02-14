@@ -143,6 +143,9 @@ public class PingActions extends Activity {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5c86292adf65b687c5a6d4c32578e71bf30e5b28
 					.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
 =======
@@ -153,10 +156,13 @@ public class PingActions extends Activity {
 					.title("Sent by " + p.getName() + " at " + p.getTime())
 					.snippet(p.getMessage()));
 >>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
+<<<<<<< HEAD
 =======
 					.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
 >>>>>>> origin/mitchellvitez
+=======
+>>>>>>> 5c86292adf65b687c5a6d4c32578e71bf30e5b28
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		} else {
@@ -167,6 +173,9 @@ public class PingActions extends Activity {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5c86292adf65b687c5a6d4c32578e71bf30e5b28
 							.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
 =======
@@ -177,10 +186,13 @@ public class PingActions extends Activity {
 					.title("Sent by " + p.getName() + " at " + p.getTime())
 					.snippet(p.getMessage()));
 >>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
+<<<<<<< HEAD
 =======
 							.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
 >>>>>>> origin/mitchellvitez
+=======
+>>>>>>> 5c86292adf65b687c5a6d4c32578e71bf30e5b28
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		}

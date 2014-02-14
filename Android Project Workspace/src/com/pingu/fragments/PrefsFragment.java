@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -127,7 +128,7 @@ public class PrefsFragment extends PreferenceFragment implements
 			onPreferenceChange(key, oldUsername,
 					sharedPreferences.getString(key, "DEFAULT_USERNAME"));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			Log.w("PrefsFragment", "ParseException");
 			e.printStackTrace();
 		}
 

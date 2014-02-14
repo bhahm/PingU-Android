@@ -19,8 +19,7 @@ import com.zeng.pingu_android.R;
 /**
  * Used to display friends on the friends page
  * 
- * @author Mitchell Vitez, Steven Zeng TODO: Expand group functionality and so
- *         on
+ * @author Mitchell Vitez, Steven Zeng
  */
 public class FriendsFragment extends Fragment {
 	View v;
@@ -42,7 +41,7 @@ public class FriendsFragment extends Fragment {
 
 			allFriends = ph.getAllFriends();
 		} catch (FriendDoesNotExistException e) {
-			// TODO Auto-generated catch block
+			Log.w("FriendsFragment", "FriendDoesNotExistException");
 			e.printStackTrace();
 		}
 

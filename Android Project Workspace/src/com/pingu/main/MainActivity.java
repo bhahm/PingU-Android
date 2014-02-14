@@ -2,9 +2,14 @@ package com.pingu.main;
 
 import java.util.ArrayList;
 
+import org.acra.*;
+import org.acra.annotation.*;
+
 import com.zeng.pingu_android.R;
+import com.bugsense.trace.BugSenseHandler;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
+import com.parse.PushService;
 import com.pingu.actionsAndObjects.Useful;
 import com.pingu.fragments.AboutFragment;
 import com.pingu.fragments.AddFriendFragment;
@@ -37,9 +42,10 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 //@author Steven Zeng, Mitchell Vitez
 //Main activity of the entire app that instantiates the navigation bar and displays fragments accordingly.
+
+@ReportsCrashes(formUri = "http://www.bugsense.com/api/acra?api_key=50b09570", formKey = "")
 public class MainActivity extends FragmentActivity {
 
 	TextView textView;
@@ -65,12 +71,16 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 		c = this;
+		ACRA.init(this.getApplication()); // initializes ACRA bug detector
+		BugSenseHandler.I_WANT_TO_DEBUG = true;
+		BugSenseHandler.initAndStartSession(c, "50b09570");
+		Log.v(TAG, "number of crashes: " + BugSenseHandler.getTotalCrashesNum());
 		setContentView(R.layout.activity_main);
 
-		Parse.initialize(this, "91HmkBQniLXG81hN5ww3ARr15sNofBNbvG9ZgOqJ",
-				"1j5IFHb6N6basAB6pnA03QaQuqDGZluMZjvamWN2");
+		Parse.initialize(this, "KXYL1qPnshmVfcUT062Ade1NMRRcO9SCA3pTmF0M",
+				"Ixtpx9BNAsEyQiLLlhTyMkyrrNxt82MQIMnXpmTR");
+		PushService.setDefaultPushCallback(this, MainActivity.class);
 		ParseAnalytics.trackAppOpened(getIntent());
-
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(MainActivity.this);
 		String username = prefs.getString("username", "DEFAULT_USERNAME");
@@ -207,10 +217,12 @@ public class MainActivity extends FragmentActivity {
 	 * */
 	private void displayView(int position) {
 		// update the main content by replacing fragments
+
 		if (!isNetworkOnline()) {
 			Log.v(TAG, "no network");
 			fragment = new NoNetworkFragment();
 		} else {
+
 			switch (position) {
 			case 0:
 				Fragment currentFrag = getFragmentManager().findFragmentById(
@@ -335,7 +347,6 @@ public class MainActivity extends FragmentActivity {
 				gps_enabled = lm
 						.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 						|| lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-				Log.v(TAG, "gps status: " + gps_enabled);
 			} catch (Exception ex) {
 				Log.e(TAG, "error checking for gps, e");
 			}

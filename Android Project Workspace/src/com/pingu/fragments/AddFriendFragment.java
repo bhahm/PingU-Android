@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,10 +62,10 @@ public class AddFriendFragment extends Fragment {
     	try {
 			checkFriendStatus();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			Log.w("AddFriend", "Bad friend status - Parse Exception");
 			e.printStackTrace();
 		} catch (FriendDoesNotExistException e) {
-			// TODO Auto-generated catch block
+			Log.w("AddFriend", "Bad friend status - FriendDoesNotExist Exception");
 			e.printStackTrace();
 		}
     }
@@ -133,7 +134,7 @@ public class AddFriendFragment extends Fragment {
 		            try {
 						addToFriendDatabase(from);
 					} catch (FriendDoesNotExistException e) {
-						// TODO Auto-generated catch block
+						Log.w("AddFriend", "FriendDoesNotExist Exception");
 						e.printStackTrace();
 					}
 		            break;

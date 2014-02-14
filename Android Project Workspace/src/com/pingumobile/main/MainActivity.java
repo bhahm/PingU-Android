@@ -1,4 +1,4 @@
-package com.pingu.main;
+package com.pingumobile.main;
 
 import java.util.ArrayList;
 
@@ -10,14 +10,14 @@ import com.bugsense.trace.BugSenseHandler;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.PushService;
-import com.pingu.actionsAndObjects.Useful;
-import com.pingu.fragments.AboutFragment;
-import com.pingu.fragments.AddFriendFragment;
-import com.pingu.fragments.DebugFragment;
-import com.pingu.fragments.FriendsFragment;
-import com.pingu.fragments.HomeFragment;
-import com.pingu.fragments.NoNetworkFragment;
-import com.pingu.fragments.PrefsFragment;
+import com.pingumobile.actionsAndObjects.Useful;
+import com.pingumobile.fragments.AboutFragment;
+import com.pingumobile.fragments.AddFriendFragment;
+import com.pingumobile.fragments.DebugFragment;
+import com.pingumobile.fragments.FriendsFragment;
+import com.pingumobile.fragments.HomeFragment;
+import com.pingumobile.fragments.NoNetworkFragment;
+import com.pingumobile.fragments.PrefsFragment;
 
 import android.location.LocationManager;
 import android.net.ConnectivityManager;

@@ -1,4 +1,4 @@
-package com.pingu.actionsAndObjects;
+package com.pingumobile.actionsAndObjects;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,13 +7,13 @@ import java.util.List;
 import android.app.Activity;
 import android.util.Log;
 
-import com.pingu.fragments.HomeFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
-import com.pingu.main.MainActivity;
+import com.pingumobile.actionsAndObjects.PingHelper.FriendDoesNotExistException;
+import com.pingumobile.fragments.HomeFragment;
+import com.pingumobile.main.MainActivity;
 import com.zeng.pingu_android.R;
 
 import com.google.android.gms.maps.GoogleMap;

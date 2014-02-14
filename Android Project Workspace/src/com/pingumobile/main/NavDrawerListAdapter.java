@@ -1,4 +1,4 @@
-package com.pingu.main;
+package com.pingumobile.main;
 
 import com.zeng.pingu_android.R;
 

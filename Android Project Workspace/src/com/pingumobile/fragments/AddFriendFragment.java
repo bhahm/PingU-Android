@@ -1,4 +1,4 @@
-package com.pingu.fragments;
+package com.pingumobile.fragments;
 
 import java.util.List;
 
@@ -18,10 +18,10 @@ import android.widget.Toast;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.pingu.actionsAndObjects.FriendObject;
-import com.pingu.actionsAndObjects.PingHelper;
-import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
-import com.pingu.actionsAndObjects.Useful;
+import com.pingumobile.actionsAndObjects.FriendObject;
+import com.pingumobile.actionsAndObjects.PingHelper;
+import com.pingumobile.actionsAndObjects.Useful;
+import com.pingumobile.actionsAndObjects.PingHelper.FriendDoesNotExistException;
 import com.zeng.pingu_android.R;
 
 /**

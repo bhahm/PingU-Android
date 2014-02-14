@@ -1,4 +1,4 @@
-package com.pingu.fragments;
+package com.pingumobile.fragments;
 
 //@author Steven Zeng
 //fragment that displays the map and allows pinging. First screen when app starts.
@@ -10,8 +10,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseException;
-import com.pingu.actionsAndObjects.PingActions;
-import com.pingu.main.MainActivity;
+import com.pingumobile.actionsAndObjects.PingActions;
+import com.pingumobile.main.MainActivity;
 import com.zeng.pingu_android.R;
 
 import android.app.Activity;

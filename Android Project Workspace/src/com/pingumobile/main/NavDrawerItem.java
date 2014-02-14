@@ -1,4 +1,4 @@
-package com.pingu.main;
+package com.pingumobile.main;
 
 public class NavDrawerItem {
 	

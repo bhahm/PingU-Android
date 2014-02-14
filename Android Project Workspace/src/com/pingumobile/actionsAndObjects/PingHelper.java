@@ -1,4 +1,4 @@
-package com.pingu.actionsAndObjects;
+package com.pingumobile.actionsAndObjects;
 
 
 import java.util.ArrayList;

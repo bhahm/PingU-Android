@@ -1,11 +1,11 @@
-package com.pingu.fragments;
+package com.pingumobile.fragments;
 
 import java.util.List;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.pingu.actionsAndObjects.Useful;
+import com.pingumobile.actionsAndObjects.Useful;
 import com.zeng.pingu_android.R;
 
 import android.content.SharedPreferences;

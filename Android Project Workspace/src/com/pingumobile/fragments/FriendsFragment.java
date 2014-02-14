@@ -1,4 +1,4 @@
-package com.pingu.fragments;
+package com.pingumobile.fragments;
 
 import java.util.ArrayList;
 
@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.pingu.actionsAndObjects.FriendObject;
-import com.pingu.actionsAndObjects.PingHelper;
-import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
+import com.pingumobile.actionsAndObjects.FriendObject;
+import com.pingumobile.actionsAndObjects.PingHelper;
+import com.pingumobile.actionsAndObjects.PingHelper.FriendDoesNotExistException;
 import com.zeng.pingu_android.R;
 
 /**

@@ -1,4 +1,4 @@
-package com.pingu.actionsAndObjects;
+package com.pingumobile.actionsAndObjects;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseObject;

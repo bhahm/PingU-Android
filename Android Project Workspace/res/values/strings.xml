@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">PingU-Android</string>
+    <string name="app_name">PingU</string>
     <string name="refresh_pings">Refresh map</string>
     <string name="hello_world">Hello world!</string>
     <string name="overlay_label">Overlay</string>
     <string name="btnPrefs">Settings</string>
     <string name="friends">Friends</string>
-    <string name="ping">Ping!</string>
+    <string name="ping">Ping</string>
     <string name="unping">Unping Current Location</string>
     <string name="refresh">Refresh received Pings</string>
     <string name="debugSettings">Display Settings (for debugging, remove later)</string>
@@ -20,7 +20,7 @@
     <string name ="message"></string>
      <string name="desc_list_item_icon">Item Icon</string>
      <string name="messageHint">message</string>
-     <string name="about">Beta testing for PingU v. 0.1.4\n\n
+     <string name="about">Beta testing for PingU v. 0.1.6\n\n
          PingU is a peer networking application designed specifically to facilitate and ease interactions between university students within their many personal networks.\n\n
          We provide the possibility for interaction where there wasn\'t any before.\n\n
          We emphasize privacy, spontaneity, and the cultivation of relevant networks.

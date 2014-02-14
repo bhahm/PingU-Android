@@ -1,4 +1,4 @@
-package com.pingu.fragments;
+package com.pingumobile.fragments;
 
 import com.zeng.pingu_android.R;
 

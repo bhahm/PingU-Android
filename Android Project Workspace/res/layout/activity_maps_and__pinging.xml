@@ -40,10 +40,14 @@
 <<<<<<< HEAD
         android:layout_marginBottom="50dp"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         android:layout_marginBottom="24dp"
         android:layout_marginLeft="20dp"
 >>>>>>> origin/mitchellvitez
+=======
+        android:layout_marginLeft="50dp"
+>>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
 =======
         android:layout_marginLeft="50dp"
 >>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4

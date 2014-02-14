@@ -43,10 +43,13 @@
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
 =======
+=======
+>>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
         <item>@drawable/logo</item>
         <item>@drawable/logo</item>
         <item>@drawable/logo</item>

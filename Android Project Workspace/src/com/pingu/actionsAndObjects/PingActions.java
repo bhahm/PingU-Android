@@ -138,8 +138,13 @@ public class PingActions extends Activity {
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingiconfaded))
 <<<<<<< HEAD
+<<<<<<< HEAD
 					.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
+=======
+					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.snippet(p.getMessage()));
+>>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
 =======
 					.title("Sent by " + p.getName() + " at " + p.getTime())
 					.snippet(p.getMessage()));
@@ -152,8 +157,13 @@ public class PingActions extends Activity {
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingicon))
 <<<<<<< HEAD
+<<<<<<< HEAD
 							.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
+=======
+					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.snippet(p.getMessage()));
+>>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
 =======
 					.title("Sent by " + p.getName() + " at " + p.getTime())
 					.snippet(p.getMessage()));

@@ -15,6 +15,9 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingBottom="28dp"
+        android:paddingRight="50dp"
         android:layout_gravity="bottom|center_horizontal"
          >
 
@@ -23,11 +26,8 @@
             android:id="@+id/btnPing"
           android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="50dp"
         android:textColor="@color/white"
         android:background="@layout/selector"
-        android:padding="10dp"
          android:text="@string/ping"
 			/>
 

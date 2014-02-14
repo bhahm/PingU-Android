@@ -132,7 +132,7 @@ public class PingActions extends Activity {
 					.position(p.getLatlng())
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingiconfaded))
-					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.title(p.getName() + " | " + p.getTime())
 					.snippet(p.getMessage()));
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
@@ -141,7 +141,7 @@ public class PingActions extends Activity {
 					.position(p.getLatlng())
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingicon))
-					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.title(p.getName() + " | " + p.getTime())
 					.snippet(p.getMessage()));
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();

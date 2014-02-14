@@ -41,6 +41,12 @@ public class PingActions extends Activity {
 		mapStored = mapStoredIn;
 		latlngStored = latLngStoredIn;
 		unpingCurrentLocation(mapStored, latlngStored);
+		try {
+			unpingAllWithThisUsername();
+		} catch (ParseException e) {
+			Log.w("PingActions", "Parse Exception");
+			e.printStackTrace();
+		}
 		if (!isCurrentLocPingSet) {
 			isCurrentLocPingSet = true;
 			String datetime = Useful.getCurrentTimeAsString();
@@ -50,6 +56,15 @@ public class PingActions extends Activity {
 			currentLocPingObj = new PingObject(datetime, user, latlngStored,
 					HomeFragment.message);
 			currentLocPingObj.sendPingObjToParse();
+		}
+	}
+
+	private static void unpingAllWithThisUsername() throws ParseException {
+		String username = Useful.getUsername();
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing").whereEqualTo("username", username);
+		List<ParseObject> results = query.find();
+		for (ParseObject parseObj : results) {
+			parseObj.deleteInBackground();
 		}
 	}
 

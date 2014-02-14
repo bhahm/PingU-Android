@@ -2,7 +2,11 @@ package com.pingu.main;
 
 import java.util.ArrayList;
 
+import org.acra.ACRA;
+import org.acra.annotation.ReportsCrashes;
+
 import com.zeng.pingu_android.R;
+import com.bugsense.trace.BugSenseHandler;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.pingu.actionsAndObjects.Useful;
@@ -40,6 +44,7 @@ import android.widget.TextView;
 
 //@author Steven Zeng, Mitchell Vitez
 //Main activity of the entire app that instantiates the navigation bar and displays fragments accordingly.
+@ReportsCrashes(formUri = "http://www.bugsense.com/api/acra?api_key=50b09570", formKey = "")
 public class MainActivity extends FragmentActivity {
 
 	TextView textView;
@@ -65,6 +70,11 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 		c = this;
+		ACRA.init(this.getApplication()); // initializes ACRA bug detector
+		BugSenseHandler.I_WANT_TO_DEBUG = true;
+		BugSenseHandler.initAndStartSession(c, "50b09570");
+		Log.v(TAG, "number of crashes: " + BugSenseHandler.getTotalCrashesNum());
+
 		setContentView(R.layout.activity_main);
 
 		Parse.initialize(this, "91HmkBQniLXG81hN5ww3ARr15sNofBNbvG9ZgOqJ",
@@ -75,7 +85,8 @@ public class MainActivity extends FragmentActivity {
 				.getDefaultSharedPreferences(MainActivity.this);
 		String username = prefs.getString("username", "DEFAULT_USERNAME");
 		Useful.setUsername(username);
-
+		String nullstr = null;
+		Log.d(TAG, nullstr);
 		mTitle = mDrawerTitle = getTitle();
 
 		// load slide menu items

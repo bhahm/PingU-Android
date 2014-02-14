@@ -25,7 +25,7 @@
          We provide the possibility for interaction where there wasn\'t any before.\n\n
          We emphasize privacy, spontaneity, and the cultivation of relevant networks.
      </string>
-     <string name="debug">Send any bug reports to mitchellvitez@gmail.com. The more info, the better. Thank you.</string>
+     <string name="debug">Send any bug reports to bug@pingumobile.com\n\nThe more info, the better. Thank you.</string>
      
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">

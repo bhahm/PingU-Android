@@ -77,8 +77,7 @@ public class HomeFragment extends Fragment implements
 
 					// btnRefresh.setOnClickListener(listener);
 					message = et.getText().toString();
-					PingActions.pingCurrentLocation(mapStored, latLngStored,
-							message);
+					//PingActions.pingCurrentLocation(mapStored, latLngStored, message);
 				}
 			}
 		};

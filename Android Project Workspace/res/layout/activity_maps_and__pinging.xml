@@ -34,10 +34,11 @@
         android:id="@+id/messageBox"
         android:hint="@string/enterMessageHint"
         android:layout_width="match_parent"
+		android:layout_alignBaseline="@id/btnPing"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btnPing"
         android:visibility="invisible"
-        android:background="@color/pingUtheme"
+        android:background="@color/selected"
         android:ems="10" >
 
         <requestFocus />

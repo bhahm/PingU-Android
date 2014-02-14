@@ -16,7 +16,7 @@
     <string name="drawer_close">Slider Menu Closed</string>
     <string name="addFriend">Send user friend request</string>
     <string name="friendUsernameHint">friend\'s username</string>
-    <string name = "enterMessageHint">Enter a message(max 40 chars)</string>
+    <string name = "enterMessageHint">Enter a message</string>
     <string name ="message"></string>
      <string name="desc_list_item_icon">Item Icon</string>
      <string name="messageHint">message</string>

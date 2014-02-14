@@ -55,7 +55,7 @@
             android:name="com.pingu.fragments.AddFriendFragment"
          >
         </activity>
-        
+                
 
         <meta-data
             android:name="com.google.android.gms.version"

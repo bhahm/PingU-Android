@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.util.Log;
 
 import com.pingu.fragments.HomeFragment;
+import com.pingu.fragments.NotificationActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -15,7 +16,6 @@ import com.parse.ParseQuery;
 import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
 import com.pingu.main.MainActivity;
 import com.zeng.pingu_android.R;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;

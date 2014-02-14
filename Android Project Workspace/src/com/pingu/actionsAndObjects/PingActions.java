@@ -53,6 +53,9 @@ public class PingActions extends Activity {
 =======
 			// TODO Add ability to add message when pinging
 			
+<<<<<<< HEAD
+>>>>>>> origin/mitchellvitez
+=======
 >>>>>>> origin/mitchellvitez
 			currentLocPingObj = new PingObject(datetime, user, latlngStored,
 					HomeFragment.message);
@@ -138,12 +141,22 @@ public class PingActions extends Activity {
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingiconfaded))
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 					.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
 =======
 					.title("Sent by " + p.getName() + " at " + p.getTime())
 					.snippet(p.getMessage()));
 >>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
+=======
+					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.snippet(p.getMessage()));
+>>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
+=======
+					.snippet(p.getMessage())
+					.title(p.getName()+" | "+ p.getTime()));
+>>>>>>> origin/mitchellvitez
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		} else {
@@ -152,12 +165,22 @@ public class PingActions extends Activity {
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.pingicon))
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 							.snippet(p.getMessage())
 					.title(p.getName()+" | "+ p.getTime()));
 =======
 					.title("Sent by " + p.getName() + " at " + p.getTime())
 					.snippet(p.getMessage()));
 >>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
+=======
+					.title("Sent by " + p.getName() + " at " + p.getTime())
+					.snippet(p.getMessage()));
+>>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
+=======
+							.snippet(p.getMessage())
+					.title(p.getName()+" | "+ p.getTime()));
+>>>>>>> origin/mitchellvitez
 			m.setAnchor((float) .5, (float) .5);
 			m.showInfoWindow();
 		}

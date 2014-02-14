@@ -43,6 +43,11 @@ public class HomeFragment extends Fragment implements
 	
 
 	public HomeFragment() {
+<<<<<<< HEAD
+=======
+
+	}
+>>>>>>> origin/mitchellvitez
 
 	}
 	public static String message = "";
@@ -60,7 +65,11 @@ public class HomeFragment extends Fragment implements
 			Bundle savedInstanceState) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		View rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
+=======
+		rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
+>>>>>>> origin/mitchellvitez
 				container, false);
 =======
 		rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
@@ -68,6 +77,9 @@ public class HomeFragment extends Fragment implements
 		
 		final EditText et = (EditText) rootView.findViewById(R.id.messageEdit);
 		message = et.getText().toString();
+<<<<<<< HEAD
+>>>>>>> origin/mitchellvitez
+=======
 >>>>>>> origin/mitchellvitez
 
 		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
@@ -78,6 +90,7 @@ public class HomeFragment extends Fragment implements
 				int id = v.getId();
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
+<<<<<<< HEAD
 <<<<<<< HEAD
 					toggleTextBoxAndPing();
 				} /*
@@ -100,12 +113,17 @@ public class HomeFragment extends Fragment implements
 		btnPing.setOnClickListener(listener);
 		// btnRefresh.setOnClickListener(listener);
 =======
+=======
+>>>>>>> origin/mitchellvitez
 					message = et.getText().toString();
 					PingActions.pingCurrentLocation(mapStored, latLngStored, message );
 				}
 			}
 		};
 		btnPing.setOnClickListener(listener);
+<<<<<<< HEAD
+>>>>>>> origin/mitchellvitez
+=======
 >>>>>>> origin/mitchellvitez
 
 		return rootView;
@@ -128,14 +146,20 @@ private void toggleTextBoxAndPing()
 	public void onResume() {
 		super.onResume();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> origin/mitchellvitez
 		mLocationClient.connect();
 	}
 
 	public void onPause() {
 		super.onPause();
 		mLocationClient.disconnect();
+<<<<<<< HEAD
+>>>>>>> origin/mitchellvitez
+=======
 >>>>>>> origin/mitchellvitez
 	}
 
@@ -170,7 +194,10 @@ private void toggleTextBoxAndPing()
 		// Disconnecting the client invalidates it.
 		mLocationClient.disconnect();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/mitchellvitez
 =======
 >>>>>>> origin/mitchellvitez
 		super.onStop();

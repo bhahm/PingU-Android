@@ -15,7 +15,6 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
          >
 
         <LinearLayout 
@@ -43,26 +42,12 @@
         android:padding="10dp"
          android:text="@string/ping"
 			/>
-
-      <EditText
-        android:id="@+id/messageBox"
-        android:hint="@string/enterMessageHint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/btnPing"
-        android:visibility="invisible"
-        android:background="@color/pingUtheme"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
         
         </LinearLayout>
       
 
 </RelativeLayout>
 
-    
    
 </FrameLayout>
 

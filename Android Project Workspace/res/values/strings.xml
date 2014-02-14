@@ -19,6 +19,14 @@
     <string name = "enterMessageHint">Enter a message(max 40 chars)</string>
     <string name ="message"></string>
      <string name="desc_list_item_icon">Item Icon</string>
+     <string name="messageHint">message</string>
+     <string name="about">Beta testing for PingU v. 0.1.4\n\n
+         PingU is a peer networking application designed specifically to facilitate and ease interactions between university students within their many personal networks.\n\n
+         We provide the possibility for interaction where there wasn\'t any before.\n\n
+         We emphasize privacy, spontaneity, and the cultivation of relevant networks.
+     </string>
+     <string name="debug">Send any bug reports to mitchellvitez@gmail.com. The more info, the better. Thank you.</string>
+     
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item>Home</item>
@@ -37,7 +45,7 @@
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
-     
+
     </array>
     
  </resources>

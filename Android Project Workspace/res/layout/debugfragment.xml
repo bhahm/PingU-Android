@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <TextView
-         android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Send bug reports to mitchellvitez@gmail.com">
+        android:text="@string/debug">
         
     </TextView>
 

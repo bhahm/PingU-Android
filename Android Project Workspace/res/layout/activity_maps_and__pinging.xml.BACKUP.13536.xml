@@ -39,14 +39,10 @@
         android:layout_height="wrap_content"
 <<<<<<< HEAD
         android:layout_marginBottom="50dp"
-<<<<<<< HEAD
 =======
         android:layout_marginBottom="24dp"
         android:layout_marginLeft="20dp"
 >>>>>>> origin/mitchellvitez
-=======
-        android:layout_marginLeft="50dp"
->>>>>>> 53deb2e26303833f1bd9a53145d9a04a332babe4
         android:background="@layout/selector"
         android:padding="10dp"
          android:text="@string/ping"
@@ -59,7 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btnPing"
         android:visibility="invisible"
-        android:background="@color/pingUtheme"
         android:ems="10" >
 
         <requestFocus />

@@ -26,6 +26,7 @@ import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +37,13 @@ import android.widget.Toast;
 public class HomeFragment extends Fragment implements
 		GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener {
+	
+	public View rootView;
+	public String message;
+	
 
 	public HomeFragment() {
+
 	}
 	public static String message = "";
 	private GoogleMap map;
@@ -48,14 +54,21 @@ public class HomeFragment extends Fragment implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mLocationClient = new LocationClient(MainActivity.c, this, this);
-
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+<<<<<<< HEAD
 		View rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
 				container, false);
+=======
+		rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
+				container, false);
+		
+		final EditText et = (EditText) rootView.findViewById(R.id.messageEdit);
+		message = et.getText().toString();
+>>>>>>> origin/mitchellvitez
 
 		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
 		// Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
@@ -65,6 +78,7 @@ public class HomeFragment extends Fragment implements
 				int id = v.getId();
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
+<<<<<<< HEAD
 					toggleTextBoxAndPing();
 				} /*
 				 * else if (id == R.id.btnRefresh) { setUpMapIfNeeded(); try {
@@ -85,6 +99,14 @@ public class HomeFragment extends Fragment implements
 		};
 		btnPing.setOnClickListener(listener);
 		// btnRefresh.setOnClickListener(listener);
+=======
+					message = et.getText().toString();
+					PingActions.pingCurrentLocation(mapStored, latLngStored, message );
+				}
+			}
+		};
+		btnPing.setOnClickListener(listener);
+>>>>>>> origin/mitchellvitez
 
 		return rootView;
 
@@ -105,7 +127,16 @@ private void toggleTextBoxAndPing()
 	@Override
 	public void onResume() {
 		super.onResume();
+<<<<<<< HEAD
 
+=======
+		mLocationClient.connect();
+	}
+
+	public void onPause() {
+		super.onPause();
+		mLocationClient.disconnect();
+>>>>>>> origin/mitchellvitez
 	}
 
 	@Override
@@ -138,7 +169,10 @@ private void toggleTextBoxAndPing()
 	public void onStop() {
 		// Disconnecting the client invalidates it.
 		mLocationClient.disconnect();
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/mitchellvitez
 		super.onStop();
 	}
 

@@ -21,16 +21,23 @@
         android:layout_gravity="bottom|center_horizontal"
          >
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/tiaojon
    
         <Button
             android:id="@+id/btnPing"
           android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:textColor="@color/white"
+=======
+        android:layout_marginBottom="50dp"
+>>>>>>> origin/tiaojon
         android:background="@layout/selector"
          android:text="@string/ping"
 			/>
-
       <EditText
         android:id="@+id/messageBox"
         android:hint="@string/enterMessageHint"
@@ -41,12 +48,18 @@
         android:singleLine="true"
         android:layout_toRightOf="@id/btnPing"
         android:visibility="invisible"
+<<<<<<< HEAD
         android:background="@color/selected"
+=======
+>>>>>>> origin/tiaojon
         android:ems="10" >
 
         <requestFocus />
     </EditText>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/tiaojon
 
 </RelativeLayout>
 

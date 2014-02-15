@@ -71,7 +71,7 @@ public class AddFriendFragment extends Fragment {
     }
 	
 	public void addFriend(String username) {
-		if (! username.equals(null) &&  ! username.equals("")) {
+		if (username!=null && username!="") {
 			pingInParse = new ParseObject("Friend");
 			pingInParse.put("from", Useful.getUsername());
 			pingInParse.put("to", username);
@@ -80,7 +80,7 @@ public class AddFriendFragment extends Fragment {
 			Toast.makeText(this.getActivity(), "Friend request sent", Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this.getActivity(), "Please enter a username", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this.getActivity(), "Null string", Toast.LENGTH_SHORT).show();
 		}
 		
 	}

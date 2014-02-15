@@ -20,6 +20,7 @@
     <string name ="message"></string>
     <string name ="delete_ping">Delete Ping</string>
      <string name="desc_list_item_icon">Item Icon</string>
+<<<<<<< HEAD
      <string name="messageHint">message</string>
      <string name="about">Beta testing for PingU v. 0.1.6\n\n
          PingU is a peer networking application designed specifically to facilitate and ease interactions between university students within their many personal networks.\n\n
@@ -28,6 +29,8 @@
      </string>
      <string name="debug">Send any bug reports to bug@pingumobile.com\n\nThe more info, the better. Thank you.</string>
      
+=======
+>>>>>>> origin/tiaojon
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item>Home</item>
@@ -43,10 +46,17 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
+<<<<<<< HEAD
         <item>@drawable/logo</item>
         <item>@drawable/logo</item>
         <item>@drawable/logo</item>
 
+=======
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+     
+>>>>>>> origin/tiaojon
     </array>
     
  </resources>

@@ -32,6 +32,9 @@ import android.widget.Toast;
 public class HomeFragment extends Fragment implements
 		GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener {
+
+	public HomeFragment() {
+	}
 	public static String message = "";
 	private GoogleMap map;
 	private LocationClient mLocationClient;
@@ -41,6 +44,7 @@ public class HomeFragment extends Fragment implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mLocationClient = new LocationClient(MainActivity.c, this, this);
+
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,9 +52,6 @@ public class HomeFragment extends Fragment implements
 
 		View rootView = inflater.inflate(R.layout.activity_maps_and__pinging,
 				container, false);
-
-		final EditText et = (EditText) rootView.findViewById(R.id.messageBox);
-		message = et.getText().toString();
 
 		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
 		// Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
@@ -60,6 +61,7 @@ public class HomeFragment extends Fragment implements
 				int id = v.getId();
 				if (id == R.id.btnPing) {
 					setUpMapIfNeeded();
+<<<<<<< HEAD:Android Project Workspace/src/com/pingumobile/fragments/HomeFragment.java
 					toggleTextBoxAndPing(); /*
 											 * else if (id == R.id.btnRefresh) {
 											 * setUpMapIfNeeded(); try {
@@ -80,12 +82,33 @@ public class HomeFragment extends Fragment implements
 					//PingActions.pingCurrentLocation(mapStored, latLngStored, message);
 				}
 			}
+=======
+					toggleTextBoxAndPing();
+				} /*
+				 * else if (id == R.id.btnRefresh) { setUpMapIfNeeded(); try {
+				 * PingActions.refreshPings(mapStored); } catch (ParseException
+				 * e) { e.printStackTrace(); } }
+				 */
+					
+					
+				} /*else if (id == R.id.btnRefresh) {
+					setUpMapIfNeeded();
+					try {
+						PingActions.refreshPings(mapStored);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+				}*/
+			
+>>>>>>> origin/tiaojon:Android Project Workspace/src/com/pingu/fragments/HomeFragment.java
 		};
 		btnPing.setOnClickListener(listener);
+		// btnRefresh.setOnClickListener(listener);
 
 		return rootView;
 
 	}
+<<<<<<< HEAD:Android Project Workspace/src/com/pingumobile/fragments/HomeFragment.java
 
 	private void toggleTextBoxAndPing() {
 		EditText textbox = (EditText) getActivity().findViewById(R.id.messageBox);
@@ -96,17 +119,25 @@ public class HomeFragment extends Fragment implements
 			PingActions.pingCurrentLocation(mapStored, latLngStored, message);
 			textbox.setVisibility(View.INVISIBLE);
 		}
+=======
+private void toggleTextBoxAndPing()
+{
+	EditText textbox = (EditText) getActivity().findViewById(R.id.messageBox);
+	if (textbox.getVisibility() != View.VISIBLE)
+		textbox.setVisibility(View.VISIBLE);
+	else
+	{
+		message = textbox.getText().toString();
+		PingActions.pingCurrentLocation(mapStored, latLngStored);
+		textbox.setVisibility(View.INVISIBLE);
+>>>>>>> origin/tiaojon:Android Project Workspace/src/com/pingu/fragments/HomeFragment.java
 	}
+}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		mLocationClient.connect();
-	}
 
-	public void onPause() {
-		super.onPause();
-		mLocationClient.disconnect();
 	}
 
 	@Override
@@ -141,6 +172,7 @@ public class HomeFragment extends Fragment implements
 	public void onStop() {
 		// Disconnecting the client invalidates it.
 		mLocationClient.disconnect();
+
 		super.onStop();
 	}
 

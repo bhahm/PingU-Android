@@ -42,9 +42,12 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/logo</item>
-        <item>@drawable/logo</item>
-        <item>@drawable/logo</item>
+        <item>@drawable/home</item>
+        <item>@drawable/friendslist</item>
+        <item>@drawable/addfriends</item>
+        <item>@drawable/settings</item>
+        <item>@drawable/about</item>
+        <item>@drawable/about</item>
 
     </array>
     

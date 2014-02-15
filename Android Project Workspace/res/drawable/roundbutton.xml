@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
   android:shape="oval" android:padding="10dp">   
+<<<<<<< HEAD
     <solid android:color="@color/pingUtheme"/> <!-- this one is ths color of the Rounded Button -->
 
 	 <!-- this one is the color of the Rounded Button -->
+=======
+ <solid android:color="@color/pingUtheme"/> <!-- this one is ths color of the Rounded Button -->
+>>>>>>> origin/tiaojon
   <corners
    android:bottomRightRadius="10dp"
    android:bottomLeftRadius="10dp"

@@ -7,15 +7,24 @@ import java.util.List;
 import android.app.Activity;
 import android.util.Log;
 
+<<<<<<< HEAD:Android Project Workspace/src/com/pingumobile/actionsAndObjects/PingActions.java
+=======
+import com.pingu.fragments.HomeFragment;
+import com.pingu.fragments.NotificationActivity;
+>>>>>>> origin/tiaojon:Android Project Workspace/src/com/pingu/actionsAndObjects/PingActions.java
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+<<<<<<< HEAD:Android Project Workspace/src/com/pingumobile/actionsAndObjects/PingActions.java
 import com.pingumobile.actionsAndObjects.PingHelper.FriendDoesNotExistException;
 import com.pingumobile.fragments.HomeFragment;
 import com.pingumobile.main.MainActivity;
+=======
+import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
+import com.pingu.main.MainActivity;
+>>>>>>> origin/tiaojon:Android Project Workspace/src/com/pingu/actionsAndObjects/PingActions.java
 import com.zeng.pingu_android.R;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -37,7 +46,7 @@ public class PingActions extends Activity {
 	public static LatLng latlngStored;
 
 	static public void pingCurrentLocation(GoogleMap mapStoredIn,
-			LatLng latLngStoredIn, String message) {
+			LatLng latLngStoredIn) {
 		mapStored = mapStoredIn;
 		latlngStored = latLngStoredIn;
 		unpingCurrentLocation(mapStored, latlngStored);
@@ -48,6 +57,12 @@ public class PingActions extends Activity {
 			e.printStackTrace();
 		}
 		if (!isCurrentLocPingSet) {
+			currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
+					.position(latlngStored)
+					.title("Current Ping")
+					.icon(BitmapDescriptorFactory
+							.fromResource(R.drawable.pingicon)));
+			currentLocPingMarker.setAnchor((float) .5, (float) .5);
 			isCurrentLocPingSet = true;
 			String datetime = Useful.getCurrentTimeAsString();
 			String user = Useful.getUsername();
@@ -74,6 +89,7 @@ public class PingActions extends Activity {
 		mapStored = mapStoredIn;
 		latlngStored = latLngStoredIn;
 		if (isCurrentLocPingSet) {
+			currentLocPingMarker.remove();
 			currentLocPingObj.removePingObjFromParse();
 			isCurrentLocPingSet = false;
 		}
@@ -142,6 +158,7 @@ public class PingActions extends Activity {
 	static public void showOnMap(PingObject p, int duration) {
 		int iconName = 0;
 		if (duration == 1) {
+<<<<<<< HEAD:Android Project Workspace/src/com/pingumobile/actionsAndObjects/PingActions.java
 			iconName = R.drawable.pingiconfaded;
 		} else {
 			iconName = R.drawable.pingicon;
@@ -155,6 +172,32 @@ public class PingActions extends Activity {
 		m.setAnchor((float) .5, (float) .5);
 		m.showInfoWindow();
 
+	}
+	
+	static public void deleteMyPing() {
+		try {
+			unpingAllWithThisUsername();
+		} catch (ParseException e) {
+			Log.w("PingActions", "Delete ping exception");
+			e.printStackTrace();
+=======
+			Marker m = mapStored.addMarker(new MarkerOptions()
+					.position(p.getLatlng())
+					.icon(BitmapDescriptorFactory
+							.fromResource(R.drawable.pingiconfaded))
+					.title("Sent by " + p.getName() + " at " + p.getTime()));
+			m.setAnchor((float) .5, (float) .5);
+			m.showInfoWindow();
+		} else {
+			Marker m = mapStored.addMarker(new MarkerOptions()
+					.position(p.getLatlng())
+					.icon(BitmapDescriptorFactory
+							.fromResource(R.drawable.pingicon))
+					.title("Sent by " + p.getName() + " at " + p.getTime()));
+			m.setAnchor((float) .5, (float) .5);
+			m.showInfoWindow();
+>>>>>>> origin/tiaojon:Android Project Workspace/src/com/pingu/actionsAndObjects/PingActions.java
+		}
 	}
 
 }

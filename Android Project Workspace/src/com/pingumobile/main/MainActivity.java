@@ -102,14 +102,14 @@ public class MainActivity extends FragmentActivity {
 
 		// adding nav drawer items to array
 		// Home
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0] , navMenuIcons.getResourceId(0, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0]));
 		// Find People
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1],  navMenuIcons.getResourceId(1, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1]));
 		// Photos
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2],  navMenuIcons.getResourceId(2, -1)));
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3] ,  navMenuIcons.getResourceId(3, -1)));
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4],  navMenuIcons.getResourceId(4, -1)));
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5] ,  navMenuIcons.getResourceId(5, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2]));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3]));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4]));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5]));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();

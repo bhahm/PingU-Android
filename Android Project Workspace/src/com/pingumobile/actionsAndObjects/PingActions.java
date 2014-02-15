@@ -156,5 +156,14 @@ public class PingActions extends Activity {
 		m.showInfoWindow();
 
 	}
+	
+	static public void deleteMyPing() {
+		try {
+			unpingAllWithThisUsername();
+		} catch (ParseException e) {
+			Log.w("PingActions", "Delete ping exception");
+			e.printStackTrace();
+		}
+	}
 
 }

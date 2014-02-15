@@ -10,6 +10,7 @@ import com.bugsense.trace.BugSenseHandler;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.PushService;
+import com.pingumobile.actionsAndObjects.PingActions;
 import com.pingumobile.actionsAndObjects.Useful;
 import com.pingumobile.fragments.AboutFragment;
 import com.pingumobile.fragments.AddFriendFragment;
@@ -101,11 +102,8 @@ public class MainActivity extends FragmentActivity {
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
 		// adding nav drawer items to array
-		// Home
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0]));
-		// Find People
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1]));
-		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2]));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3]));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4]));
@@ -127,20 +125,18 @@ public class MainActivity extends FragmentActivity {
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_drawer, // nav menu toggle icon
 				R.string.app_name, // nav drawer open - description for
-									// accessibility
 				R.string.app_name // nav drawer close - description for
-									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
 				// calling onPrepareOptionsMenu() to show action bar icons
-				invalidateOptionsMenu();
+				closeOptionsMenu();
 			}
 
 			public void onDrawerOpened(View drawerView) {
 				getActionBar().setTitle(mDrawerTitle);
 				// calling onPrepareOptionsMenu() to hide action bar icons
-				invalidateOptionsMenu();
+				openOptionsMenu();
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -170,8 +166,7 @@ public class MainActivity extends FragmentActivity {
 	private class SlideMenuClickListener implements
 			ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			// display view for selected nav drawer item
 			displayView(position);
 		}
@@ -185,21 +180,24 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// toggle nav drawer on selecting action bar app icon/title
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-		// Handle action bar actions click
-		switch (item.getItemId()) {
-		case R.id.refresh_pings:
-			doRefreshPings();
-			Intent intent = getIntent();
-			finish();
-			startActivity(intent);
-			doRefreshPings();
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
+		int id = item.getItemId();
+		if (id == R.id.refresh_pings) {
+				doRefreshPings();
+				Intent intent = getIntent();
+				finish();
+				startActivity(intent);
+				doRefreshPings();
+				return true;
+		}
+		else if (id == R.id.delete_ping) {
+				PingActions.deleteMyPing();
+				return true;
+		}
+		else {
+				return super.onOptionsItemSelected(item);
 		}
 	}
 
@@ -208,7 +206,6 @@ public class MainActivity extends FragmentActivity {
 	 */
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		// menu.findItem(R.id.refresh_pings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 

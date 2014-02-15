@@ -18,6 +18,7 @@
     <string name="friendUsernameHint">friend\'s username</string>
     <string name = "enterMessageHint">Enter a message</string>
     <string name ="message"></string>
+    <string name ="delete_ping">Delete Ping</string>
      <string name="desc_list_item_icon">Item Icon</string>
      <string name="messageHint">message</string>
      <string name="about">Beta testing for PingU v. 0.1.6\n\n

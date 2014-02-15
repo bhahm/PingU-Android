@@ -115,6 +115,8 @@ public class HomeFragment extends Fragment implements
 		// Connect the client.
 		mLocationClient.connect();
 	}
+	
+	
 
 	@Override
 	public void onConnected(Bundle dataBundle) {

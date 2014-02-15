@@ -61,7 +61,8 @@ public class PingActions extends Activity {
 
 	private static void unpingAllWithThisUsername() throws ParseException {
 		String username = Useful.getUsername();
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing").whereEqualTo("username", username);
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing")
+				.whereEqualTo("username", username);
 		List<ParseObject> results = query.find();
 		for (ParseObject parseObj : results) {
 			parseObj.deleteInBackground();
@@ -139,25 +140,21 @@ public class PingActions extends Activity {
 	}
 
 	static public void showOnMap(PingObject p, int duration) {
+		int iconName = 0;
 		if (duration == 1) {
-			Marker m = mapStored.addMarker(new MarkerOptions()
-					.position(p.getLatlng())
-					.icon(BitmapDescriptorFactory
-							.fromResource(R.drawable.pingiconfaded))
-					.title(p.getName() + " | " + p.getTime())
-					.snippet(p.getMessage()));
-			m.setAnchor((float) .5, (float) .5);
-			m.showInfoWindow();
+			iconName = R.drawable.pingiconfaded;
 		} else {
-			Marker m = mapStored.addMarker(new MarkerOptions()
-					.position(p.getLatlng())
-					.icon(BitmapDescriptorFactory
-							.fromResource(R.drawable.pingicon))
-					.title(p.getName() + " | " + p.getTime())
-					.snippet(p.getMessage()));
-			m.setAnchor((float) .5, (float) .5);
-			m.showInfoWindow();
+			iconName = R.drawable.pingicon;
 		}
+
+		Marker m = mapStored.addMarker(new MarkerOptions()
+				.position(p.getLatlng())
+				.icon(BitmapDescriptorFactory.fromResource(iconName))
+				.title(p.getName() + " | " + p.getTime())
+				.snippet(p.getMessage()));
+		m.setAnchor((float) .5, (float) .5);
+		m.showInfoWindow();
+
 	}
 
 }

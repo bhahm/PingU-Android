@@ -68,8 +68,5 @@
     			<category android:name="com.zeng.pingu_android" />
  			 </intent-filter>
 		</receiver>
-=======
-            android:value="AIzaSyDsrPMLPu-JrhiuBZnHnwWlQtzHFJS-sT8" />
->>>>>>> 7ca804bbdf035e390ba3ca07f1f81e02947368a5
     </application>
 </manifest>

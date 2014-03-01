@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class HomeFragment extends Fragment implements
@@ -52,7 +53,7 @@ public class HomeFragment extends Fragment implements
 		final EditText et = (EditText) rootView.findViewById(R.id.messageBox);
 		message = et.getText().toString();
 
-		Button btnPing = (Button) rootView.findViewById(R.id.btnPing);
+		ImageButton btnPing = (ImageButton) rootView.findViewById(R.id.btnPing);
 		// Button btnRefresh = (Button) rootView.findViewById(R.id.btnRefresh);
 		View.OnClickListener listener = new View.OnClickListener() {
 			@Override

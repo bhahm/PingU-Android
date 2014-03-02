@@ -24,10 +24,9 @@
    
         <ImageButton
             android:id="@+id/btnPing"
-          android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
- 	android:src="@drawable/pingbutton"
-        android:background="@layout/selector"
+          	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:background="@layout/selector"    
 			/>
 
       <EditText

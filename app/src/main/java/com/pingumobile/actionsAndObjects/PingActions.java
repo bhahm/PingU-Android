@@ -7,9 +7,6 @@ import java.util.List;
 import android.app.Activity;
 import android.util.Log;
 
-import com.pingu.fragments.HomeFragment;
-import com.pingu.fragments.NotificationActivity;
-
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -17,11 +14,8 @@ import com.parse.ParseQuery;
 import com.pingumobile.actionsAndObjects.PingHelper.FriendDoesNotExistException;
 import com.pingumobile.fragments.HomeFragment;
 import com.pingumobile.main.MainActivity;
-=======
-import com.pingu.actionsAndObjects.PingHelper.FriendDoesNotExistException;
-import com.pingu.main.MainActivity;
->>>>>>>origin/tiaojon:Android Project Workspace/src/com/pingu/actionsAndObjects/PingActions.java
-import com.zeng.pingu_android.R;
+import com.pingumobile.R;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -43,7 +37,7 @@ public class PingActions extends Activity {
     public static LatLng latlngStored;
 
     static public void pingCurrentLocation(GoogleMap mapStoredIn,
-                                           LatLng latLngStoredIn) {
+                                           LatLng latLngStoredIn, String message) {
         mapStored = mapStoredIn;
         latlngStored = latLngStoredIn;
         unpingCurrentLocation(mapStored, latlngStored);
@@ -54,12 +48,6 @@ public class PingActions extends Activity {
             e.printStackTrace();
         }
         if (!isCurrentLocPingSet) {
-            currentLocPingMarker = mapStored.addMarker(new MarkerOptions()
-                    .position(latlngStored)
-                    .title("Current Ping")
-                    .icon(BitmapDescriptorFactory
-                            .fromResource(R.drawable.pingicon)));
-            currentLocPingMarker.setAnchor((float) .5, (float) .5);
             isCurrentLocPingSet = true;
             String datetime = Useful.getCurrentTimeAsString();
             String user = Useful.getUsername();
@@ -68,25 +56,32 @@ public class PingActions extends Activity {
             currentLocPingObj = new PingObject(datetime, user, latlngStored,
                     HomeFragment.message);
             currentLocPingObj.sendPingObjToParse();
+
         }
     }
 
-    private static void unpingAllWithThisUsername() throws ParseException {
-        String username = Useful.getUsername();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing")
-                .whereEqualTo("username", username);
-        List<ParseObject> results = query.find();
-        for (ParseObject parseObj : results) {
-            parseObj.deleteInBackground();
-        }
+    public static void unpingAllWithThisUsername() throws ParseException {
+        Log.w("PingActions", "unpingAllWithThisUsername");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("CurLocPing");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> results, ParseException e) {
+                if (e != null) {
+                    // There was an error
+                } else {
+                    for (ParseObject parseObj : results) {
+                        if (parseObj.get("creator").equals(Useful.getUsername())) {
+                            parseObj.deleteEventually();
+                        }
+                    }
+                }
+            }
+        });
     }
 
-    static public void unpingCurrentLocation(GoogleMap mapStoredIn,
-                                             LatLng latLngStoredIn) {
+    static public void unpingCurrentLocation(GoogleMap mapStoredIn, LatLng latLngStoredIn) {
         mapStored = mapStoredIn;
         latlngStored = latLngStoredIn;
         if (isCurrentLocPingSet) {
-            currentLocPingMarker.remove();
             currentLocPingObj.removePingObjFromParse();
             isCurrentLocPingSet = false;
         }
@@ -153,50 +148,24 @@ public class PingActions extends Activity {
     }
 
     static public void showOnMap(PingObject p, int duration) {
-        int iconName = 0;
         if (duration == 1) {
-            <<<<<<<HEAD:
-            Android Project
-            Workspace / src / com / pingumobile / actionsAndObjects / PingActions.java
-            iconName = R.drawable.pingiconfaded;
-        } else {
-            iconName = R.drawable.pingicon;
-        }
-
-        Marker m = mapStored.addMarker(new MarkerOptions()
-                .position(p.getLatlng())
-                .icon(BitmapDescriptorFactory.fromResource(iconName))
-                .title(p.getName() + " | " + p.getTime())
-                .snippet(p.getMessage()));
-        m.setAnchor((float) .5, (float) .5);
-        m.showInfoWindow();
-
-    }
-
-    static public void deleteMyPing() {
-        try {
-            unpingAllWithThisUsername();
-        } catch (ParseException e) {
-            Log.w("PingActions", "Delete ping exception");
-            e.printStackTrace();
-            =======
             Marker m = mapStored.addMarker(new MarkerOptions()
                     .position(p.getLatlng())
                     .icon(BitmapDescriptorFactory
                             .fromResource(R.drawable.pingiconfaded))
-                    .title("Sent by " + p.getName() + " at " + p.getTime()));
+                    .title(p.getName() + " | " + p.getTime())
+                    .snippet(p.getMessage()));
             m.setAnchor((float) .5, (float) .5);
             m.showInfoWindow();
-        }else{
+        } else {
             Marker m = mapStored.addMarker(new MarkerOptions()
                     .position(p.getLatlng())
                     .icon(BitmapDescriptorFactory
                             .fromResource(R.drawable.pingicon))
-                    .title("Sent by " + p.getName() + " at " + p.getTime()));
+                    .title(p.getName() + " | " + p.getTime())
+                    .snippet(p.getMessage()));
             m.setAnchor((float) .5, (float) .5);
             m.showInfoWindow();
-            >>>>>>>origin / tiaojon:Android Project
-            Workspace / src / com / pingu / actionsAndObjects / PingActions.java
         }
     }
 
